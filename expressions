@@ -1,0 +1,107 @@
+parse_expr
+
+  - none
+
+parse_binary_expr
+
+  - lhs as true is passed to first ever invocation of parse_unary_expr
+
+  - if this is ternary expression, then lhs is passed as-is to
+    parse_expr's of ternary exprs (both forms)
+
+parse_unary_expr
+
+  - passed as is to parse_unary_expr, parse_operand and
+    parse_atom_expr
+
+parse_operand
+
+  - openbrace allowed only for rhs
+
+  - passed as-is to parse_expr on partial directive
+
+    - it expects to receive compound literal, which is only possible
+      with rhs
+
+    - this means that partial directive is accepted only on rhs
+
+  - passed as-is to parse_expr on bounds_check, no_bounds_check,
+    type_assert, no_type_assert directives
+
+    - it's a fluff anyway, these directives are valid only for some
+      statements, so subsequent parse_check_for_statement will result
+      in an error - parse_expr cannot result in a statement
+
+parse_atom_expr
+
+  - lhs is true only for the first iteration of the loop
+
+  - openbrace is allowed only for rhs, where the operand is a literal
+    type and expr_level is zero or more (so not a control statement)
+
+    - the "not allowed in control statements" is about avoiding an
+      ambiguity during parsing the, for example, if statements
+      condition, where identifier followed by open brace could either
+      be interpreted as identifier being a boolean variable and
+      openbrace being a beginning of a block statement, or the
+      identifier being a type name and openbrace being a beginning of
+      a literal value of that type - so in control statements the
+      latter is not allowed, unless we use a subexpression (so inside
+      the parentheses), which increases the expr_level to >= 0
+
+possible expressions:
+
+  - lhs_expression (no literal value in operand, no literal value in first atom expression)
+
+    - "no literal value in first atom expression" sounds pretty
+      arbitrary, I would allow it because I don't think it introduces
+      an ambiguity the literal value in operand would (ambiguous with
+      block statement)
+
+  - rhs_expression (literal value in operand, literal value in all atom expressions)
+
+  - rhs_control_expression (literal value in operand, no literal value in any atom expressions)
+
+another set:
+
+  - expression_nlvo - no literal value in operand, literal values in atom expression allowed
+
+    - this probably would be used in places where literal value in
+      operand would normally introduce an ambiguity with a block
+      statement (both begin with an open brace),
+
+    - an lhs expression, basically
+
+    - could have a "nie" variant ("no in expression") for for/switch
+      control statements
+
+    - binary expression will be expression_nlvo, op, expression
+
+  - expression - literal value in operand allowed, literal values in atom expressions allowed
+
+    - an rhs expression, basically
+
+    - probably could be simplified to expression_nlvo + sole literal
+      value
+
+      - it could not - expression_nlvo could not expand to a binary expression of two expressions
+
+    - binary expression will be expression, op, expression
+
+  - expression_nlve - literal value in operand allowed, no literal values in in atom expression
+
+    - this probably would be used in control statements of
+      if/for/switch
+
+    - an rhs expression in for/switch/if control statements
+
+      - I think I'd use it for lhs expressions in control statements
+        too, otherwise I'd need to introduce an expression that bans
+        literal values altogether (expression_nlvo_nlve?)
+
+    - binary expression will be expression_nlve, op, expression_nlve
+
+    - could have a "nie" variant ("no in expression") for for/switch
+      control statements
+
+    - could this be simplified to some expression base + sole literal value?

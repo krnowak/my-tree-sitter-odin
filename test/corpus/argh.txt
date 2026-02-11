@@ -1,0 +1,8 @@
+====================
+Argh
+====================
+package stuff
+---
+(source_file
+  (package
+    (package_name)))

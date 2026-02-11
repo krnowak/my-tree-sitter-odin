@@ -1,0 +1,70 @@
+====================
+Minimal valid source file
+====================
+
+package foo
+
+---
+
+(source_file
+  (package
+    (package_name)))
+
+====================
+Minimal valid source file with build tags
+====================
+
+#+build windows
+#+private file
+
+package foo
+
+---
+
+(source_file
+  (file_tag)
+  (file_tag)
+  (package
+    (package_name)))
+
+====================
+Minimal valid source file with build tags and imports
+====================
+
+#+build windows
+#+private file
+
+package foo
+
+import "core/fmt"
+import sl "core/slice"
+
+---
+
+(source_file
+  (file_tag)
+  (file_tag)
+  (package
+    (package_name))
+  (import_declaration
+    (string))
+  (import_declaration
+    (package_name)
+    (string)))
+
+====================
+Minimal valid source file with imports, using semicolons
+====================
+
+package foo; import "core/fmt"; import sl "core/slice"
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (import_declaration
+    (string))
+  (import_declaration
+    (package_name)
+    (string)))
