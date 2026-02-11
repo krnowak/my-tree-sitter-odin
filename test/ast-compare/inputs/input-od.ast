@@ -1,0 +1,1692 @@
+(source-file (version 1) (
+	(package-declaration
+		(token
+			(token (string "package") (offset 0) (line 1) (column 1)))
+		(name
+			(token (string "math_big") (offset 8) (line 1) (column 9))))
+	(import-declaration
+		(token
+			(token (string "import") (offset 116) (line 8) (column 1)))
+		(relpath
+			(token (string "\"base:intrinsics\"") (offset 123) (line 8) (column 8))))
+	(import-declaration
+		(token
+			(token (string "import") (offset 141) (line 9) (column 1)))
+		(relpath
+			(token (string "\"base:runtime\"") (offset 148) (line 9) (column 8))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "MUL_KARATSUBA_CUTOFF") (offset 330) (line 17) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(identifier
+				(token
+					(token (string "_DEFAULT_MUL_KARATSUBA_CUTOFF") (offset 354) (line 17) (column 25)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "SQR_KARATSUBA_CUTOFF") (offset 384) (line 18) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(identifier
+				(token
+					(token (string "_DEFAULT_SQR_KARATSUBA_CUTOFF") (offset 408) (line 18) (column 25)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "MUL_TOOM_CUTOFF") (offset 438) (line 19) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(identifier
+				(token
+					(token (string "_DEFAULT_MUL_TOOM_CUTOFF") (offset 462) (line 19) (column 25)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "SQR_TOOM_CUTOFF") (offset 487) (line 20) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(identifier
+				(token
+					(token (string "_DEFAULT_SQR_TOOM_CUTOFF") (offset 511) (line 20) (column 25)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DEFAULT_MUL_KARATSUBA_CUTOFF") (offset 932) (line 32) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 965) (line 32) (column 34)))
+						(name
+							(token (string "config") (offset 966) (line 32) (column 35)))))
+				(open
+					(token (string "(") (offset 972) (line 32) (column 41)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_MUL_KARATSUBA_CUTOFF") (offset 973) (line 32) (column 42))))
+					(basic-literal
+						(token
+							(token (string "80") (offset 1005) (line 32) (column 74))))))
+				(close
+					(token (string ")") (offset 1007) (line 32) (column 76)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DEFAULT_SQR_KARATSUBA_CUTOFF") (offset 1009) (line 33) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 1042) (line 33) (column 34)))
+						(name
+							(token (string "config") (offset 1043) (line 33) (column 35)))))
+				(open
+					(token (string "(") (offset 1049) (line 33) (column 41)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_SQR_KARATSUBA_CUTOFF") (offset 1050) (line 33) (column 42))))
+					(basic-literal
+						(token
+							(token (string "120") (offset 1081) (line 33) (column 73))))))
+				(close
+					(token (string ")") (offset 1084) (line 33) (column 76)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DEFAULT_MUL_TOOM_CUTOFF") (offset 1086) (line 34) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 1119) (line 34) (column 34)))
+						(name
+							(token (string "config") (offset 1120) (line 34) (column 35)))))
+				(open
+					(token (string "(") (offset 1126) (line 34) (column 41)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_MUL_TOOM_CUTOFF") (offset 1127) (line 34) (column 42))))
+					(basic-literal
+						(token
+							(token (string "350") (offset 1158) (line 34) (column 73))))))
+				(close
+					(token (string ")") (offset 1161) (line 34) (column 76)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DEFAULT_SQR_TOOM_CUTOFF") (offset 1163) (line 35) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 1196) (line 35) (column 34)))
+						(name
+							(token (string "config") (offset 1197) (line 35) (column 35)))))
+				(open
+					(token (string "(") (offset 1203) (line 35) (column 41)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_SQR_TOOM_CUTOFF") (offset 1204) (line 35) (column 42))))
+					(basic-literal
+						(token
+							(token (string "400") (offset 1235) (line 35) (column 73))))))
+				(close
+					(token (string ")") (offset 1238) (line 35) (column 76)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "MAX_ITERATIONS_ROOT_N") (offset 1242) (line 38) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(basic-literal
+				(token
+					(token (string "500") (offset 1267) (line 38) (column 26)))))))
+	(value-declaration
+		(docs (
+			("/*
+	Largest `N` for which we'll compute `N!`
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "FACTORIAL_MAX_N") (offset 1320) (line 43) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(basic-literal
+				(token
+					(token (string "1_000_000") (offset 1339) (line 43) (column 20)))))))
+	(value-declaration
+		(docs (
+			("/*
+	Cutoff to switch to int_factorial_binary_split, and its max recursion level.
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "FACTORIAL_BINARY_SPLIT_CUTOFF") (offset 1434) (line 48) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(basic-literal
+				(token
+					(token (string "6100") (offset 1475) (line 48) (column 42)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "FACTORIAL_BINARY_SPLIT_MAX_RECURSIONS") (offset 1480) (line 49) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(basic-literal
+				(token
+					(token (string "100") (offset 1521) (line 49) (column 42)))))))
+	(value-declaration
+		(docs (
+			("/*
+	`internal_int_is_prime` switchables.
+
+	Use Frobenius-Underwood for primality testing, or use Lucas-Selfridge (default).
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "MATH_BIG_USE_LUCAS_SELFRIDGE_TEST") (offset 1653) (line 56) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 1690) (line 56) (column 38)))
+						(name
+							(token (string "config") (offset 1691) (line 56) (column 39)))))
+				(open
+					(token (string "(") (offset 1697) (line 56) (column 45)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_USE_LUCAS_SELFRIDGE_TEST") (offset 1698) (line 56) (column 46))))
+					(identifier
+						(token
+							(token (string "false") (offset 1733) (line 56) (column 81))))))
+				(close
+					(token (string ")") (offset 1738) (line 56) (column 86)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "MATH_BIG_USE_FROBENIUS_TEST") (offset 1740) (line 57) (column 1))))))
+		(values (
+			(unary-expression
+				(op
+					(token (string "!") (offset 1777) (line 57) (column 38)))
+				(expr
+					(identifier
+						(token
+							(token (string "MATH_BIG_USE_LUCAS_SELFRIDGE_TEST") (offset 1778) (line 57) (column 39)))))))))
+	(value-declaration
+		(docs (
+			("/*
+	Runtime tunable to use Miller-Rabin primality testing only and skip the above.
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "USE_MILLER_RABIN_ONLY") (offset 1899) (line 62) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(identifier
+				(token
+					(token (string "false") (offset 1930) (line 62) (column 32)))))))
+	(value-declaration
+		(docs (
+			("/*
+	How many times we'll call `internal_int_random` during random prime generation before we bail out.
+	Set to 0 or less to try indefinitely.	
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "MAX_ITERATIONS_RANDOM_PRIME") (offset 2083) (line 68) (column 1))))))
+		(is_mutable "true")
+		(values (
+			(basic-literal
+				(token
+					(token (string "1_000_000") (offset 2115) (line 68) (column 33)))))))
+	(value-declaration
+		(docs (
+			("/*
+	How many iterations we used for the last random prime.
+*/")))
+		(attributes (
+			(attribute
+				(token
+					(token (string "@") (offset 2188) (line 73) (column 1)))
+				(elems (
+					(identifier
+						(token
+							(token (string "thread_local") (offset 2189) (line 73) (column 2)))))))))
+		(names (
+			(identifier
+				(token
+					(token (string "RANDOM_PRIME_ITERATIONS_USED") (offset 2202) (line 73) (column 15))))))
+		(type
+			(identifier
+				(token
+					(token (string "int") (offset 2232) (line 73) (column 45)))))
+		(is_mutable "true"))
+	(value-declaration
+		(docs (
+			("/*
+	Trade a smaller memory footprint for more processing overhead?
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "_LOW_MEMORY") (offset 2307) (line 78) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 2322) (line 78) (column 16)))
+						(name
+							(token (string "config") (offset 2323) (line 78) (column 17)))))
+				(open
+					(token (string "(") (offset 2329) (line 78) (column 23)))
+				(args (
+					(identifier
+						(token
+							(token (string "MATH_BIG_SMALL_MEMORY") (offset 2330) (line 78) (column 24))))
+					(identifier
+						(token
+							(token (string "false") (offset 2353) (line 78) (column 47))))))
+				(close
+					(token (string ")") (offset 2358) (line 78) (column 52)))))))
+	(when-statement
+		(token
+			(token (string "when") (offset 2360) (line 79) (column 1)))
+		(cond
+			(identifier
+				(token
+					(token (string "_LOW_MEMORY") (offset 2365) (line 79) (column 6)))))
+		(body
+			(block-statement
+				(open
+					(token (string "{") (offset 2377) (line 79) (column 18)))
+				(stmts (
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_DEFAULT_DIGIT_COUNT") (offset 2380) (line 80) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "8") (offset 2406) (line 80) (column 28)))))))
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_TAB_SIZE") (offset 2409) (line 81) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "32") (offset 2434) (line 81) (column 27)))))))
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_MAX_WIN_SIZE") (offset 2438) (line 82) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "5") (offset 2464) (line 82) (column 28)))))))))
+				(close
+					(token (string "}") (offset 2466) (line 83) (column 1)))))
+		(else_stmt
+			(block-statement
+				(open
+					(token (string "{") (offset 2473) (line 83) (column 8)))
+				(stmts (
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_DEFAULT_DIGIT_COUNT") (offset 2476) (line 84) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "32") (offset 2501) (line 84) (column 27)))))))
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_TAB_SIZE") (offset 2505) (line 85) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "256") (offset 2529) (line 85) (column 26)))))))
+					(value-declaration
+						(names (
+							(identifier
+								(token
+									(token (string "_MAX_WIN_SIZE") (offset 2534) (line 86) (column 2))))))
+						(values (
+							(basic-literal
+								(token
+									(token (string "0") (offset 2560) (line 86) (column 28)))))))))
+				(close
+					(token (string "}") (offset 2562) (line 87) (column 1))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Sign") (offset 2644) (line 93) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 2652) (line 93) (column 9)))
+				(base_type
+					(identifier
+						(token
+							(token (string "u8") (offset 2657) (line 93) (column 14)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Zero_or_Positive") (offset 2663) (line 94) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "0") (offset 2682) (line 94) (column 21))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Negative") (offset 2686) (line 95) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "1") (offset 2705) (line 95) (column 21))))))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Int") (offset 2711) (line 98) (column 1))))))
+		(values (
+			(struct-type
+				(token
+					(token (string "struct") (offset 2718) (line 98) (column 8)))
+				(field_count 4)
+				(fields (
+					(field
+						(names (
+							(identifier
+								(token
+									(token (string "used") (offset 2728) (line 99) (column 2))))))
+						(type
+							(identifier
+								(token
+									(token (string "int") (offset 2735) (line 99) (column 9))))))
+					(field
+						(names (
+							(identifier
+								(token
+									(token (string "digit") (offset 2741) (line 100) (column 2))))))
+						(type
+							(dynamic-array-type
+								(token
+									(token (string "[") (offset 2748) (line 100) (column 9)))
+								(elem
+									(identifier
+										(token
+											(token (string "DIGIT") (offset 2757) (line 100) (column 18))))))))
+					(field
+						(names (
+							(identifier
+								(token
+									(token (string "sign") (offset 2765) (line 101) (column 2))))))
+						(type
+							(identifier
+								(token
+									(token (string "Sign") (offset 2772) (line 101) (column 9))))))
+					(field
+						(names (
+							(identifier
+								(token
+									(token (string "flags") (offset 2779) (line 102) (column 2))))))
+						(type
+							(identifier
+								(token
+									(token (string "Flags") (offset 2786) (line 102) (column 9))))))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Flag") (offset 2796) (line 105) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 2804) (line 105) (column 9)))
+				(base_type
+					(identifier
+						(token
+							(token (string "u8") (offset 2809) (line 105) (column 14)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "NaN") (offset 2815) (line 106) (column 2))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Inf") (offset 2821) (line 107) (column 2))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Immutable") (offset 2827) (line 108) (column 2))))))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Flags") (offset 2841) (line 111) (column 1))))))
+		(values (
+			(bit-set-type
+				(token
+					(token (string "bit_set") (offset 2850) (line 111) (column 10)))
+				(elem
+					(identifier
+						(token
+							(token (string "Flag") (offset 2858) (line 111) (column 18)))))
+				(underlying
+					(identifier
+						(token
+							(token (string "u8") (offset 2864) (line 111) (column 24)))))))))
+	(value-declaration
+		(docs (
+			("/*
+	Errors are a strict superset of runtime.Allocation_Error.
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "Error") (offset 2934) (line 116) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 2943) (line 116) (column 10)))
+				(base_type
+					(identifier
+						(token
+							(token (string "byte") (offset 2948) (line 116) (column 15)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "None") (offset 2956) (line 117) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "0") (offset 2982) (line 117) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Out_Of_Memory") (offset 2986) (line 118) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "1") (offset 3012) (line 118) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Invalid_Pointer") (offset 3016) (line 119) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "2") (offset 3042) (line 119) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Invalid_Argument") (offset 3046) (line 120) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "3") (offset 3072) (line 120) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Mode_Not_Implemented") (offset 3076) (line 121) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "4") (offset 3102) (line 121) (column 28)))))
+						(comment (
+							("// Allocation"))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Assignment_To_Immutable") (offset 3121) (line 123) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "10") (offset 3147) (line 123) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Max_Iterations_Reached") (offset 3152) (line 124) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "11") (offset 3178) (line 124) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Buffer_Overflow") (offset 3183) (line 125) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "12") (offset 3209) (line 125) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Integer_Overflow") (offset 3214) (line 126) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "13") (offset 3240) (line 126) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Integer_Underflow") (offset 3245) (line 127) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "14") (offset 3271) (line 127) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Division_by_Zero") (offset 3277) (line 129) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "30") (offset 3303) (line 129) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Math_Domain_Error") (offset 3308) (line 130) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "31") (offset 3334) (line 130) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Cannot_Open_File") (offset 3340) (line 132) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "50") (offset 3366) (line 132) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Cannot_Read_File") (offset 3371) (line 133) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "51") (offset 3397) (line 133) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Cannot_Write_File") (offset 3402) (line 134) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "52") (offset 3428) (line 134) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Unimplemented") (offset 3434) (line 136) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "127") (offset 3460) (line 136) (column 28))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Okay") (offset 3467) (line 138) (column 2)))))
+						(value
+							(identifier
+								(token
+									(token (string "None") (offset 3474) (line 138) (column 9))))))))))))
+	(expression-statement
+		(expr
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 3483) (line 141) (column 1)))
+						(name
+							(token (string "assert") (offset 3484) (line 141) (column 2)))))
+				(open
+					(token (string "(") (offset 3490) (line 141) (column 8)))
+				(args (
+					(call-expression
+						(proc
+							(selector-expression
+								(expr
+									(identifier
+										(token
+											(token (string "intrinsics") (offset 3491) (line 141) (column 9)))))
+								(token
+									(token (string ".") (offset 3501) (line 141) (column 19)))
+								(selector
+									(identifier
+										(token
+											(token (string "type_is_superset_of") (offset 3502) (line 141) (column 20)))))))
+						(open
+							(token (string "(") (offset 3521) (line 141) (column 39)))
+						(args (
+							(identifier
+								(token
+									(token (string "Error") (offset 3522) (line 141) (column 40))))
+							(selector-expression
+								(expr
+									(identifier
+										(token
+											(token (string "runtime") (offset 3529) (line 141) (column 47)))))
+								(token
+									(token (string ".") (offset 3536) (line 141) (column 54)))
+								(selector
+									(identifier
+										(token
+											(token (string "Allocator_Error") (offset 3537) (line 141) (column 55))))))))
+						(close
+							(token (string ")") (offset 3552) (line 141) (column 70))))))
+				(close
+					(token (string ")") (offset 3553) (line 141) (column 71))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Error_String") (offset 3557) (line 144) (column 1))))))
+		(values (
+			(compound-literal
+				(type
+					(array-type
+						(tag
+							(basic-directive
+								(token
+									(token (string "#") (offset 3573) (line 144) (column 17)))
+								(name
+									(token (string "sparse") (offset 3574) (line 144) (column 18)))))
+						(token
+							(token (string "[") (offset 3580) (line 144) (column 24)))
+						(count
+							(identifier
+								(token
+									(token (string "Error") (offset 3581) (line 144) (column 25)))))
+						(elem
+							(identifier
+								(token
+									(token (string "string") (offset 3587) (line 144) (column 31)))))))
+				(open
+					(token (string "{") (offset 3593) (line 144) (column 37)))
+				(elems (
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3596) (line 145) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "None") (offset 3597) (line 145) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3621) (line 145) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"None\"") (offset 3623) (line 145) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3632) (line 146) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Out_Of_Memory") (offset 3633) (line 146) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3657) (line 146) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Out of memory\"") (offset 3659) (line 146) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3677) (line 147) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Invalid_Pointer") (offset 3678) (line 147) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3702) (line 147) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Invalid pointer\"") (offset 3704) (line 147) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3724) (line 148) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Invalid_Argument") (offset 3725) (line 148) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3749) (line 148) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Invalid argument\"") (offset 3751) (line 148) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3772) (line 149) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Mode_Not_Implemented") (offset 3773) (line 149) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3797) (line 149) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Allocation mode not implemented\"") (offset 3799) (line 149) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3836) (line 151) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Assignment_To_Immutable") (offset 3837) (line 151) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3861) (line 151) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Assignment to immutable\"") (offset 3863) (line 151) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3891) (line 152) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Max_Iterations_Reached") (offset 3892) (line 152) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3916) (line 152) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Max iterations reached\"") (offset 3918) (line 152) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3945) (line 153) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Buffer_Overflow") (offset 3946) (line 153) (column 3)))))))
+						(eq
+							(token (string "=") (offset 3970) (line 153) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Buffer overflow\"") (offset 3972) (line 153) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 3992) (line 154) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Integer_Overflow") (offset 3993) (line 154) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4017) (line 154) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Integer overflow\"") (offset 4019) (line 154) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4040) (line 155) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Integer_Underflow") (offset 4041) (line 155) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4065) (line 155) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Integer underflow\"") (offset 4067) (line 155) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4090) (line 157) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Division_by_Zero") (offset 4091) (line 157) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4115) (line 157) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Division by zero\"") (offset 4117) (line 157) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4138) (line 158) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Math_Domain_Error") (offset 4139) (line 158) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4163) (line 158) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Math domain error\"") (offset 4165) (line 158) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4188) (line 160) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Cannot_Open_File") (offset 4189) (line 160) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4213) (line 160) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Cannot_Open_File\"") (offset 4215) (line 160) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4236) (line 161) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Cannot_Read_File") (offset 4237) (line 161) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4261) (line 161) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Cannot_Read_File\"") (offset 4263) (line 161) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4284) (line 162) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Cannot_Write_File") (offset 4285) (line 162) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4309) (line 162) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Cannot_Write_File\"") (offset 4311) (line 162) (column 29))))))
+					(field-value
+						(field
+							(implicit-selector-expression
+								(token
+									(token (string ".") (offset 4334) (line 164) (column 2)))
+								(selector
+									(identifier
+										(token
+											(token (string "Unimplemented") (offset 4335) (line 164) (column 3)))))))
+						(eq
+							(token (string "=") (offset 4359) (line 164) (column 27)))
+						(value
+							(basic-literal
+								(token
+									(token (string "\"Unimplemented\"") (offset 4361) (line 164) (column 29))))))))
+				(close
+					(token (string "}") (offset 4378) (line 165) (column 1)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Primality_Flag") (offset 4381) (line 167) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 4399) (line 167) (column 19)))
+				(base_type
+					(identifier
+						(token
+							(token (string "u8") (offset 4404) (line 167) (column 24)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Blum_Blum_Shub") (offset 4410) (line 168) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "0") (offset 4427) (line 168) (column 19)))))
+						(comment (
+							("// Make prime congruent to 3 mod 4"))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Safe") (offset 4467) (line 169) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "1") (offset 4484) (line 169) (column 19)))))
+						(comment (
+							("// Make sure (p-1)/2 is prime as well (implies .Blum_Blum_Shub)"))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Second_MSB_On") (offset 4553) (line 170) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "3") (offset 4570) (line 170) (column 19)))))
+						(comment (
+							("// Make the 2nd highest bit one"))))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Primality_Flags") (offset 4608) (line 172) (column 1))))))
+		(values (
+			(bit-set-type
+				(token
+					(token (string "bit_set") (offset 4627) (line 172) (column 20)))
+				(elem
+					(identifier
+						(token
+							(token (string "Primality_Flag") (offset 4635) (line 172) (column 28)))))
+				(underlying
+					(identifier
+						(token
+							(token (string "u8") (offset 4651) (line 172) (column 44)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_MIN_DIGIT_COUNT") (offset 4920) (line 182) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(identifier
+						(token
+							(token (string "max") (offset 4940) (line 182) (column 21)))))
+				(open
+					(token (string "(") (offset 4943) (line 182) (column 24)))
+				(args (
+					(basic-literal
+						(token
+							(token (string "3") (offset 4944) (line 182) (column 25))))
+					(binary-expression
+						(left
+							(parentheses-expression
+								(open
+									(token (string "(") (offset 4947) (line 182) (column 28)))
+								(expr
+									(binary-expression
+										(left
+											(parentheses-expression
+												(open
+													(token (string "(") (offset 4948) (line 182) (column 29)))
+												(expr
+													(binary-expression
+														(left
+															(call-expression
+																(proc
+																	(identifier
+																		(token
+																			(token (string "size_of") (offset 4949) (line 182) (column 30)))))
+																(open
+																	(token (string "(") (offset 4956) (line 182) (column 37)))
+																(args (
+																	(identifier
+																		(token
+																			(token (string "u128") (offset 4957) (line 182) (column 38))))))
+																(close
+																	(token (string ")") (offset 4961) (line 182) (column 42)))))
+														(op
+															(token (string "+") (offset 4963) (line 182) (column 44)))
+														(right
+															(identifier
+																(token
+																	(token (string "_DIGIT_BITS") (offset 4965) (line 182) (column 46)))))))
+												(close
+													(token (string ")") (offset 4976) (line 182) (column 57)))))
+										(op
+											(token (string "-") (offset 4978) (line 182) (column 59)))
+										(right
+											(basic-literal
+												(token
+													(token (string "1") (offset 4980) (line 182) (column 61)))))))
+								(close
+									(token (string ")") (offset 4981) (line 182) (column 62)))))
+						(op
+							(token (string "/") (offset 4983) (line 182) (column 64)))
+						(right
+							(identifier
+								(token
+									(token (string "_DIGIT_BITS") (offset 4985) (line 182) (column 66))))))))
+				(close
+					(token (string ")") (offset 4996) (line 182) (column 77)))))))
+	(expression-statement
+		(expr
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 4998) (line 183) (column 1)))
+						(name
+							(token (string "assert") (offset 4999) (line 183) (column 2)))))
+				(open
+					(token (string "(") (offset 5005) (line 183) (column 8)))
+				(args (
+					(binary-expression
+						(left
+							(identifier
+								(token
+									(token (string "_DEFAULT_DIGIT_COUNT") (offset 5006) (line 183) (column 9)))))
+						(op
+							(token (string ">=") (offset 5027) (line 183) (column 30)))
+						(right
+							(identifier
+								(token
+									(token (string "_MIN_DIGIT_COUNT") (offset 5030) (line 183) (column 33))))))))
+				(close
+					(token (string ")") (offset 5046) (line 183) (column 49))))))
+	(value-declaration
+		(docs (
+			("/*
+	Maximum number of digits.
+	- Must be small enough such that `_bit_count` does not overflow.
+	- Must be small enough such that `_radix_size` for base 2 does not overflow.
+	`_radix_size` needs two additional bytes for zero termination and sign.
+*/")))
+		(names (
+			(identifier
+				(token
+					(token (string "_MAX_BIT_COUNT") (offset 5299) (line 191) (column 1))))))
+		(values (
+			(parentheses-expression
+				(open
+					(token (string "(") (offset 5319) (line 191) (column 21)))
+				(expr
+					(binary-expression
+						(left
+							(call-expression
+								(proc
+									(identifier
+										(token
+											(token (string "max") (offset 5320) (line 191) (column 22)))))
+								(open
+									(token (string "(") (offset 5323) (line 191) (column 25)))
+								(args (
+									(identifier
+										(token
+											(token (string "int") (offset 5324) (line 191) (column 26))))))
+								(close
+									(token (string ")") (offset 5327) (line 191) (column 29)))))
+						(op
+							(token (string "-") (offset 5329) (line 191) (column 31)))
+						(right
+							(basic-literal
+								(token
+									(token (string "2") (offset 5331) (line 191) (column 33)))))))
+				(close
+					(token (string ")") (offset 5332) (line 191) (column 34)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_MAX_DIGIT_COUNT") (offset 5334) (line 192) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(identifier
+						(token
+							(token (string "_MAX_BIT_COUNT") (offset 5354) (line 192) (column 21)))))
+				(op
+					(token (string "/") (offset 5369) (line 192) (column 36)))
+				(right
+					(identifier
+						(token
+							(token (string "_DIGIT_BITS") (offset 5371) (line 192) (column 38)))))))))
+	(value-declaration
+		(docs (
+			("// We use u128 as an intermediary.")))
+		(names (
+			(identifier
+				(token
+					(token (string "DIGIT") (offset 5419) (line 195) (column 1))))))
+		(values (
+			(distinct-type
+				(token
+					(token (string "distinct") (offset 5435) (line 195) (column 17)))
+				(type
+					(identifier
+						(token
+							(token (string "u64") (offset 5444) (line 195) (column 26)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_WORD") (offset 5448) (line 196) (column 1))))))
+		(values (
+			(distinct-type
+				(token
+					(token (string "distinct") (offset 5464) (line 196) (column 17)))
+				(type
+					(identifier
+						(token
+							(token (string "u128") (offset 5473) (line 196) (column 26)))))))))
+	(value-declaration
+		(docs (
+			("// Base 10 extraction constants")))
+		(names (
+			(identifier
+				(token
+					(token (string "ITOA_DIVISOR") (offset 5511) (line 199) (column 1))))))
+		(values (
+			(call-expression
+				(proc
+					(identifier
+						(token
+							(token (string "DIGIT") (offset 5527) (line 199) (column 17)))))
+				(open
+					(token (string "(") (offset 5532) (line 199) (column 22)))
+				(args (
+					(basic-literal
+						(token
+							(token (string "1_000_000_000_000_000_000") (offset 5533) (line 199) (column 23))))))
+				(close
+					(token (string ")") (offset 5558) (line 199) (column 48)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "ITOA_COUNT") (offset 5560) (line 200) (column 1))))))
+		(values (
+			(basic-literal
+				(token
+					(token (string "18") (offset 5576) (line 200) (column 17)))))))
+	(expression-statement
+		(expr
+			(call-expression
+				(proc
+					(basic-directive
+						(token
+							(token (string "#") (offset 5579) (line 201) (column 1)))
+						(name
+							(token (string "assert") (offset 5580) (line 201) (column 2)))))
+				(open
+					(token (string "(") (offset 5586) (line 201) (column 8)))
+				(args (
+					(binary-expression
+						(left
+							(call-expression
+								(proc
+									(identifier
+										(token
+											(token (string "size_of") (offset 5587) (line 201) (column 9)))))
+								(open
+									(token (string "(") (offset 5594) (line 201) (column 16)))
+								(args (
+									(identifier
+										(token
+											(token (string "_WORD") (offset 5595) (line 201) (column 17))))))
+								(close
+									(token (string ")") (offset 5600) (line 201) (column 22)))))
+						(op
+							(token (string "==") (offset 5602) (line 201) (column 24)))
+						(right
+							(binary-expression
+								(left
+									(basic-literal
+										(token
+											(token (string "2") (offset 5605) (line 201) (column 27)))))
+								(op
+									(token (string "*") (offset 5607) (line 201) (column 29)))
+								(right
+									(call-expression
+										(proc
+											(identifier
+												(token
+													(token (string "size_of") (offset 5609) (line 201) (column 31)))))
+										(open
+											(token (string "(") (offset 5616) (line 201) (column 38)))
+										(args (
+											(identifier
+												(token
+													(token (string "DIGIT") (offset 5617) (line 201) (column 39))))))
+										(close
+											(token (string ")") (offset 5622) (line 201) (column 44))))))))))
+				(close
+					(token (string ")") (offset 5623) (line 201) (column 45))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DIGIT_TYPE_BITS") (offset 5626) (line 203) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(basic-literal
+						(token
+							(token (string "8") (offset 5646) (line 203) (column 21)))))
+				(op
+					(token (string "*") (offset 5648) (line 203) (column 23)))
+				(right
+					(call-expression
+						(proc
+							(identifier
+								(token
+									(token (string "size_of") (offset 5650) (line 203) (column 25)))))
+						(open
+							(token (string "(") (offset 5657) (line 203) (column 32)))
+						(args (
+							(identifier
+								(token
+									(token (string "DIGIT") (offset 5658) (line 203) (column 33))))))
+						(close
+							(token (string ")") (offset 5663) (line 203) (column 38)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_WORD_TYPE_BITS") (offset 5665) (line 204) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(basic-literal
+						(token
+							(token (string "8") (offset 5685) (line 204) (column 21)))))
+				(op
+					(token (string "*") (offset 5687) (line 204) (column 23)))
+				(right
+					(call-expression
+						(proc
+							(identifier
+								(token
+									(token (string "size_of") (offset 5689) (line 204) (column 25)))))
+						(open
+							(token (string "(") (offset 5696) (line 204) (column 32)))
+						(args (
+							(identifier
+								(token
+									(token (string "_WORD") (offset 5697) (line 204) (column 33))))))
+						(close
+							(token (string ")") (offset 5702) (line 204) (column 38)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DIGIT_NAILS") (offset 5705) (line 206) (column 1))))))
+		(values (
+			(basic-literal
+				(token
+					(token (string "1") (offset 5725) (line 206) (column 21)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DIGIT_BITS") (offset 5727) (line 207) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(identifier
+						(token
+							(token (string "_DIGIT_TYPE_BITS") (offset 5747) (line 207) (column 21)))))
+				(op
+					(token (string "-") (offset 5764) (line 207) (column 38)))
+				(right
+					(identifier
+						(token
+							(token (string "_DIGIT_NAILS") (offset 5766) (line 207) (column 40)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_WORD_BITS") (offset 5779) (line 208) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(basic-literal
+						(token
+							(token (string "2") (offset 5799) (line 208) (column 21)))))
+				(op
+					(token (string "*") (offset 5801) (line 208) (column 23)))
+				(right
+					(identifier
+						(token
+							(token (string "_DIGIT_BITS") (offset 5803) (line 208) (column 25)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_MASK") (offset 5816) (line 210) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(parentheses-expression
+						(open
+							(token (string "(") (offset 5836) (line 210) (column 21)))
+						(expr
+							(binary-expression
+								(left
+									(call-expression
+										(proc
+											(identifier
+												(token
+													(token (string "DIGIT") (offset 5837) (line 210) (column 22)))))
+										(open
+											(token (string "(") (offset 5842) (line 210) (column 27)))
+										(args (
+											(basic-literal
+												(token
+													(token (string "1") (offset 5843) (line 210) (column 28))))))
+										(close
+											(token (string ")") (offset 5844) (line 210) (column 29)))))
+								(op
+									(token (string "<<") (offset 5846) (line 210) (column 31)))
+								(right
+									(call-expression
+										(proc
+											(identifier
+												(token
+													(token (string "DIGIT") (offset 5849) (line 210) (column 34)))))
+										(open
+											(token (string "(") (offset 5854) (line 210) (column 39)))
+										(args (
+											(identifier
+												(token
+													(token (string "_DIGIT_BITS") (offset 5855) (line 210) (column 40))))))
+										(close
+											(token (string ")") (offset 5866) (line 210) (column 51)))))))
+						(close
+							(token (string ")") (offset 5867) (line 210) (column 52)))))
+				(op
+					(token (string "-") (offset 5869) (line 210) (column 54)))
+				(right
+					(call-expression
+						(proc
+							(identifier
+								(token
+									(token (string "DIGIT") (offset 5871) (line 210) (column 56)))))
+						(open
+							(token (string "(") (offset 5876) (line 210) (column 61)))
+						(args (
+							(basic-literal
+								(token
+									(token (string "1") (offset 5877) (line 210) (column 62))))))
+						(close
+							(token (string ")") (offset 5878) (line 210) (column 63)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_DIGIT_MAX") (offset 5880) (line 211) (column 1))))))
+		(values (
+			(identifier
+				(token
+					(token (string "_MASK") (offset 5900) (line 211) (column 21)))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_MAX_COMBA") (offset 5906) (line 212) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(basic-literal
+						(token
+							(token (string "1") (offset 5926) (line 212) (column 21)))))
+				(op
+					(token (string "<<") (offset 5928) (line 212) (column 23)))
+				(right
+					(parentheses-expression
+						(open
+							(token (string "(") (offset 5932) (line 212) (column 27)))
+						(expr
+							(binary-expression
+								(left
+									(identifier
+										(token
+											(token (string "_WORD_TYPE_BITS") (offset 5933) (line 212) (column 28)))))
+								(op
+									(token (string "-") (offset 5949) (line 212) (column 44)))
+								(right
+									(parentheses-expression
+										(open
+											(token (string "(") (offset 5951) (line 212) (column 46)))
+										(expr
+											(binary-expression
+												(left
+													(basic-literal
+														(token
+															(token (string "2") (offset 5952) (line 212) (column 47)))))
+												(op
+													(token (string "*") (offset 5954) (line 212) (column 49)))
+												(right
+													(identifier
+														(token
+															(token (string "_DIGIT_BITS") (offset 5956) (line 212) (column 51)))))))
+										(close
+											(token (string ")") (offset 5967) (line 212) (column 62)))))))
+						(close
+							(token (string ")") (offset 5968) (line 212) (column 63)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "_WARRAY") (offset 5975) (line 213) (column 1))))))
+		(values (
+			(binary-expression
+				(left
+					(basic-literal
+						(token
+							(token (string "1") (offset 5995) (line 213) (column 21)))))
+				(op
+					(token (string "<<") (offset 5997) (line 213) (column 23)))
+				(right
+					(parentheses-expression
+						(open
+							(token (string "(") (offset 6000) (line 213) (column 26)))
+						(expr
+							(binary-expression
+								(left
+									(parentheses-expression
+										(open
+											(token (string "(") (offset 6001) (line 213) (column 27)))
+										(expr
+											(binary-expression
+												(left
+													(identifier
+														(token
+															(token (string "_WORD_TYPE_BITS") (offset 6002) (line 213) (column 28)))))
+												(op
+													(token (string "-") (offset 6018) (line 213) (column 44)))
+												(right
+													(parentheses-expression
+														(open
+															(token (string "(") (offset 6020) (line 213) (column 46)))
+														(expr
+															(binary-expression
+																(left
+																	(basic-literal
+																		(token
+																			(token (string "2") (offset 6021) (line 213) (column 47)))))
+																(op
+																	(token (string "*") (offset 6023) (line 213) (column 49)))
+																(right
+																	(identifier
+																		(token
+																			(token (string "_DIGIT_BITS") (offset 6025) (line 213) (column 51)))))))
+														(close
+															(token (string ")") (offset 6036) (line 213) (column 62)))))))
+										(close
+											(token (string ")") (offset 6037) (line 213) (column 63)))))
+								(op
+									(token (string "+") (offset 6039) (line 213) (column 65)))
+								(right
+									(basic-literal
+										(token
+											(token (string "1") (offset 6041) (line 213) (column 67)))))))
+						(close
+							(token (string ")") (offset 6042) (line 213) (column 68)))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Order") (offset 6045) (line 215) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 6054) (line 215) (column 10)))
+				(base_type
+					(identifier
+						(token
+							(token (string "i8") (offset 6059) (line 215) (column 15)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "LSB_First") (offset 6065) (line 216) (column 2)))))
+						(value
+							(unary-expression
+								(op
+									(token (string "-") (offset 6077) (line 216) (column 14)))
+								(expr
+									(basic-literal
+										(token
+											(token (string "1") (offset 6078) (line 216) (column 15))))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "MSB_First") (offset 6082) (line 217) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "1") (offset 6095) (line 217) (column 15))))))))))))
+	(value-declaration
+		(names (
+			(identifier
+				(token
+					(token (string "Endianness") (offset 6101) (line 220) (column 1))))))
+		(values (
+			(enum-type
+				(token
+					(token (string "enum") (offset 6115) (line 220) (column 15)))
+				(base_type
+					(identifier
+						(token
+							(token (string "i8") (offset 6120) (line 220) (column 20)))))
+				(fields (
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Little") (offset 6126) (line 221) (column 2)))))
+						(value
+							(unary-expression
+								(op
+									(token (string "-") (offset 6137) (line 221) (column 13)))
+								(expr
+									(basic-literal
+										(token
+											(token (string "1") (offset 6138) (line 221) (column 14))))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Platform") (offset 6142) (line 222) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "0") (offset 6154) (line 222) (column 14))))))
+					(enum-field-value
+						(name
+							(identifier
+								(token
+									(token (string "Big") (offset 6158) (line 223) (column 2)))))
+						(value
+							(basic-literal
+								(token
+									(token (string "1") (offset 6170) (line 223) (column 14))))))))))))))
