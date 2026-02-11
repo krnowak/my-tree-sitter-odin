@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "odin",
+      "camelcase": "Odin",
+      "title": "Odin",
+      "scope": "source.odin",
+      "file-types": [
+        "odin"
+      ],
+      "injection-regex": "^odin$",
+      "class-name": "TreeSitterOdin"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Odin grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Krzesimir Nowak",
+        "email": "qdlacz@gmail.com",
+        "url": "https://github.com/krnowak"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/krnowak/my-tree-sitter-odin"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

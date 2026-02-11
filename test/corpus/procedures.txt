@@ -1,0 +1,284 @@
+====================
+Simple procedure type
+====================
+
+package foo
+
+p :: proc()
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type)))
+
+====================
+Simple procedure type (empty results)
+====================
+
+package foo
+
+p :: proc() -> ()
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result))))
+
+====================
+Diverging procedure type
+====================
+
+package foo
+
+p :: proc() -> !
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (diverging)))))
+
+====================
+Procedure type returning a diverging procedure
+====================
+
+package foo
+
+p :: proc() -> proc () -> !
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (type
+          (procedure_type
+            (procedure_result
+              (diverging))))))))
+
+====================
+Procedure type with single result
+====================
+
+package foo
+
+p :: proc() -> int
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (type
+          (identifier))))))
+
+====================
+Procedure type with single result in parentheses
+====================
+
+package foo
+
+p :: proc() -> (int)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (type
+          (identifier))))))
+
+====================
+Procedure type with multiple results
+====================
+
+package foo
+
+p :: proc() -> (foo, bar)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (type
+          (identifier))
+        (type
+          (identifier))))))
+
+====================
+Procedure type with a single named result
+====================
+
+package foo
+
+p :: proc() -> (a : foo)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (type
+          (identifier))))))
+
+====================
+Procedure type with a multiple named results
+====================
+
+package foo
+
+p :: proc() -> (a : foo, b : bar)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (type
+          (identifier))
+        (identifier)
+        (type
+          (identifier))))))
+
+====================
+Procedure type with a multiple packed named results
+====================
+
+package foo
+
+p :: proc() -> (a1, a2 : foo, b1, b2, b3 : bar)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (identifier)
+        (type
+          (identifier))
+        (identifier)
+        (identifier)
+        (identifier)
+        (type
+          (identifier))))))
+
+====================
+Procedure type with a result and default value
+====================
+
+package foo
+
+p :: proc() -> (a1 : foo = bar)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (type
+          (identifier))
+        (default_value
+          (identifier))))))
+
+====================
+Procedure type with multiple results and default values
+====================
+
+package foo
+
+p :: proc() -> (a1 : foo = bar, a2 : baz = quux)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (type
+          (identifier))
+        (default_value
+          (identifier))
+        (identifier)
+        (type
+          (identifier))
+        (default_value
+          (identifier))))))
+
+====================
+Procedure type with an inferred results from default values
+====================
+
+package foo
+
+p :: proc() -> (a1 := bar, a2 : = quux)
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (const_declaration
+    (identifier)
+    (procedure_type
+      (procedure_result
+        (identifier)
+        (default_value
+          (identifier))
+        (identifier)
+        (default_value
+          (identifier))))))

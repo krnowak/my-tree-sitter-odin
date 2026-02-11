@@ -1,0 +1,44 @@
+====================
+Single line comment
+====================
+
+// Foo
+package foo
+
+---
+
+(source_file
+  (comment)
+  (package
+    (package_name)))
+
+====================
+Multi-line comment
+====================
+
+/* Foo */
+package foo
+
+---
+
+(source_file
+  (comment)
+  (package
+    (package_name)))
+
+====================
+Shebang
+====================
+
+#!/bin/odin run
+
+/* Foo */
+package foo
+
+---
+
+(source_file
+  (shebang)
+  (comment)
+  (package
+    (package_name)))
