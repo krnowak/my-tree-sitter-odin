@@ -1,0 +1,4033 @@
+(source-file (version 1) (
+	(package-declaration (id 0)
+		(token
+			(token (string "package") (offset 62) (line 2) (column 1)))
+		(name
+			(token (string "math_fixed") (offset 70) (line 2) (column 9)))
+		(docs (
+			("// Fixed-point rational numbers and conversion to/from `f64`."))))
+	(import-declaration (id 1)
+		(token
+			(token (string "import") (offset 82) (line 4) (column 1)))
+		(relpath
+			(token (string "\"core:math\"") (offset 89) (line 4) (column 8))))
+	(import-declaration (id 2)
+		(token
+			(token (string "import") (offset 101) (line 5) (column 1)))
+		(relpath
+			(token (string "\"core:strconv\"") (offset 108) (line 5) (column 8))))
+	(import-declaration (id 3)
+		(token
+			(token (string "import") (offset 123) (line 6) (column 1)))
+		(relpath
+			(token (string "\"base:intrinsics\"") (offset 130) (line 6) (column 8))))
+	(value-declaration (id 4)
+		(names (
+			(identifier (id 5)
+				(token
+					(token (string "_") (offset 148) (line 7) (column 1))))
+			(identifier (id 6)
+				(token
+					(token (string "_") (offset 151) (line 7) (column 4))))
+			(identifier (id 7)
+				(token
+					(token (string "_") (offset 154) (line 7) (column 7))))))
+		(values (
+			(identifier (id 8)
+				(token
+					(token (string "intrinsics") (offset 159) (line 7) (column 12))))
+			(identifier (id 9)
+				(token
+					(token (string "strconv") (offset 171) (line 7) (column 24))))
+			(identifier (id 10)
+				(token
+					(token (string "math") (offset 180) (line 7) (column 33)))))))
+	(value-declaration (id 11)
+		(names (
+			(identifier (id 12)
+				(token
+					(token (string "Fixed") (offset 186) (line 9) (column 1))))))
+		(values (
+			(struct-type (id 13) (field_count 1)
+				(token
+					(token (string "struct") (offset 195) (line 9) (column 10)))
+				(where_token
+					(token (string "where") (offset 244) (line 10) (column 2)))
+				(fields (
+					(field (id 14)
+						(names (
+							(identifier (id 15)
+								(token
+									(token (string "i") (offset 354) (line 14) (column 2))))))
+						(type
+							(identifier (id 16)
+								(token
+									(token (string "Backing") (offset 357) (line 14) (column 5))))))))
+				(polymorphic_params
+					(field-list (id 17)
+						(token
+							(token (string "$") (offset 202) (line 9) (column 17)))
+						(list (
+							(field (id 18)
+								(names (
+									(polymorphic-type (id 19)
+										(token
+											(token (string "$") (offset 202) (line 9) (column 17)))
+										(type
+											(identifier (id 20)
+												(token
+													(token (string "Backing") (offset 203) (line 9) (column 18))))))))
+								(type
+									(typeid (id 21)
+										(token
+											(token (string "typeid") (offset 212) (line 9) (column 27))))))
+							(field (id 22)
+								(names (
+									(polymorphic-type (id 23)
+										(token
+											(token (string "$") (offset 220) (line 9) (column 35)))
+										(type
+											(identifier (id 24)
+												(token
+													(token (string "Fraction_Width") (offset 221) (line 9) (column 36))))))))
+								(type
+									(identifier (id 25)
+										(token
+											(token (string "uint") (offset 237) (line 9) (column 52))))))))))
+				(where_clauses (
+					(call-expression (id 26)
+						(open
+							(token (string "(") (offset 278) (line 11) (column 29)))
+						(close
+							(token (string ")") (offset 286) (line 11) (column 37)))
+						(proc
+							(selector-expression (id 27)
+								(token
+									(token (string ".") (offset 262) (line 11) (column 13)))
+								(expr
+									(identifier (id 28)
+										(token
+											(token (string "intrinsics") (offset 252) (line 11) (column 3)))))
+								(selector
+									(identifier (id 29)
+										(token
+											(token (string "type_is_integer") (offset 263) (line 11) (column 14)))))))
+						(args (
+							(identifier (id 30)
+								(token
+									(token (string "Backing") (offset 279) (line 11) (column 30)))))))
+					(binary-expression (id 31)
+						(op
+							(token (string "<=") (offset 293) (line 12) (column 5)))
+						(left
+							(basic-literal (id 32)
+								(token
+									(token (string "0") (offset 291) (line 12) (column 3)))))
+						(right
+							(identifier (id 33)
+								(token
+									(token (string "Fraction_Width") (offset 296) (line 12) (column 8))))))
+					(binary-expression (id 34)
+						(op
+							(token (string "<=") (offset 329) (line 13) (column 18)))
+						(left
+							(identifier (id 35)
+								(token
+									(token (string "Fraction_Width") (offset 314) (line 13) (column 3)))))
+						(right
+							(binary-expression (id 36)
+								(op
+									(token (string "*") (offset 333) (line 13) (column 22)))
+								(left
+									(basic-literal (id 37)
+										(token
+											(token (string "8") (offset 332) (line 13) (column 21)))))
+								(right
+									(call-expression (id 38)
+										(open
+											(token (string "(") (offset 341) (line 13) (column 30)))
+										(close
+											(token (string ")") (offset 349) (line 13) (column 38)))
+										(proc
+											(identifier (id 39)
+												(token
+													(token (string "size_of") (offset 334) (line 13) (column 23)))))
+										(args (
+											(identifier (id 40)
+												(token
+													(token (string "Backing") (offset 342) (line 13) (column 31)))))))))))))))))
+	(value-declaration (id 41)
+		(names (
+			(identifier (id 42)
+				(token
+					(token (string "Fixed4_4") (offset 369) (line 17) (column 1))))))
+		(values (
+			(distinct-type (id 43)
+				(token
+					(token (string "distinct") (offset 382) (line 17) (column 14)))
+				(type
+					(call-expression (id 44)
+						(open
+							(token (string "(") (offset 396) (line 17) (column 28)))
+						(close
+							(token (string ")") (offset 402) (line 17) (column 34)))
+						(proc
+							(identifier (id 45)
+								(token
+									(token (string "Fixed") (offset 391) (line 17) (column 23)))))
+						(args (
+							(identifier (id 46)
+								(token
+									(token (string "i8") (offset 397) (line 17) (column 29))))
+							(basic-literal (id 47)
+								(token
+									(token (string "4") (offset 401) (line 17) (column 33))))))))))))
+	(value-declaration (id 48)
+		(names (
+			(identifier (id 49)
+				(token
+					(token (string "Fixed5_3") (offset 404) (line 18) (column 1))))))
+		(values (
+			(distinct-type (id 50)
+				(token
+					(token (string "distinct") (offset 417) (line 18) (column 14)))
+				(type
+					(call-expression (id 51)
+						(open
+							(token (string "(") (offset 431) (line 18) (column 28)))
+						(close
+							(token (string ")") (offset 437) (line 18) (column 34)))
+						(proc
+							(identifier (id 52)
+								(token
+									(token (string "Fixed") (offset 426) (line 18) (column 23)))))
+						(args (
+							(identifier (id 53)
+								(token
+									(token (string "i8") (offset 432) (line 18) (column 29))))
+							(basic-literal (id 54)
+								(token
+									(token (string "3") (offset 436) (line 18) (column 33))))))))))))
+	(value-declaration (id 55)
+		(names (
+			(identifier (id 56)
+				(token
+					(token (string "Fixed6_2") (offset 439) (line 19) (column 1))))))
+		(values (
+			(distinct-type (id 57)
+				(token
+					(token (string "distinct") (offset 452) (line 19) (column 14)))
+				(type
+					(call-expression (id 58)
+						(open
+							(token (string "(") (offset 466) (line 19) (column 28)))
+						(close
+							(token (string ")") (offset 472) (line 19) (column 34)))
+						(proc
+							(identifier (id 59)
+								(token
+									(token (string "Fixed") (offset 461) (line 19) (column 23)))))
+						(args (
+							(identifier (id 60)
+								(token
+									(token (string "i8") (offset 467) (line 19) (column 29))))
+							(basic-literal (id 61)
+								(token
+									(token (string "2") (offset 471) (line 19) (column 33))))))))))))
+	(value-declaration (id 62)
+		(names (
+			(identifier (id 63)
+				(token
+					(token (string "Fixed7_1") (offset 474) (line 20) (column 1))))))
+		(values (
+			(distinct-type (id 64)
+				(token
+					(token (string "distinct") (offset 487) (line 20) (column 14)))
+				(type
+					(call-expression (id 65)
+						(open
+							(token (string "(") (offset 501) (line 20) (column 28)))
+						(close
+							(token (string ")") (offset 507) (line 20) (column 34)))
+						(proc
+							(identifier (id 66)
+								(token
+									(token (string "Fixed") (offset 496) (line 20) (column 23)))))
+						(args (
+							(identifier (id 67)
+								(token
+									(token (string "i8") (offset 502) (line 20) (column 29))))
+							(basic-literal (id 68)
+								(token
+									(token (string "1") (offset 506) (line 20) (column 33))))))))))))
+	(value-declaration (id 69)
+		(names (
+			(identifier (id 70)
+				(token
+					(token (string "Fixed8_8") (offset 510) (line 22) (column 1))))))
+		(values (
+			(distinct-type (id 71)
+				(token
+					(token (string "distinct") (offset 523) (line 22) (column 14)))
+				(type
+					(call-expression (id 72)
+						(open
+							(token (string "(") (offset 537) (line 22) (column 28)))
+						(close
+							(token (string ")") (offset 544) (line 22) (column 35)))
+						(proc
+							(identifier (id 73)
+								(token
+									(token (string "Fixed") (offset 532) (line 22) (column 23)))))
+						(args (
+							(identifier (id 74)
+								(token
+									(token (string "i16") (offset 538) (line 22) (column 29))))
+							(basic-literal (id 75)
+								(token
+									(token (string "8") (offset 543) (line 22) (column 34))))))))))))
+	(value-declaration (id 76)
+		(names (
+			(identifier (id 77)
+				(token
+					(token (string "Fixed13_3") (offset 546) (line 23) (column 1))))))
+		(values (
+			(distinct-type (id 78)
+				(token
+					(token (string "distinct") (offset 559) (line 23) (column 14)))
+				(type
+					(call-expression (id 79)
+						(open
+							(token (string "(") (offset 573) (line 23) (column 28)))
+						(close
+							(token (string ")") (offset 580) (line 23) (column 35)))
+						(proc
+							(identifier (id 80)
+								(token
+									(token (string "Fixed") (offset 568) (line 23) (column 23)))))
+						(args (
+							(identifier (id 81)
+								(token
+									(token (string "i16") (offset 574) (line 23) (column 29))))
+							(basic-literal (id 82)
+								(token
+									(token (string "3") (offset 579) (line 23) (column 34))))))))))))
+	(value-declaration (id 83)
+		(names (
+			(identifier (id 84)
+				(token
+					(token (string "Fixed16_16") (offset 583) (line 25) (column 1))))))
+		(values (
+			(distinct-type (id 85)
+				(token
+					(token (string "distinct") (offset 597) (line 25) (column 15)))
+				(type
+					(call-expression (id 86)
+						(open
+							(token (string "(") (offset 611) (line 25) (column 29)))
+						(close
+							(token (string ")") (offset 619) (line 25) (column 37)))
+						(proc
+							(identifier (id 87)
+								(token
+									(token (string "Fixed") (offset 606) (line 25) (column 24)))))
+						(args (
+							(identifier (id 88)
+								(token
+									(token (string "i32") (offset 612) (line 25) (column 30))))
+							(basic-literal (id 89)
+								(token
+									(token (string "16") (offset 617) (line 25) (column 35))))))))))))
+	(value-declaration (id 90)
+		(names (
+			(identifier (id 91)
+				(token
+					(token (string "Fixed26_6") (offset 621) (line 26) (column 1))))))
+		(values (
+			(distinct-type (id 92)
+				(token
+					(token (string "distinct") (offset 635) (line 26) (column 15)))
+				(type
+					(call-expression (id 93)
+						(open
+							(token (string "(") (offset 649) (line 26) (column 29)))
+						(close
+							(token (string ")") (offset 657) (line 26) (column 37)))
+						(proc
+							(identifier (id 94)
+								(token
+									(token (string "Fixed") (offset 644) (line 26) (column 24)))))
+						(args (
+							(identifier (id 95)
+								(token
+									(token (string "i32") (offset 650) (line 26) (column 30))))
+							(basic-literal (id 96)
+								(token
+									(token (string "6") (offset 656) (line 26) (column 36))))))))))))
+	(value-declaration (id 97)
+		(names (
+			(identifier (id 98)
+				(token
+					(token (string "Fixed32_32") (offset 660) (line 28) (column 1))))))
+		(values (
+			(distinct-type (id 99)
+				(token
+					(token (string "distinct") (offset 674) (line 28) (column 15)))
+				(type
+					(call-expression (id 100)
+						(open
+							(token (string "(") (offset 688) (line 28) (column 29)))
+						(close
+							(token (string ")") (offset 696) (line 28) (column 37)))
+						(proc
+							(identifier (id 101)
+								(token
+									(token (string "Fixed") (offset 683) (line 28) (column 24)))))
+						(args (
+							(identifier (id 102)
+								(token
+									(token (string "i64") (offset 689) (line 28) (column 30))))
+							(basic-literal (id 103)
+								(token
+									(token (string "32") (offset 694) (line 28) (column 35))))))))))))
+	(value-declaration (id 104)
+		(names (
+			(identifier (id 105)
+				(token
+					(token (string "Fixed52_12") (offset 698) (line 29) (column 1))))))
+		(values (
+			(distinct-type (id 106)
+				(token
+					(token (string "distinct") (offset 712) (line 29) (column 15)))
+				(type
+					(call-expression (id 107)
+						(open
+							(token (string "(") (offset 726) (line 29) (column 29)))
+						(close
+							(token (string ")") (offset 734) (line 29) (column 37)))
+						(proc
+							(identifier (id 108)
+								(token
+									(token (string "Fixed") (offset 721) (line 29) (column 24)))))
+						(args (
+							(identifier (id 109)
+								(token
+									(token (string "i64") (offset 727) (line 29) (column 30))))
+							(basic-literal (id 110)
+								(token
+									(token (string "12") (offset 732) (line 29) (column 35))))))))))))
+	(value-declaration (id 111)
+		(names (
+			(identifier (id 112)
+				(token
+					(token (string "init_from_f64") (offset 738) (line 32) (column 1))))))
+		(values (
+			(procedure-literal (id 113)
+				(type
+					(procedure-type (id 114) (calling_convention "Contextless")
+						(token
+							(token (string "proc") (offset 755) (line 32) (column 18)))
+						(params
+							(field-list (id 115)
+								(token
+									(token (string "x") (offset 775) (line 32) (column 38)))
+								(list (
+									(field (id 116)
+										(names (
+											(identifier (id 117)
+												(token
+													(token (string "x") (offset 775) (line 32) (column 38))))))
+										(type
+											(pointer-type (id 118)
+												(token
+													(token (string "^") (offset 778) (line 32) (column 41)))
+												(type
+													(polymorphic-type (id 119)
+														(token
+															(token (string "$") (offset 779) (line 32) (column 42)))
+														(type
+															(identifier (id 120)
+																(token
+																	(token (string "T") (offset 780) (line 32) (column 43)))))
+														(specialization
+															(call-expression (id 121)
+																(open
+																	(token (string "(") (offset 787) (line 32) (column 50)))
+																(close
+																	(token (string ")") (offset 813) (line 32) (column 76)))
+																(proc
+																	(identifier (id 122)
+																		(token
+																			(token (string "Fixed") (offset 782) (line 32) (column 45)))))
+																(args (
+																	(polymorphic-type (id 123)
+																		(token
+																			(token (string "$") (offset 788) (line 32) (column 51)))
+																		(type
+																			(identifier (id 124)
+																				(token
+																					(token (string "Backing") (offset 789) (line 32) (column 52))))))
+																	(polymorphic-type (id 125)
+																		(token
+																			(token (string "$") (offset 798) (line 32) (column 61)))
+																		(type
+																			(identifier (id 126)
+																				(token
+																					(token (string "Fraction_Width") (offset 799) (line 32) (column 62)))))))))))))))
+									(field (id 127)
+										(names (
+											(identifier (id 128)
+												(token
+													(token (string "val") (offset 816) (line 32) (column 79))))))
+										(type
+											(identifier (id 129)
+												(token
+													(token (string "f64") (offset 821) (line 32) (column 84))))))))))))
+				(body
+					(block-statement (id 130)
+						(open
+							(token (string "{") (offset 826) (line 32) (column 89)))
+						(close
+							(token (string "}") (offset 999) (line 40) (column 1)))
+						(stmts (
+							(value-declaration (id 131) (is_mutable "true")
+								(names (
+									(identifier (id 132)
+										(token
+											(token (string "i") (offset 829) (line 33) (column 2))))
+									(identifier (id 133)
+										(token
+											(token (string "f") (offset 832) (line 33) (column 5))))))
+								(values (
+									(call-expression (id 134)
+										(open
+											(token (string "(") (offset 846) (line 33) (column 19)))
+										(close
+											(token (string ")") (offset 860) (line 33) (column 33)))
+										(proc
+											(selector-expression (id 135)
+												(token
+													(token (string ".") (offset 841) (line 33) (column 14)))
+												(expr
+													(identifier (id 136)
+														(token
+															(token (string "math") (offset 837) (line 33) (column 10)))))
+												(selector
+													(identifier (id 137)
+														(token
+															(token (string "modf") (offset 842) (line 33) (column 15)))))))
+										(args (
+											(call-expression (id 138)
+												(open
+													(token (string "(") (offset 855) (line 33) (column 28)))
+												(close
+													(token (string ")") (offset 859) (line 33) (column 32)))
+												(proc
+													(selector-expression (id 139)
+														(token
+															(token (string ".") (offset 851) (line 33) (column 24)))
+														(expr
+															(identifier (id 140)
+																(token
+																	(token (string "math") (offset 847) (line 33) (column 20)))))
+														(selector
+															(identifier (id 141)
+																(token
+																	(token (string "abs") (offset 852) (line 33) (column 25)))))))
+												(args (
+													(identifier (id 142)
+														(token
+															(token (string "val") (offset 856) (line 33) (column 29)))))))))))))
+							(assign-statement (id 143)
+								(op
+									(token (string "=") (offset 868) (line 34) (column 7)))
+								(lhs_exprs (
+									(selector-expression (id 144)
+										(token
+											(token (string ".") (offset 864) (line 34) (column 3)))
+										(expr
+											(identifier (id 145)
+												(token
+													(token (string "x") (offset 863) (line 34) (column 2)))))
+										(selector
+											(identifier (id 146)
+												(token
+													(token (string "i") (offset 865) (line 34) (column 4))))))))
+								(rhs_exprs (
+									(call-expression (id 147)
+										(open
+											(token (string "(") (offset 877) (line 34) (column 16)))
+										(close
+											(token (string ")") (offset 901) (line 34) (column 40)))
+										(proc
+											(identifier (id 148)
+												(token
+													(token (string "Backing") (offset 870) (line 34) (column 9)))))
+										(args (
+											(binary-expression (id 149)
+												(op
+													(token (string "*") (offset 880) (line 34) (column 19)))
+												(left
+													(identifier (id 150)
+														(token
+															(token (string "f") (offset 878) (line 34) (column 17)))))
+												(right
+													(parentheses-expression (id 151)
+														(open
+															(token (string "(") (offset 882) (line 34) (column 21)))
+														(close
+															(token (string ")") (offset 900) (line 34) (column 39)))
+														(expr
+															(binary-expression (id 152)
+																(op
+																	(token (string "<<") (offset 884) (line 34) (column 23)))
+																(left
+																	(basic-literal (id 153)
+																		(token
+																			(token (string "1") (offset 883) (line 34) (column 22)))))
+																(right
+																	(identifier (id 154)
+																		(token
+																			(token (string "Fraction_Width") (offset 886) (line 34) (column 25))))))))))))))))
+							(assign-statement (id 155)
+								(op
+									(token (string "&=") (offset 908) (line 35) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 156)
+										(token
+											(token (string ".") (offset 905) (line 35) (column 3)))
+										(expr
+											(identifier (id 157)
+												(token
+													(token (string "x") (offset 904) (line 35) (column 2)))))
+										(selector
+											(identifier (id 158)
+												(token
+													(token (string "i") (offset 906) (line 35) (column 4))))))))
+								(rhs_exprs (
+									(binary-expression (id 159)
+										(op
+											(token (string "-") (offset 929) (line 35) (column 27)))
+										(left
+											(binary-expression (id 160)
+												(op
+													(token (string "<<") (offset 912) (line 35) (column 10)))
+												(left
+													(basic-literal (id 161)
+														(token
+															(token (string "1") (offset 911) (line 35) (column 9)))))
+												(right
+													(identifier (id 162)
+														(token
+															(token (string "Fraction_Width") (offset 914) (line 35) (column 12)))))))
+										(right
+											(basic-literal (id 163)
+												(token
+													(token (string "1") (offset 931) (line 35) (column 29)))))))))
+							(assign-statement (id 164)
+								(op
+									(token (string "|=") (offset 938) (line 36) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 165)
+										(token
+											(token (string ".") (offset 935) (line 36) (column 3)))
+										(expr
+											(identifier (id 166)
+												(token
+													(token (string "x") (offset 934) (line 36) (column 2)))))
+										(selector
+											(identifier (id 167)
+												(token
+													(token (string "i") (offset 936) (line 36) (column 4))))))))
+								(rhs_exprs (
+									(binary-expression (id 168)
+										(op
+											(token (string "<<") (offset 952) (line 36) (column 20)))
+										(left
+											(call-expression (id 169)
+												(open
+													(token (string "(") (offset 948) (line 36) (column 16)))
+												(close
+													(token (string ")") (offset 950) (line 36) (column 18)))
+												(proc
+													(identifier (id 170)
+														(token
+															(token (string "Backing") (offset 941) (line 36) (column 9)))))
+												(args (
+													(identifier (id 171)
+														(token
+															(token (string "i") (offset 949) (line 36) (column 17))))))))
+										(right
+											(identifier (id 172)
+												(token
+													(token (string "Fraction_Width") (offset 955) (line 36) (column 23)))))))))
+							(if-statement (id 173)
+								(token
+									(token (string "if") (offset 971) (line 37) (column 2)))
+								(cond
+									(binary-expression (id 174)
+										(op
+											(token (string "<") (offset 978) (line 37) (column 9)))
+										(left
+											(identifier (id 175)
+												(token
+													(token (string "val") (offset 974) (line 37) (column 5)))))
+										(right
+											(basic-literal (id 176)
+												(token
+													(token (string "0") (offset 980) (line 37) (column 11)))))))
+								(body
+									(block-statement (id 177)
+										(open
+											(token (string "{") (offset 982) (line 37) (column 13)))
+										(close
+											(token (string "}") (offset 997) (line 39) (column 2)))
+										(stmts (
+											(assign-statement (id 178)
+												(op
+													(token (string "*=") (offset 990) (line 38) (column 7)))
+												(lhs_exprs (
+													(selector-expression (id 179)
+														(token
+															(token (string ".") (offset 987) (line 38) (column 4)))
+														(expr
+															(identifier (id 180)
+																(token
+																	(token (string "x") (offset 986) (line 38) (column 3)))))
+														(selector
+															(identifier (id 181)
+																(token
+																	(token (string "i") (offset 988) (line 38) (column 5))))))))
+												(rhs_exprs (
+													(unary-expression (id 182)
+														(op
+															(token (string "-") (offset 993) (line 38) (column 10)))
+														(expr
+															(basic-literal (id 183)
+																(token
+																	(token (string "1") (offset 994) (line 38) (column 11))))))))))))))))))))))
+	(value-declaration (id 184)
+		(names (
+			(identifier (id 185)
+				(token
+					(token (string "init_from_parts") (offset 1002) (line 42) (column 1))))))
+		(values (
+			(procedure-literal (id 186)
+				(type
+					(procedure-type (id 187) (calling_convention "Contextless")
+						(token
+							(token (string "proc") (offset 1021) (line 42) (column 20)))
+						(params
+							(field-list (id 188)
+								(token
+									(token (string "x") (offset 1041) (line 42) (column 40)))
+								(list (
+									(field (id 189)
+										(names (
+											(identifier (id 190)
+												(token
+													(token (string "x") (offset 1041) (line 42) (column 40))))))
+										(type
+											(pointer-type (id 191)
+												(token
+													(token (string "^") (offset 1044) (line 42) (column 43)))
+												(type
+													(polymorphic-type (id 192)
+														(token
+															(token (string "$") (offset 1045) (line 42) (column 44)))
+														(type
+															(identifier (id 193)
+																(token
+																	(token (string "T") (offset 1046) (line 42) (column 45)))))
+														(specialization
+															(call-expression (id 194)
+																(open
+																	(token (string "(") (offset 1053) (line 42) (column 52)))
+																(close
+																	(token (string ")") (offset 1079) (line 42) (column 78)))
+																(proc
+																	(identifier (id 195)
+																		(token
+																			(token (string "Fixed") (offset 1048) (line 42) (column 47)))))
+																(args (
+																	(polymorphic-type (id 196)
+																		(token
+																			(token (string "$") (offset 1054) (line 42) (column 53)))
+																		(type
+																			(identifier (id 197)
+																				(token
+																					(token (string "Backing") (offset 1055) (line 42) (column 54))))))
+																	(polymorphic-type (id 198)
+																		(token
+																			(token (string "$") (offset 1064) (line 42) (column 63)))
+																		(type
+																			(identifier (id 199)
+																				(token
+																					(token (string "Fraction_Width") (offset 1065) (line 42) (column 64)))))))))))))))
+									(field (id 200)
+										(names (
+											(identifier (id 201)
+												(token
+													(token (string "integer") (offset 1082) (line 42) (column 81))))
+											(identifier (id 202)
+												(token
+													(token (string "fraction") (offset 1091) (line 42) (column 90))))))
+										(type
+											(identifier (id 203)
+												(token
+													(token (string "Backing") (offset 1101) (line 42) (column 100))))))))))))
+				(body
+					(block-statement (id 204)
+						(open
+							(token (string "{") (offset 1110) (line 42) (column 109)))
+						(close
+							(token (string "}") (offset 1195) (line 46) (column 1)))
+						(stmts (
+							(assign-statement (id 205)
+								(op
+									(token (string "=") (offset 1118) (line 43) (column 7)))
+								(lhs_exprs (
+									(selector-expression (id 206)
+										(token
+											(token (string ".") (offset 1114) (line 43) (column 3)))
+										(expr
+											(identifier (id 207)
+												(token
+													(token (string "x") (offset 1113) (line 43) (column 2)))))
+										(selector
+											(identifier (id 208)
+												(token
+													(token (string "i") (offset 1115) (line 43) (column 4))))))))
+								(rhs_exprs (
+									(identifier (id 209)
+										(token
+											(token (string "fraction") (offset 1120) (line 43) (column 9)))))))
+							(assign-statement (id 210)
+								(op
+									(token (string "&=") (offset 1134) (line 44) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 211)
+										(token
+											(token (string ".") (offset 1131) (line 44) (column 3)))
+										(expr
+											(identifier (id 212)
+												(token
+													(token (string "x") (offset 1130) (line 44) (column 2)))))
+										(selector
+											(identifier (id 213)
+												(token
+													(token (string "i") (offset 1132) (line 44) (column 4))))))))
+								(rhs_exprs (
+									(binary-expression (id 214)
+										(op
+											(token (string "-") (offset 1155) (line 44) (column 27)))
+										(left
+											(binary-expression (id 215)
+												(op
+													(token (string "<<") (offset 1138) (line 44) (column 10)))
+												(left
+													(basic-literal (id 216)
+														(token
+															(token (string "1") (offset 1137) (line 44) (column 9)))))
+												(right
+													(identifier (id 217)
+														(token
+															(token (string "Fraction_Width") (offset 1140) (line 44) (column 12)))))))
+										(right
+											(basic-literal (id 218)
+												(token
+													(token (string "1") (offset 1157) (line 44) (column 29)))))))))
+							(assign-statement (id 219)
+								(op
+									(token (string "|=") (offset 1164) (line 45) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 220)
+										(token
+											(token (string ".") (offset 1161) (line 45) (column 3)))
+										(expr
+											(identifier (id 221)
+												(token
+													(token (string "x") (offset 1160) (line 45) (column 2)))))
+										(selector
+											(identifier (id 222)
+												(token
+													(token (string "i") (offset 1162) (line 45) (column 4))))))))
+								(rhs_exprs (
+									(parentheses-expression (id 223)
+										(open
+											(token (string "(") (offset 1167) (line 45) (column 9)))
+										(close
+											(token (string ")") (offset 1193) (line 45) (column 35)))
+										(expr
+											(binary-expression (id 224)
+												(op
+													(token (string "<<") (offset 1176) (line 45) (column 18)))
+												(left
+													(identifier (id 225)
+														(token
+															(token (string "integer") (offset 1168) (line 45) (column 10)))))
+												(right
+													(identifier (id 226)
+														(token
+															(token (string "Fraction_Width") (offset 1179) (line 45) (column 21)))))))))))))))))))
+	(value-declaration (id 227)
+		(names (
+			(identifier (id 228)
+				(token
+					(token (string "to_f64") (offset 1198) (line 48) (column 1))))))
+		(values (
+			(procedure-literal (id 229)
+				(type
+					(procedure-type (id 230) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 1208) (line 48) (column 11)))
+						(params
+							(field-list (id 231)
+								(token
+									(token (string "x") (offset 1228) (line 48) (column 31)))
+								(list (
+									(field (id 232)
+										(names (
+											(identifier (id 233)
+												(token
+													(token (string "x") (offset 1228) (line 48) (column 31))))))
+										(type
+											(polymorphic-type (id 234)
+												(token
+													(token (string "$") (offset 1231) (line 48) (column 34)))
+												(type
+													(identifier (id 235)
+														(token
+															(token (string "T") (offset 1232) (line 48) (column 35)))))
+												(specialization
+													(call-expression (id 236)
+														(open
+															(token (string "(") (offset 1239) (line 48) (column 42)))
+														(close
+															(token (string ")") (offset 1265) (line 48) (column 68)))
+														(proc
+															(identifier (id 237)
+																(token
+																	(token (string "Fixed") (offset 1234) (line 48) (column 37)))))
+														(args (
+															(polymorphic-type (id 238)
+																(token
+																	(token (string "$") (offset 1240) (line 48) (column 43)))
+																(type
+																	(identifier (id 239)
+																		(token
+																			(token (string "Backing") (offset 1241) (line 48) (column 44))))))
+															(polymorphic-type (id 240)
+																(token
+																	(token (string "$") (offset 1250) (line 48) (column 53)))
+																(type
+																	(identifier (id 241)
+																		(token
+																			(token (string "Fraction_Width") (offset 1251) (line 48) (column 54)))))))))))))))))
+						(results
+							(field-list (id 242)
+								(token
+									(token (string "f64") (offset 1271) (line 48) (column 74)))
+								(list (
+									(field (id 243)
+										(type
+											(identifier (id 244)
+												(token
+													(token (string "f64") (offset 1271) (line 48) (column 74))))))))))))
+				(body
+					(block-statement (id 245)
+						(open
+							(token (string "{") (offset 1275) (line 48) (column 78)))
+						(close
+							(token (string "}") (offset 1453) (line 54) (column 1)))
+						(stmts (
+							(value-declaration (id 246) (is_mutable "true")
+								(names (
+									(identifier (id 247)
+										(token
+											(token (string "sign") (offset 1278) (line 49) (column 2))))))
+								(values (
+									(ternary-if-expression (id 248)
+										(x
+											(unary-expression (id 249)
+												(op
+													(token (string "-") (offset 1286) (line 49) (column 10)))
+												(expr
+													(basic-literal (id 250)
+														(token
+															(token (string "1.0") (offset 1287) (line 49) (column 11)))))))
+										(cond
+											(binary-expression (id 251)
+												(op
+													(token (string "<") (offset 1298) (line 49) (column 22)))
+												(left
+													(selector-expression (id 252)
+														(token
+															(token (string ".") (offset 1295) (line 49) (column 19)))
+														(expr
+															(identifier (id 253)
+																(token
+																	(token (string "x") (offset 1294) (line 49) (column 18)))))
+														(selector
+															(identifier (id 254)
+																(token
+																	(token (string "i") (offset 1296) (line 49) (column 20)))))))
+												(right
+													(basic-literal (id 255)
+														(token
+															(token (string "0") (offset 1300) (line 49) (column 24)))))))
+										(y
+											(basic-literal (id 256)
+												(token
+													(token (string "1.0") (offset 1307) (line 49) (column 31)))))))))
+							(value-declaration (id 257) (is_mutable "true")
+								(names (
+									(identifier (id 258)
+										(token
+											(token (string "num") (offset 1312) (line 50) (column 2))))))
+								(values (
+									(call-expression (id 259)
+										(open
+											(token (string "(") (offset 1327) (line 50) (column 17)))
+										(close
+											(token (string ")") (offset 1331) (line 50) (column 21)))
+										(proc
+											(selector-expression (id 260)
+												(token
+													(token (string ".") (offset 1323) (line 50) (column 13)))
+												(expr
+													(identifier (id 261)
+														(token
+															(token (string "math") (offset 1319) (line 50) (column 9)))))
+												(selector
+													(identifier (id 262)
+														(token
+															(token (string "abs") (offset 1324) (line 50) (column 14)))))))
+										(args (
+											(selector-expression (id 263)
+												(token
+													(token (string ".") (offset 1329) (line 50) (column 19)))
+												(expr
+													(identifier (id 264)
+														(token
+															(token (string "x") (offset 1328) (line 50) (column 18)))))
+												(selector
+													(identifier (id 265)
+														(token
+															(token (string "i") (offset 1330) (line 50) (column 20))))))))))))
+							(value-declaration (id 266) (is_mutable "true")
+								(names (
+									(identifier (id 267)
+										(token
+											(token (string "res") (offset 1334) (line 51) (column 2))))))
+								(values (
+									(call-expression (id 268)
+										(open
+											(token (string "(") (offset 1344) (line 51) (column 12)))
+										(close
+											(token (string ")") (offset 1366) (line 51) (column 34)))
+										(proc
+											(identifier (id 269)
+												(token
+													(token (string "f64") (offset 1341) (line 51) (column 9)))))
+										(args (
+											(binary-expression (id 270)
+												(op
+													(token (string ">>") (offset 1349) (line 51) (column 17)))
+												(left
+													(identifier (id 271)
+														(token
+															(token (string "num") (offset 1345) (line 51) (column 13)))))
+												(right
+													(identifier (id 272)
+														(token
+															(token (string "Fraction_Width") (offset 1352) (line 51) (column 20))))))))))))
+							(assign-statement (id 273)
+								(op
+									(token (string "+=") (offset 1373) (line 52) (column 6)))
+								(lhs_exprs (
+									(identifier (id 274)
+										(token
+											(token (string "res") (offset 1369) (line 52) (column 2))))))
+								(rhs_exprs (
+									(binary-expression (id 275)
+										(op
+											(token (string "/") (offset 1409) (line 52) (column 42)))
+										(left
+											(call-expression (id 276)
+												(open
+													(token (string "(") (offset 1379) (line 52) (column 12)))
+												(close
+													(token (string ")") (offset 1407) (line 52) (column 40)))
+												(proc
+													(identifier (id 277)
+														(token
+															(token (string "f64") (offset 1376) (line 52) (column 9)))))
+												(args (
+													(binary-expression (id 278)
+														(op
+															(token (string "&") (offset 1384) (line 52) (column 17)))
+														(left
+															(identifier (id 279)
+																(token
+																	(token (string "num") (offset 1380) (line 52) (column 13)))))
+														(right
+															(parentheses-expression (id 280)
+																(open
+																	(token (string "(") (offset 1386) (line 52) (column 19)))
+																(close
+																	(token (string ")") (offset 1406) (line 52) (column 39)))
+																(expr
+																	(binary-expression (id 281)
+																		(op
+																			(token (string "-") (offset 1404) (line 52) (column 37)))
+																		(left
+																			(binary-expression (id 282)
+																				(op
+																					(token (string "<<") (offset 1388) (line 52) (column 21)))
+																				(left
+																					(basic-literal (id 283)
+																						(token
+																							(token (string "1") (offset 1387) (line 52) (column 20)))))
+																				(right
+																					(identifier (id 284)
+																						(token
+																							(token (string "Fraction_Width") (offset 1390) (line 52) (column 23)))))))
+																		(right
+																			(basic-literal (id 285)
+																				(token
+																					(token (string "1") (offset 1405) (line 52) (column 38))))))))))))))
+										(right
+											(call-expression (id 286)
+												(open
+													(token (string "(") (offset 1414) (line 52) (column 47)))
+												(close
+													(token (string ")") (offset 1432) (line 52) (column 65)))
+												(proc
+													(identifier (id 287)
+														(token
+															(token (string "f64") (offset 1411) (line 52) (column 44)))))
+												(args (
+													(binary-expression (id 288)
+														(op
+															(token (string "<<") (offset 1416) (line 52) (column 49)))
+														(left
+															(basic-literal (id 289)
+																(token
+																	(token (string "1") (offset 1415) (line 52) (column 48)))))
+														(right
+															(identifier (id 290)
+																(token
+																	(token (string "Fraction_Width") (offset 1418) (line 52) (column 51))))))))))))))
+							(return-statement (id 291)
+								(token
+									(token (string "return") (offset 1435) (line 53) (column 2)))
+								(results (
+									(binary-expression (id 292)
+										(op
+											(token (string "*") (offset 1446) (line 53) (column 13)))
+										(left
+											(identifier (id 293)
+												(token
+													(token (string "res") (offset 1442) (line 53) (column 9)))))
+										(right
+											(identifier (id 294)
+												(token
+													(token (string "sign") (offset 1448) (line 53) (column 15)))))))))))))))))
+	(value-declaration (id 295)
+		(names (
+			(identifier (id 296)
+				(token
+					(token (string "add") (offset 1476) (line 58) (column 1))))))
+		(values (
+			(procedure-literal (id 297)
+				(type
+					(procedure-type (id 298) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 1483) (line 58) (column 8)))
+						(params
+							(field-list (id 299)
+								(token
+									(token (string "x") (offset 1503) (line 58) (column 28)))
+								(list (
+									(field (id 300)
+										(names (
+											(identifier (id 301)
+												(token
+													(token (string "x") (offset 1503) (line 58) (column 28))))
+											(identifier (id 302)
+												(token
+													(token (string "y") (offset 1506) (line 58) (column 31))))))
+										(type
+											(polymorphic-type (id 303)
+												(token
+													(token (string "$") (offset 1509) (line 58) (column 34)))
+												(type
+													(identifier (id 304)
+														(token
+															(token (string "T") (offset 1510) (line 58) (column 35)))))
+												(specialization
+													(identifier (id 305)
+														(token
+															(token (string "Fixed") (offset 1512) (line 58) (column 37))))))))))))
+						(results
+							(field-list (id 306)
+								(token
+									(token (string "T") (offset 1522) (line 58) (column 47)))
+								(list (
+									(field (id 307)
+										(type
+											(identifier (id 308)
+												(token
+													(token (string "T") (offset 1522) (line 58) (column 47))))))))))))
+				(body
+					(block-statement (id 309)
+						(open
+							(token (string "{") (offset 1524) (line 58) (column 49)))
+						(close
+							(token (string "}") (offset 1546) (line 60) (column 1)))
+						(stmts (
+							(return-statement (id 310)
+								(token
+									(token (string "return") (offset 1527) (line 59) (column 2)))
+								(results (
+									(compound-literal (id 311)
+										(open
+											(token (string "{") (offset 1534) (line 59) (column 9)))
+										(close
+											(token (string "}") (offset 1544) (line 59) (column 19)))
+										(elems (
+											(binary-expression (id 312)
+												(op
+													(token (string "+") (offset 1539) (line 59) (column 14)))
+												(left
+													(selector-expression (id 313)
+														(token
+															(token (string ".") (offset 1536) (line 59) (column 11)))
+														(expr
+															(identifier (id 314)
+																(token
+																	(token (string "x") (offset 1535) (line 59) (column 10)))))
+														(selector
+															(identifier (id 315)
+																(token
+																	(token (string "i") (offset 1537) (line 59) (column 12)))))))
+												(right
+													(selector-expression (id 316)
+														(token
+															(token (string ".") (offset 1542) (line 59) (column 17)))
+														(expr
+															(identifier (id 317)
+																(token
+																	(token (string "y") (offset 1541) (line 59) (column 16)))))
+														(selector
+															(identifier (id 318)
+																(token
+																	(token (string "i") (offset 1543) (line 59) (column 18)))))))))))))))))))))
+		(attributes (
+			(attribute (id 319)
+				(token
+					(token (string "@") (offset 1457) (line 57) (column 1)))
+				(open
+					(token (string "(") (offset 1458) (line 57) (column 2)))
+				(close
+					(token (string ")") (offset 1474) (line 57) (column 18)))
+				(elems (
+					(identifier (id 320)
+						(token
+							(token (string "require_results") (offset 1459) (line 57) (column 3))))))))))
+	(value-declaration (id 321)
+		(names (
+			(identifier (id 322)
+				(token
+					(token (string "sub") (offset 1567) (line 62) (column 1))))))
+		(values (
+			(procedure-literal (id 323)
+				(type
+					(procedure-type (id 324) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 1574) (line 62) (column 8)))
+						(params
+							(field-list (id 325)
+								(token
+									(token (string "x") (offset 1594) (line 62) (column 28)))
+								(list (
+									(field (id 326)
+										(names (
+											(identifier (id 327)
+												(token
+													(token (string "x") (offset 1594) (line 62) (column 28))))
+											(identifier (id 328)
+												(token
+													(token (string "y") (offset 1597) (line 62) (column 31))))))
+										(type
+											(polymorphic-type (id 329)
+												(token
+													(token (string "$") (offset 1600) (line 62) (column 34)))
+												(type
+													(identifier (id 330)
+														(token
+															(token (string "T") (offset 1601) (line 62) (column 35)))))
+												(specialization
+													(identifier (id 331)
+														(token
+															(token (string "Fixed") (offset 1603) (line 62) (column 37))))))))))))
+						(results
+							(field-list (id 332)
+								(token
+									(token (string "T") (offset 1613) (line 62) (column 47)))
+								(list (
+									(field (id 333)
+										(type
+											(identifier (id 334)
+												(token
+													(token (string "T") (offset 1613) (line 62) (column 47))))))))))))
+				(body
+					(block-statement (id 335)
+						(open
+							(token (string "{") (offset 1615) (line 62) (column 49)))
+						(close
+							(token (string "}") (offset 1637) (line 64) (column 1)))
+						(stmts (
+							(return-statement (id 336)
+								(token
+									(token (string "return") (offset 1618) (line 63) (column 2)))
+								(results (
+									(compound-literal (id 337)
+										(open
+											(token (string "{") (offset 1625) (line 63) (column 9)))
+										(close
+											(token (string "}") (offset 1635) (line 63) (column 19)))
+										(elems (
+											(binary-expression (id 338)
+												(op
+													(token (string "-") (offset 1630) (line 63) (column 14)))
+												(left
+													(selector-expression (id 339)
+														(token
+															(token (string ".") (offset 1627) (line 63) (column 11)))
+														(expr
+															(identifier (id 340)
+																(token
+																	(token (string "x") (offset 1626) (line 63) (column 10)))))
+														(selector
+															(identifier (id 341)
+																(token
+																	(token (string "i") (offset 1628) (line 63) (column 12)))))))
+												(right
+													(selector-expression (id 342)
+														(token
+															(token (string ".") (offset 1633) (line 63) (column 17)))
+														(expr
+															(identifier (id 343)
+																(token
+																	(token (string "y") (offset 1632) (line 63) (column 16)))))
+														(selector
+															(identifier (id 344)
+																(token
+																	(token (string "i") (offset 1634) (line 63) (column 18)))))))))))))))))))))
+		(attributes (
+			(attribute (id 345)
+				(token
+					(token (string "@") (offset 1548) (line 61) (column 1)))
+				(open
+					(token (string "(") (offset 1549) (line 61) (column 2)))
+				(close
+					(token (string ")") (offset 1565) (line 61) (column 18)))
+				(elems (
+					(identifier (id 346)
+						(token
+							(token (string "require_results") (offset 1550) (line 61) (column 3))))))))))
+	(value-declaration (id 347)
+		(names (
+			(identifier (id 348)
+				(token
+					(token (string "mul") (offset 1659) (line 67) (column 1))))))
+		(values (
+			(procedure-literal (id 349)
+				(type
+					(procedure-type (id 350) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 1666) (line 67) (column 8)))
+						(params
+							(field-list (id 351)
+								(token
+									(token (string "x") (offset 1686) (line 67) (column 28)))
+								(list (
+									(field (id 352)
+										(names (
+											(identifier (id 353)
+												(token
+													(token (string "x") (offset 1686) (line 67) (column 28))))
+											(identifier (id 354)
+												(token
+													(token (string "y") (offset 1689) (line 67) (column 31))))))
+										(type
+											(polymorphic-type (id 355)
+												(token
+													(token (string "$") (offset 1692) (line 67) (column 34)))
+												(type
+													(identifier (id 356)
+														(token
+															(token (string "T") (offset 1693) (line 67) (column 35)))))
+												(specialization
+													(call-expression (id 357)
+														(open
+															(token (string "(") (offset 1700) (line 67) (column 42)))
+														(close
+															(token (string ")") (offset 1726) (line 67) (column 68)))
+														(proc
+															(identifier (id 358)
+																(token
+																	(token (string "Fixed") (offset 1695) (line 67) (column 37)))))
+														(args (
+															(polymorphic-type (id 359)
+																(token
+																	(token (string "$") (offset 1701) (line 67) (column 43)))
+																(type
+																	(identifier (id 360)
+																		(token
+																			(token (string "Backing") (offset 1702) (line 67) (column 44))))))
+															(polymorphic-type (id 361)
+																(token
+																	(token (string "$") (offset 1711) (line 67) (column 53)))
+																(type
+																	(identifier (id 362)
+																		(token
+																			(token (string "Fraction_Width") (offset 1712) (line 67) (column 54)))))))))))))))))
+						(results
+							(field-list (id 363)
+								(token
+									(token (string "z") (offset 1733) (line 67) (column 75)))
+								(list (
+									(field (id 364)
+										(names (
+											(identifier (id 365)
+												(token
+													(token (string "z") (offset 1733) (line 67) (column 75))))))
+										(type
+											(identifier (id 366)
+												(token
+													(token (string "T") (offset 1736) (line 67) (column 78))))))))))))
+				(body
+					(block-statement (id 367)
+						(open
+							(token (string "{") (offset 1739) (line 67) (column 81)))
+						(close
+							(token (string "}") (offset 1809) (line 70) (column 1)))
+						(stmts (
+							(assign-statement (id 368)
+								(op
+									(token (string "=") (offset 1746) (line 68) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 369)
+										(token
+											(token (string ".") (offset 1743) (line 68) (column 3)))
+										(expr
+											(identifier (id 370)
+												(token
+													(token (string "z") (offset 1742) (line 68) (column 2)))))
+										(selector
+											(identifier (id 371)
+												(token
+													(token (string "i") (offset 1744) (line 68) (column 4))))))))
+								(rhs_exprs (
+									(call-expression (id 372)
+										(open
+											(token (string "(") (offset 1774) (line 68) (column 34)))
+										(close
+											(token (string ")") (offset 1799) (line 68) (column 59)))
+										(proc
+											(selector-expression (id 373)
+												(token
+													(token (string ".") (offset 1758) (line 68) (column 18)))
+												(expr
+													(identifier (id 374)
+														(token
+															(token (string "intrinsics") (offset 1748) (line 68) (column 8)))))
+												(selector
+													(identifier (id 375)
+														(token
+															(token (string "fixed_point_mul") (offset 1759) (line 68) (column 19)))))))
+										(args (
+											(selector-expression (id 376)
+												(token
+													(token (string ".") (offset 1776) (line 68) (column 36)))
+												(expr
+													(identifier (id 377)
+														(token
+															(token (string "x") (offset 1775) (line 68) (column 35)))))
+												(selector
+													(identifier (id 378)
+														(token
+															(token (string "i") (offset 1777) (line 68) (column 37))))))
+											(selector-expression (id 379)
+												(token
+													(token (string ".") (offset 1781) (line 68) (column 41)))
+												(expr
+													(identifier (id 380)
+														(token
+															(token (string "y") (offset 1780) (line 68) (column 40)))))
+												(selector
+													(identifier (id 381)
+														(token
+															(token (string "i") (offset 1782) (line 68) (column 42))))))
+											(identifier (id 382)
+												(token
+													(token (string "Fraction_Width") (offset 1785) (line 68) (column 45))))))))))
+							(return-statement (id 383)
+								(token
+									(token (string "return") (offset 1802) (line 69) (column 2)))))))))))
+		(attributes (
+			(attribute (id 384)
+				(token
+					(token (string "@") (offset 1640) (line 66) (column 1)))
+				(open
+					(token (string "(") (offset 1641) (line 66) (column 2)))
+				(close
+					(token (string ")") (offset 1657) (line 66) (column 18)))
+				(elems (
+					(identifier (id 385)
+						(token
+							(token (string "require_results") (offset 1642) (line 66) (column 3))))))))))
+	(value-declaration (id 386)
+		(names (
+			(identifier (id 387)
+				(token
+					(token (string "mul_sat") (offset 1830) (line 72) (column 1))))))
+		(values (
+			(procedure-literal (id 388)
+				(type
+					(procedure-type (id 389) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 1841) (line 72) (column 12)))
+						(params
+							(field-list (id 390)
+								(token
+									(token (string "x") (offset 1861) (line 72) (column 32)))
+								(list (
+									(field (id 391)
+										(names (
+											(identifier (id 392)
+												(token
+													(token (string "x") (offset 1861) (line 72) (column 32))))
+											(identifier (id 393)
+												(token
+													(token (string "y") (offset 1864) (line 72) (column 35))))))
+										(type
+											(polymorphic-type (id 394)
+												(token
+													(token (string "$") (offset 1867) (line 72) (column 38)))
+												(type
+													(identifier (id 395)
+														(token
+															(token (string "T") (offset 1868) (line 72) (column 39)))))
+												(specialization
+													(call-expression (id 396)
+														(open
+															(token (string "(") (offset 1875) (line 72) (column 46)))
+														(close
+															(token (string ")") (offset 1901) (line 72) (column 72)))
+														(proc
+															(identifier (id 397)
+																(token
+																	(token (string "Fixed") (offset 1870) (line 72) (column 41)))))
+														(args (
+															(polymorphic-type (id 398)
+																(token
+																	(token (string "$") (offset 1876) (line 72) (column 47)))
+																(type
+																	(identifier (id 399)
+																		(token
+																			(token (string "Backing") (offset 1877) (line 72) (column 48))))))
+															(polymorphic-type (id 400)
+																(token
+																	(token (string "$") (offset 1886) (line 72) (column 57)))
+																(type
+																	(identifier (id 401)
+																		(token
+																			(token (string "Fraction_Width") (offset 1887) (line 72) (column 58)))))))))))))))))
+						(results
+							(field-list (id 402)
+								(token
+									(token (string "z") (offset 1908) (line 72) (column 79)))
+								(list (
+									(field (id 403)
+										(names (
+											(identifier (id 404)
+												(token
+													(token (string "z") (offset 1908) (line 72) (column 79))))))
+										(type
+											(identifier (id 405)
+												(token
+													(token (string "T") (offset 1911) (line 72) (column 82))))))))))))
+				(body
+					(block-statement (id 406)
+						(open
+							(token (string "{") (offset 1914) (line 72) (column 85)))
+						(close
+							(token (string "}") (offset 1988) (line 75) (column 1)))
+						(stmts (
+							(assign-statement (id 407)
+								(op
+									(token (string "=") (offset 1921) (line 73) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 408)
+										(token
+											(token (string ".") (offset 1918) (line 73) (column 3)))
+										(expr
+											(identifier (id 409)
+												(token
+													(token (string "z") (offset 1917) (line 73) (column 2)))))
+										(selector
+											(identifier (id 410)
+												(token
+													(token (string "i") (offset 1919) (line 73) (column 4))))))))
+								(rhs_exprs (
+									(call-expression (id 411)
+										(open
+											(token (string "(") (offset 1953) (line 73) (column 38)))
+										(close
+											(token (string ")") (offset 1978) (line 73) (column 63)))
+										(proc
+											(selector-expression (id 412)
+												(token
+													(token (string ".") (offset 1933) (line 73) (column 18)))
+												(expr
+													(identifier (id 413)
+														(token
+															(token (string "intrinsics") (offset 1923) (line 73) (column 8)))))
+												(selector
+													(identifier (id 414)
+														(token
+															(token (string "fixed_point_mul_sat") (offset 1934) (line 73) (column 19)))))))
+										(args (
+											(selector-expression (id 415)
+												(token
+													(token (string ".") (offset 1955) (line 73) (column 40)))
+												(expr
+													(identifier (id 416)
+														(token
+															(token (string "x") (offset 1954) (line 73) (column 39)))))
+												(selector
+													(identifier (id 417)
+														(token
+															(token (string "i") (offset 1956) (line 73) (column 41))))))
+											(selector-expression (id 418)
+												(token
+													(token (string ".") (offset 1960) (line 73) (column 45)))
+												(expr
+													(identifier (id 419)
+														(token
+															(token (string "y") (offset 1959) (line 73) (column 44)))))
+												(selector
+													(identifier (id 420)
+														(token
+															(token (string "i") (offset 1961) (line 73) (column 46))))))
+											(identifier (id 421)
+												(token
+													(token (string "Fraction_Width") (offset 1964) (line 73) (column 49))))))))))
+							(return-statement (id 422)
+								(token
+									(token (string "return") (offset 1981) (line 74) (column 2)))))))))))
+		(attributes (
+			(attribute (id 423)
+				(token
+					(token (string "@") (offset 1811) (line 71) (column 1)))
+				(open
+					(token (string "(") (offset 1812) (line 71) (column 2)))
+				(close
+					(token (string ")") (offset 1828) (line 71) (column 18)))
+				(elems (
+					(identifier (id 424)
+						(token
+							(token (string "require_results") (offset 1813) (line 71) (column 3))))))))))
+	(value-declaration (id 425)
+		(names (
+			(identifier (id 426)
+				(token
+					(token (string "div") (offset 2010) (line 78) (column 1))))))
+		(values (
+			(procedure-literal (id 427)
+				(type
+					(procedure-type (id 428) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 2017) (line 78) (column 8)))
+						(params
+							(field-list (id 429)
+								(token
+									(token (string "x") (offset 2037) (line 78) (column 28)))
+								(list (
+									(field (id 430)
+										(names (
+											(identifier (id 431)
+												(token
+													(token (string "x") (offset 2037) (line 78) (column 28))))
+											(identifier (id 432)
+												(token
+													(token (string "y") (offset 2040) (line 78) (column 31))))))
+										(type
+											(polymorphic-type (id 433)
+												(token
+													(token (string "$") (offset 2043) (line 78) (column 34)))
+												(type
+													(identifier (id 434)
+														(token
+															(token (string "T") (offset 2044) (line 78) (column 35)))))
+												(specialization
+													(call-expression (id 435)
+														(open
+															(token (string "(") (offset 2051) (line 78) (column 42)))
+														(close
+															(token (string ")") (offset 2077) (line 78) (column 68)))
+														(proc
+															(identifier (id 436)
+																(token
+																	(token (string "Fixed") (offset 2046) (line 78) (column 37)))))
+														(args (
+															(polymorphic-type (id 437)
+																(token
+																	(token (string "$") (offset 2052) (line 78) (column 43)))
+																(type
+																	(identifier (id 438)
+																		(token
+																			(token (string "Backing") (offset 2053) (line 78) (column 44))))))
+															(polymorphic-type (id 439)
+																(token
+																	(token (string "$") (offset 2062) (line 78) (column 53)))
+																(type
+																	(identifier (id 440)
+																		(token
+																			(token (string "Fraction_Width") (offset 2063) (line 78) (column 54)))))))))))))))))
+						(results
+							(field-list (id 441)
+								(token
+									(token (string "z") (offset 2084) (line 78) (column 75)))
+								(list (
+									(field (id 442)
+										(names (
+											(identifier (id 443)
+												(token
+													(token (string "z") (offset 2084) (line 78) (column 75))))))
+										(type
+											(identifier (id 444)
+												(token
+													(token (string "T") (offset 2087) (line 78) (column 78))))))))))))
+				(body
+					(block-statement (id 445)
+						(open
+							(token (string "{") (offset 2090) (line 78) (column 81)))
+						(close
+							(token (string "}") (offset 2160) (line 81) (column 1)))
+						(stmts (
+							(assign-statement (id 446)
+								(op
+									(token (string "=") (offset 2097) (line 79) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 447)
+										(token
+											(token (string ".") (offset 2094) (line 79) (column 3)))
+										(expr
+											(identifier (id 448)
+												(token
+													(token (string "z") (offset 2093) (line 79) (column 2)))))
+										(selector
+											(identifier (id 449)
+												(token
+													(token (string "i") (offset 2095) (line 79) (column 4))))))))
+								(rhs_exprs (
+									(call-expression (id 450)
+										(open
+											(token (string "(") (offset 2125) (line 79) (column 34)))
+										(close
+											(token (string ")") (offset 2150) (line 79) (column 59)))
+										(proc
+											(selector-expression (id 451)
+												(token
+													(token (string ".") (offset 2109) (line 79) (column 18)))
+												(expr
+													(identifier (id 452)
+														(token
+															(token (string "intrinsics") (offset 2099) (line 79) (column 8)))))
+												(selector
+													(identifier (id 453)
+														(token
+															(token (string "fixed_point_div") (offset 2110) (line 79) (column 19)))))))
+										(args (
+											(selector-expression (id 454)
+												(token
+													(token (string ".") (offset 2127) (line 79) (column 36)))
+												(expr
+													(identifier (id 455)
+														(token
+															(token (string "x") (offset 2126) (line 79) (column 35)))))
+												(selector
+													(identifier (id 456)
+														(token
+															(token (string "i") (offset 2128) (line 79) (column 37))))))
+											(selector-expression (id 457)
+												(token
+													(token (string ".") (offset 2132) (line 79) (column 41)))
+												(expr
+													(identifier (id 458)
+														(token
+															(token (string "y") (offset 2131) (line 79) (column 40)))))
+												(selector
+													(identifier (id 459)
+														(token
+															(token (string "i") (offset 2133) (line 79) (column 42))))))
+											(identifier (id 460)
+												(token
+													(token (string "Fraction_Width") (offset 2136) (line 79) (column 45))))))))))
+							(return-statement (id 461)
+								(token
+									(token (string "return") (offset 2153) (line 80) (column 2)))))))))))
+		(attributes (
+			(attribute (id 462)
+				(token
+					(token (string "@") (offset 1991) (line 77) (column 1)))
+				(open
+					(token (string "(") (offset 1992) (line 77) (column 2)))
+				(close
+					(token (string ")") (offset 2008) (line 77) (column 18)))
+				(elems (
+					(identifier (id 463)
+						(token
+							(token (string "require_results") (offset 1993) (line 77) (column 3))))))))))
+	(value-declaration (id 464)
+		(names (
+			(identifier (id 465)
+				(token
+					(token (string "div_sat") (offset 2181) (line 83) (column 1))))))
+		(values (
+			(procedure-literal (id 466)
+				(type
+					(procedure-type (id 467) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 2192) (line 83) (column 12)))
+						(params
+							(field-list (id 468)
+								(token
+									(token (string "x") (offset 2212) (line 83) (column 32)))
+								(list (
+									(field (id 469)
+										(names (
+											(identifier (id 470)
+												(token
+													(token (string "x") (offset 2212) (line 83) (column 32))))
+											(identifier (id 471)
+												(token
+													(token (string "y") (offset 2215) (line 83) (column 35))))))
+										(type
+											(polymorphic-type (id 472)
+												(token
+													(token (string "$") (offset 2218) (line 83) (column 38)))
+												(type
+													(identifier (id 473)
+														(token
+															(token (string "T") (offset 2219) (line 83) (column 39)))))
+												(specialization
+													(call-expression (id 474)
+														(open
+															(token (string "(") (offset 2226) (line 83) (column 46)))
+														(close
+															(token (string ")") (offset 2252) (line 83) (column 72)))
+														(proc
+															(identifier (id 475)
+																(token
+																	(token (string "Fixed") (offset 2221) (line 83) (column 41)))))
+														(args (
+															(polymorphic-type (id 476)
+																(token
+																	(token (string "$") (offset 2227) (line 83) (column 47)))
+																(type
+																	(identifier (id 477)
+																		(token
+																			(token (string "Backing") (offset 2228) (line 83) (column 48))))))
+															(polymorphic-type (id 478)
+																(token
+																	(token (string "$") (offset 2237) (line 83) (column 57)))
+																(type
+																	(identifier (id 479)
+																		(token
+																			(token (string "Fraction_Width") (offset 2238) (line 83) (column 58)))))))))))))))))
+						(results
+							(field-list (id 480)
+								(token
+									(token (string "z") (offset 2259) (line 83) (column 79)))
+								(list (
+									(field (id 481)
+										(names (
+											(identifier (id 482)
+												(token
+													(token (string "z") (offset 2259) (line 83) (column 79))))))
+										(type
+											(identifier (id 483)
+												(token
+													(token (string "T") (offset 2262) (line 83) (column 82))))))))))))
+				(body
+					(block-statement (id 484)
+						(open
+							(token (string "{") (offset 2265) (line 83) (column 85)))
+						(close
+							(token (string "}") (offset 2339) (line 86) (column 1)))
+						(stmts (
+							(assign-statement (id 485)
+								(op
+									(token (string "=") (offset 2272) (line 84) (column 6)))
+								(lhs_exprs (
+									(selector-expression (id 486)
+										(token
+											(token (string ".") (offset 2269) (line 84) (column 3)))
+										(expr
+											(identifier (id 487)
+												(token
+													(token (string "z") (offset 2268) (line 84) (column 2)))))
+										(selector
+											(identifier (id 488)
+												(token
+													(token (string "i") (offset 2270) (line 84) (column 4))))))))
+								(rhs_exprs (
+									(call-expression (id 489)
+										(open
+											(token (string "(") (offset 2304) (line 84) (column 38)))
+										(close
+											(token (string ")") (offset 2329) (line 84) (column 63)))
+										(proc
+											(selector-expression (id 490)
+												(token
+													(token (string ".") (offset 2284) (line 84) (column 18)))
+												(expr
+													(identifier (id 491)
+														(token
+															(token (string "intrinsics") (offset 2274) (line 84) (column 8)))))
+												(selector
+													(identifier (id 492)
+														(token
+															(token (string "fixed_point_div_sat") (offset 2285) (line 84) (column 19)))))))
+										(args (
+											(selector-expression (id 493)
+												(token
+													(token (string ".") (offset 2306) (line 84) (column 40)))
+												(expr
+													(identifier (id 494)
+														(token
+															(token (string "x") (offset 2305) (line 84) (column 39)))))
+												(selector
+													(identifier (id 495)
+														(token
+															(token (string "i") (offset 2307) (line 84) (column 41))))))
+											(selector-expression (id 496)
+												(token
+													(token (string ".") (offset 2311) (line 84) (column 45)))
+												(expr
+													(identifier (id 497)
+														(token
+															(token (string "y") (offset 2310) (line 84) (column 44)))))
+												(selector
+													(identifier (id 498)
+														(token
+															(token (string "i") (offset 2312) (line 84) (column 46))))))
+											(identifier (id 499)
+												(token
+													(token (string "Fraction_Width") (offset 2315) (line 84) (column 49))))))))))
+							(return-statement (id 500)
+								(token
+									(token (string "return") (offset 2332) (line 85) (column 2)))))))))))
+		(attributes (
+			(attribute (id 501)
+				(token
+					(token (string "@") (offset 2162) (line 82) (column 1)))
+				(open
+					(token (string "(") (offset 2163) (line 82) (column 2)))
+				(close
+					(token (string ")") (offset 2179) (line 82) (column 18)))
+				(elems (
+					(identifier (id 502)
+						(token
+							(token (string "require_results") (offset 2164) (line 82) (column 3))))))))))
+	(value-declaration (id 503)
+		(names (
+			(identifier (id 504)
+				(token
+					(token (string "floor") (offset 2362) (line 90) (column 1))))))
+		(values (
+			(procedure-literal (id 505)
+				(type
+					(procedure-type (id 506) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 2371) (line 90) (column 10)))
+						(params
+							(field-list (id 507)
+								(token
+									(token (string "x") (offset 2391) (line 90) (column 30)))
+								(list (
+									(field (id 508)
+										(names (
+											(identifier (id 509)
+												(token
+													(token (string "x") (offset 2391) (line 90) (column 30))))))
+										(type
+											(polymorphic-type (id 510)
+												(token
+													(token (string "$") (offset 2394) (line 90) (column 33)))
+												(type
+													(identifier (id 511)
+														(token
+															(token (string "T") (offset 2395) (line 90) (column 34)))))
+												(specialization
+													(call-expression (id 512)
+														(open
+															(token (string "(") (offset 2402) (line 90) (column 41)))
+														(close
+															(token (string ")") (offset 2428) (line 90) (column 67)))
+														(proc
+															(identifier (id 513)
+																(token
+																	(token (string "Fixed") (offset 2397) (line 90) (column 36)))))
+														(args (
+															(polymorphic-type (id 514)
+																(token
+																	(token (string "$") (offset 2403) (line 90) (column 42)))
+																(type
+																	(identifier (id 515)
+																		(token
+																			(token (string "Backing") (offset 2404) (line 90) (column 43))))))
+															(polymorphic-type (id 516)
+																(token
+																	(token (string "$") (offset 2413) (line 90) (column 52)))
+																(type
+																	(identifier (id 517)
+																		(token
+																			(token (string "Fraction_Width") (offset 2414) (line 90) (column 53)))))))))))))))))
+						(results
+							(field-list (id 518)
+								(token
+									(token (string "Backing") (offset 2434) (line 90) (column 73)))
+								(list (
+									(field (id 519)
+										(type
+											(identifier (id 520)
+												(token
+													(token (string "Backing") (offset 2434) (line 90) (column 73))))))))))))
+				(body
+					(block-statement (id 521)
+						(open
+							(token (string "{") (offset 2442) (line 90) (column 81)))
+						(close
+							(token (string "}") (offset 2596) (line 96) (column 1)))
+						(stmts (
+							(if-statement (id 522)
+								(token
+									(token (string "if") (offset 2445) (line 91) (column 2)))
+								(cond
+									(binary-expression (id 523)
+										(op
+											(token (string ">=") (offset 2452) (line 91) (column 9)))
+										(left
+											(selector-expression (id 524)
+												(token
+													(token (string ".") (offset 2449) (line 91) (column 6)))
+												(expr
+													(identifier (id 525)
+														(token
+															(token (string "x") (offset 2448) (line 91) (column 5)))))
+												(selector
+													(identifier (id 526)
+														(token
+															(token (string "i") (offset 2450) (line 91) (column 7)))))))
+										(right
+											(basic-literal (id 527)
+												(token
+													(token (string "0") (offset 2455) (line 91) (column 12)))))))
+								(body
+									(block-statement (id 528)
+										(open
+											(token (string "{") (offset 2457) (line 91) (column 14)))
+										(close
+											(token (string "}") (offset 2491) (line 93) (column 2)))
+										(stmts (
+											(return-statement (id 529)
+												(token
+													(token (string "return") (offset 2461) (line 92) (column 3)))
+												(results (
+													(binary-expression (id 530)
+														(op
+															(token (string ">>") (offset 2472) (line 92) (column 14)))
+														(left
+															(selector-expression (id 531)
+																(token
+																	(token (string ".") (offset 2469) (line 92) (column 11)))
+																(expr
+																	(identifier (id 532)
+																		(token
+																			(token (string "x") (offset 2468) (line 92) (column 10)))))
+																(selector
+																	(identifier (id 533)
+																		(token
+																			(token (string "i") (offset 2470) (line 92) (column 12)))))))
+														(right
+															(identifier (id 534)
+																(token
+																	(token (string "Fraction_Width") (offset 2475) (line 92) (column 17)))))))))))))
+								(else_stmt
+									(block-statement (id 535)
+										(open
+											(token (string "{") (offset 2498) (line 93) (column 9)))
+										(close
+											(token (string "}") (offset 2594) (line 95) (column 2)))
+										(stmts (
+											(return-statement (id 536)
+												(token
+													(token (string "return") (offset 2502) (line 94) (column 3)))
+												(results (
+													(binary-expression (id 537)
+														(op
+															(token (string ">>") (offset 2575) (line 94) (column 76)))
+														(left
+															(parentheses-expression (id 538)
+																(open
+																	(token (string "(") (offset 2509) (line 94) (column 10)))
+																(close
+																	(token (string ")") (offset 2573) (line 94) (column 74)))
+																(expr
+																	(binary-expression (id 539)
+																		(op
+																			(token (string "+") (offset 2544) (line 94) (column 45)))
+																		(left
+																			(binary-expression (id 540)
+																				(op
+																					(token (string "-") (offset 2514) (line 94) (column 15)))
+																				(left
+																					(selector-expression (id 541)
+																						(token
+																							(token (string ".") (offset 2511) (line 94) (column 12)))
+																						(expr
+																							(identifier (id 542)
+																								(token
+																									(token (string "x") (offset 2510) (line 94) (column 11)))))
+																						(selector
+																							(identifier (id 543)
+																								(token
+																									(token (string "i") (offset 2512) (line 94) (column 13)))))))
+																				(right
+																					(parentheses-expression (id 544)
+																						(open
+																							(token (string "(") (offset 2516) (line 94) (column 17)))
+																						(close
+																							(token (string ")") (offset 2542) (line 94) (column 43)))
+																						(expr
+																							(binary-expression (id 545)
+																								(op
+																									(token (string "<<") (offset 2519) (line 94) (column 20)))
+																								(left
+																									(basic-literal (id 546)
+																										(token
+																											(token (string "1") (offset 2517) (line 94) (column 18)))))
+																								(right
+																									(parentheses-expression (id 547)
+																										(open
+																											(token (string "(") (offset 2522) (line 94) (column 23)))
+																										(close
+																											(token (string ")") (offset 2541) (line 94) (column 42)))
+																										(expr
+																											(binary-expression (id 548)
+																												(op
+																													(token (string "-") (offset 2538) (line 94) (column 39)))
+																												(left
+																													(identifier (id 549)
+																														(token
+																															(token (string "Fraction_Width") (offset 2523) (line 94) (column 24)))))
+																												(right
+																													(basic-literal (id 550)
+																														(token
+																															(token (string "1") (offset 2540) (line 94) (column 41)))))))))))))))
+																		(right
+																			(parentheses-expression (id 551)
+																				(open
+																					(token (string "(") (offset 2546) (line 94) (column 47)))
+																				(close
+																					(token (string ")") (offset 2572) (line 94) (column 73)))
+																				(expr
+																					(binary-expression (id 552)
+																						(op
+																							(token (string "<<") (offset 2549) (line 94) (column 50)))
+																						(left
+																							(basic-literal (id 553)
+																								(token
+																									(token (string "1") (offset 2547) (line 94) (column 48)))))
+																						(right
+																							(parentheses-expression (id 554)
+																								(open
+																									(token (string "(") (offset 2552) (line 94) (column 53)))
+																								(close
+																									(token (string ")") (offset 2571) (line 94) (column 72)))
+																								(expr
+																									(binary-expression (id 555)
+																										(op
+																											(token (string "-") (offset 2568) (line 94) (column 69)))
+																										(left
+																											(identifier (id 556)
+																												(token
+																													(token (string "Fraction_Width") (offset 2553) (line 94) (column 54)))))
+																										(right
+																											(basic-literal (id 557)
+																												(token
+																													(token (string "2") (offset 2570) (line 94) (column 71)))))))))))))))))
+														(right
+															(identifier (id 558)
+																(token
+																	(token (string "Fraction_Width") (offset 2578) (line 94) (column 79)))))))))))))))))))))
+		(attributes (
+			(attribute (id 559)
+				(token
+					(token (string "@") (offset 2343) (line 89) (column 1)))
+				(open
+					(token (string "(") (offset 2344) (line 89) (column 2)))
+				(close
+					(token (string ")") (offset 2360) (line 89) (column 18)))
+				(elems (
+					(identifier (id 560)
+						(token
+							(token (string "require_results") (offset 2345) (line 89) (column 3))))))))))
+	(value-declaration (id 561)
+		(names (
+			(identifier (id 562)
+				(token
+					(token (string "ceil") (offset 2617) (line 98) (column 1))))))
+		(values (
+			(procedure-literal (id 563)
+				(type
+					(procedure-type (id 564) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 2625) (line 98) (column 9)))
+						(params
+							(field-list (id 565)
+								(token
+									(token (string "x") (offset 2645) (line 98) (column 29)))
+								(list (
+									(field (id 566)
+										(names (
+											(identifier (id 567)
+												(token
+													(token (string "x") (offset 2645) (line 98) (column 29))))))
+										(type
+											(polymorphic-type (id 568)
+												(token
+													(token (string "$") (offset 2648) (line 98) (column 32)))
+												(type
+													(identifier (id 569)
+														(token
+															(token (string "T") (offset 2649) (line 98) (column 33)))))
+												(specialization
+													(call-expression (id 570)
+														(open
+															(token (string "(") (offset 2656) (line 98) (column 40)))
+														(close
+															(token (string ")") (offset 2682) (line 98) (column 66)))
+														(proc
+															(identifier (id 571)
+																(token
+																	(token (string "Fixed") (offset 2651) (line 98) (column 35)))))
+														(args (
+															(polymorphic-type (id 572)
+																(token
+																	(token (string "$") (offset 2657) (line 98) (column 41)))
+																(type
+																	(identifier (id 573)
+																		(token
+																			(token (string "Backing") (offset 2658) (line 98) (column 42))))))
+															(polymorphic-type (id 574)
+																(token
+																	(token (string "$") (offset 2667) (line 98) (column 51)))
+																(type
+																	(identifier (id 575)
+																		(token
+																			(token (string "Fraction_Width") (offset 2668) (line 98) (column 52)))))))))))))))))
+						(results
+							(field-list (id 576)
+								(token
+									(token (string "Backing") (offset 2688) (line 98) (column 72)))
+								(list (
+									(field (id 577)
+										(type
+											(identifier (id 578)
+												(token
+													(token (string "Backing") (offset 2688) (line 98) (column 72))))))))))))
+				(body
+					(block-statement (id 579)
+						(open
+							(token (string "{") (offset 2696) (line 98) (column 80)))
+						(close
+							(token (string "}") (offset 2758) (line 100) (column 1)))
+						(stmts (
+							(return-statement (id 580)
+								(token
+									(token (string "return") (offset 2699) (line 99) (column 2)))
+								(results (
+									(binary-expression (id 581)
+										(op
+											(token (string ">>") (offset 2740) (line 99) (column 43)))
+										(left
+											(parentheses-expression (id 582)
+												(open
+													(token (string "(") (offset 2706) (line 99) (column 9)))
+												(close
+													(token (string ")") (offset 2738) (line 99) (column 41)))
+												(expr
+													(binary-expression (id 583)
+														(op
+															(token (string "+") (offset 2711) (line 99) (column 14)))
+														(left
+															(selector-expression (id 584)
+																(token
+																	(token (string ".") (offset 2708) (line 99) (column 11)))
+																(expr
+																	(identifier (id 585)
+																		(token
+																			(token (string "x") (offset 2707) (line 99) (column 10)))))
+																(selector
+																	(identifier (id 586)
+																		(token
+																			(token (string "i") (offset 2709) (line 99) (column 12)))))))
+														(right
+															(parentheses-expression (id 587)
+																(open
+																	(token (string "(") (offset 2713) (line 99) (column 16)))
+																(close
+																	(token (string ")") (offset 2737) (line 99) (column 40)))
+																(expr
+																	(binary-expression (id 588)
+																		(op
+																			(token (string "-") (offset 2734) (line 99) (column 37)))
+																		(left
+																			(binary-expression (id 589)
+																				(op
+																					(token (string "<<") (offset 2716) (line 99) (column 19)))
+																				(left
+																					(basic-literal (id 590)
+																						(token
+																							(token (string "1") (offset 2714) (line 99) (column 17)))))
+																				(right
+																					(identifier (id 591)
+																						(token
+																							(token (string "Fraction_Width") (offset 2719) (line 99) (column 22)))))))
+																		(right
+																			(basic-literal (id 592)
+																				(token
+																					(token (string "1") (offset 2736) (line 99) (column 39)))))))))))))
+										(right
+											(identifier (id 593)
+												(token
+													(token (string "Fraction_Width") (offset 2743) (line 99) (column 46))))))))))))))))
+		(attributes (
+			(attribute (id 594)
+				(token
+					(token (string "@") (offset 2598) (line 97) (column 1)))
+				(open
+					(token (string "(") (offset 2599) (line 97) (column 2)))
+				(close
+					(token (string ")") (offset 2615) (line 97) (column 18)))
+				(elems (
+					(identifier (id 595)
+						(token
+							(token (string "require_results") (offset 2600) (line 97) (column 3))))))))))
+	(value-declaration (id 596)
+		(names (
+			(identifier (id 597)
+				(token
+					(token (string "round") (offset 2779) (line 102) (column 1))))))
+		(values (
+			(procedure-literal (id 598)
+				(type
+					(procedure-type (id 599) (calling_convention "Contextless") (generic "true")
+						(token
+							(token (string "proc") (offset 2788) (line 102) (column 10)))
+						(params
+							(field-list (id 600)
+								(token
+									(token (string "x") (offset 2808) (line 102) (column 30)))
+								(list (
+									(field (id 601)
+										(names (
+											(identifier (id 602)
+												(token
+													(token (string "x") (offset 2808) (line 102) (column 30))))))
+										(type
+											(polymorphic-type (id 603)
+												(token
+													(token (string "$") (offset 2811) (line 102) (column 33)))
+												(type
+													(identifier (id 604)
+														(token
+															(token (string "T") (offset 2812) (line 102) (column 34)))))
+												(specialization
+													(call-expression (id 605)
+														(open
+															(token (string "(") (offset 2819) (line 102) (column 41)))
+														(close
+															(token (string ")") (offset 2845) (line 102) (column 67)))
+														(proc
+															(identifier (id 606)
+																(token
+																	(token (string "Fixed") (offset 2814) (line 102) (column 36)))))
+														(args (
+															(polymorphic-type (id 607)
+																(token
+																	(token (string "$") (offset 2820) (line 102) (column 42)))
+																(type
+																	(identifier (id 608)
+																		(token
+																			(token (string "Backing") (offset 2821) (line 102) (column 43))))))
+															(polymorphic-type (id 609)
+																(token
+																	(token (string "$") (offset 2830) (line 102) (column 52)))
+																(type
+																	(identifier (id 610)
+																		(token
+																			(token (string "Fraction_Width") (offset 2831) (line 102) (column 53)))))))))))))))))
+						(results
+							(field-list (id 611)
+								(token
+									(token (string "Backing") (offset 2851) (line 102) (column 73)))
+								(list (
+									(field (id 612)
+										(type
+											(identifier (id 613)
+												(token
+													(token (string "Backing") (offset 2851) (line 102) (column 73))))))))))))
+				(body
+					(block-statement (id 614)
+						(open
+							(token (string "{") (offset 2859) (line 102) (column 81)))
+						(close
+							(token (string "}") (offset 2923) (line 104) (column 1)))
+						(stmts (
+							(return-statement (id 615)
+								(token
+									(token (string "return") (offset 2862) (line 103) (column 2)))
+								(results (
+									(binary-expression (id 616)
+										(op
+											(token (string ">>") (offset 2905) (line 103) (column 45)))
+										(left
+											(parentheses-expression (id 617)
+												(open
+													(token (string "(") (offset 2869) (line 103) (column 9)))
+												(close
+													(token (string ")") (offset 2903) (line 103) (column 43)))
+												(expr
+													(binary-expression (id 618)
+														(op
+															(token (string "+") (offset 2874) (line 103) (column 14)))
+														(left
+															(selector-expression (id 619)
+																(token
+																	(token (string ".") (offset 2871) (line 103) (column 11)))
+																(expr
+																	(identifier (id 620)
+																		(token
+																			(token (string "x") (offset 2870) (line 103) (column 10)))))
+																(selector
+																	(identifier (id 621)
+																		(token
+																			(token (string "i") (offset 2872) (line 103) (column 12)))))))
+														(right
+															(parentheses-expression (id 622)
+																(open
+																	(token (string "(") (offset 2876) (line 103) (column 16)))
+																(close
+																	(token (string ")") (offset 2902) (line 103) (column 42)))
+																(expr
+																	(binary-expression (id 623)
+																		(op
+																			(token (string "<<") (offset 2879) (line 103) (column 19)))
+																		(left
+																			(basic-literal (id 624)
+																				(token
+																					(token (string "1") (offset 2877) (line 103) (column 17)))))
+																		(right
+																			(parentheses-expression (id 625)
+																				(open
+																					(token (string "(") (offset 2882) (line 103) (column 22)))
+																				(close
+																					(token (string ")") (offset 2901) (line 103) (column 41)))
+																				(expr
+																					(binary-expression (id 626)
+																						(op
+																							(token (string "-") (offset 2898) (line 103) (column 38)))
+																						(left
+																							(identifier (id 627)
+																								(token
+																									(token (string "Fraction_Width") (offset 2883) (line 103) (column 23)))))
+																						(right
+																							(basic-literal (id 628)
+																								(token
+																									(token (string "1") (offset 2900) (line 103) (column 40)))))))))))))))))
+										(right
+											(identifier (id 629)
+												(token
+													(token (string "Fraction_Width") (offset 2908) (line 103) (column 48))))))))))))))))
+		(attributes (
+			(attribute (id 630)
+				(token
+					(token (string "@") (offset 2760) (line 101) (column 1)))
+				(open
+					(token (string "(") (offset 2761) (line 101) (column 2)))
+				(close
+					(token (string ")") (offset 2777) (line 101) (column 18)))
+				(elems (
+					(identifier (id 631)
+						(token
+							(token (string "require_results") (offset 2762) (line 101) (column 3))))))))))
+	(value-declaration (id 632)
+		(names (
+			(identifier (id 633)
+				(token
+					(token (string "write") (offset 2945) (line 107) (column 1))))))
+		(values (
+			(procedure-literal (id 634)
+				(type
+					(procedure-type (id 635) (calling_convention "Odin") (generic "true")
+						(token
+							(token (string "proc") (offset 2954) (line 107) (column 10)))
+						(params
+							(field-list (id 636)
+								(token
+									(token (string "dst") (offset 2959) (line 107) (column 15)))
+								(list (
+									(field (id 637)
+										(names (
+											(identifier (id 638)
+												(token
+													(token (string "dst") (offset 2959) (line 107) (column 15))))))
+										(type
+											(array-type (id 639)
+												(token
+													(token (string "[") (offset 2964) (line 107) (column 20)))
+												(elem
+													(identifier (id 640)
+														(token
+															(token (string "byte") (offset 2966) (line 107) (column 22))))))))
+									(field (id 641)
+										(names (
+											(identifier (id 642)
+												(token
+													(token (string "x") (offset 2972) (line 107) (column 28))))))
+										(type
+											(polymorphic-type (id 643)
+												(token
+													(token (string "$") (offset 2975) (line 107) (column 31)))
+												(type
+													(identifier (id 644)
+														(token
+															(token (string "T") (offset 2976) (line 107) (column 32)))))
+												(specialization
+													(call-expression (id 645)
+														(open
+															(token (string "(") (offset 2983) (line 107) (column 39)))
+														(close
+															(token (string ")") (offset 3009) (line 107) (column 65)))
+														(proc
+															(identifier (id 646)
+																(token
+																	(token (string "Fixed") (offset 2978) (line 107) (column 34)))))
+														(args (
+															(polymorphic-type (id 647)
+																(token
+																	(token (string "$") (offset 2984) (line 107) (column 40)))
+																(type
+																	(identifier (id 648)
+																		(token
+																			(token (string "Backing") (offset 2985) (line 107) (column 41))))))
+															(polymorphic-type (id 649)
+																(token
+																	(token (string "$") (offset 2994) (line 107) (column 50)))
+																(type
+																	(identifier (id 650)
+																		(token
+																			(token (string "Fraction_Width") (offset 2995) (line 107) (column 51)))))))))))))))))
+						(results
+							(field-list (id 651)
+								(token
+									(token (string "string") (offset 3015) (line 107) (column 71)))
+								(list (
+									(field (id 652)
+										(type
+											(identifier (id 653)
+												(token
+													(token (string "string") (offset 3015) (line 107) (column 71))))))))))))
+				(body
+					(block-statement (id 654)
+						(open
+							(token (string "{") (offset 3022) (line 107) (column 78)))
+						(close
+							(token (string "}") (offset 3912) (line 153) (column 1)))
+						(stmts (
+							(value-declaration (id 655)
+								(names (
+									(identifier (id 656)
+										(token
+											(token (string "Integer_Width") (offset 3025) (line 108) (column 2))))))
+								(values (
+									(binary-expression (id 657)
+										(op
+											(token (string "-") (offset 3061) (line 108) (column 38)))
+										(left
+											(binary-expression (id 658)
+												(op
+													(token (string "*") (offset 3043) (line 108) (column 20)))
+												(left
+													(basic-literal (id 659)
+														(token
+															(token (string "8") (offset 3042) (line 108) (column 19)))))
+												(right
+													(call-expression (id 660)
+														(open
+															(token (string "(") (offset 3051) (line 108) (column 28)))
+														(close
+															(token (string ")") (offset 3059) (line 108) (column 36)))
+														(proc
+															(identifier (id 661)
+																(token
+																	(token (string "size_of") (offset 3044) (line 108) (column 21)))))
+														(args (
+															(identifier (id 662)
+																(token
+																	(token (string "Backing") (offset 3052) (line 108) (column 29))))))))))
+										(right
+											(identifier (id 663)
+												(token
+													(token (string "Fraction_Width") (offset 3063) (line 108) (column 40)))))))))
+							(value-declaration (id 664) (is_mutable "true")
+								(names (
+									(identifier (id 665)
+										(token
+											(token (string "x") (offset 3080) (line 110) (column 2))))))
+								(values (
+									(identifier (id 666)
+										(token
+											(token (string "x") (offset 3085) (line 110) (column 7)))))))
+							(value-declaration (id 667) (is_mutable "true")
+								(names (
+									(identifier (id 668)
+										(token
+											(token (string "buf") (offset 3088) (line 111) (column 2))))))
+								(type
+									(array-type (id 669)
+										(token
+											(token (string "[") (offset 3093) (line 111) (column 7)))
+										(count
+											(basic-literal (id 670)
+												(token
+													(token (string "48") (offset 3094) (line 111) (column 8)))))
+										(elem
+											(identifier (id 671)
+												(token
+													(token (string "byte") (offset 3097) (line 111) (column 11))))))))
+							(value-declaration (id 672) (is_mutable "true")
+								(names (
+									(identifier (id 673)
+										(token
+											(token (string "i") (offset 3103) (line 112) (column 2))))))
+								(values (
+									(basic-literal (id 674)
+										(token
+											(token (string "0") (offset 3108) (line 112) (column 7)))))))
+							(if-statement (id 675)
+								(token
+									(token (string "if") (offset 3112) (line 114) (column 2)))
+								(cond
+									(binary-expression (id 676)
+										(op
+											(token (string "&&") (offset 3153) (line 114) (column 43)))
+										(left
+											(unary-expression (id 677)
+												(op
+													(token (string "!") (offset 3115) (line 114) (column 5)))
+												(expr
+													(call-expression (id 678)
+														(open
+															(token (string "(") (offset 3143) (line 114) (column 33)))
+														(close
+															(token (string ")") (offset 3151) (line 114) (column 41)))
+														(proc
+															(selector-expression (id 679)
+																(token
+																	(token (string ".") (offset 3126) (line 114) (column 16)))
+																(expr
+																	(identifier (id 680)
+																		(token
+																			(token (string "intrinsics") (offset 3116) (line 114) (column 6)))))
+																(selector
+																	(identifier (id 681)
+																		(token
+																			(token (string "type_is_unsigned") (offset 3127) (line 114) (column 17)))))))
+														(args (
+															(identifier (id 682)
+																(token
+																	(token (string "Backing") (offset 3144) (line 114) (column 34))))))))))
+										(right
+											(binary-expression (id 683)
+												(op
+													(token (string "==") (offset 3160) (line 114) (column 50)))
+												(left
+													(selector-expression (id 684)
+														(token
+															(token (string ".") (offset 3157) (line 114) (column 47)))
+														(expr
+															(identifier (id 685)
+																(token
+																	(token (string "x") (offset 3156) (line 114) (column 46)))))
+														(selector
+															(identifier (id 686)
+																(token
+																	(token (string "i") (offset 3158) (line 114) (column 48)))))))
+												(right
+													(call-expression (id 687)
+														(open
+															(token (string "(") (offset 3166) (line 114) (column 56)))
+														(close
+															(token (string ")") (offset 3174) (line 114) (column 64)))
+														(proc
+															(identifier (id 688)
+																(token
+																	(token (string "min") (offset 3163) (line 114) (column 53)))))
+														(args (
+															(identifier (id 689)
+																(token
+																	(token (string "Backing") (offset 3167) (line 114) (column 57))))))))))))
+								(body
+									(block-statement (id 690)
+										(open
+											(token (string "{") (offset 3176) (line 114) (column 66)))
+										(close
+											(token (string "}") (offset 3303) (line 119) (column 2)))
+										(stmts (
+											(assign-statement (id 691)
+												(op
+													(token (string "=") (offset 3230) (line 116) (column 10)))
+												(lhs_exprs (
+													(index-expression (id 692)
+														(open
+															(token (string "[") (offset 3226) (line 116) (column 6)))
+														(close
+															(token (string "]") (offset 3228) (line 116) (column 8)))
+														(expr
+															(identifier (id 693)
+																(token
+																	(token (string "buf") (offset 3223) (line 116) (column 3)))))
+														(index
+															(identifier (id 694)
+																(token
+																	(token (string "i") (offset 3227) (line 116) (column 7))))))))
+												(rhs_exprs (
+													(basic-literal (id 695)
+														(token
+															(token (string "'-'") (offset 3232) (line 116) (column 12)))))))
+											(assign-statement (id 696)
+												(op
+													(token (string "+=") (offset 3240) (line 117) (column 5)))
+												(lhs_exprs (
+													(identifier (id 697)
+														(token
+															(token (string "i") (offset 3238) (line 117) (column 3))))))
+												(rhs_exprs (
+													(basic-literal (id 698)
+														(token
+															(token (string "1") (offset 3243) (line 117) (column 8)))))))
+											(assign-statement (id 699)
+												(op
+													(token (string "+=") (offset 3249) (line 118) (column 5)))
+												(lhs_exprs (
+													(identifier (id 700)
+														(token
+															(token (string "i") (offset 3247) (line 118) (column 3))))))
+												(rhs_exprs (
+													(call-expression (id 701)
+														(open
+															(token (string "(") (offset 3256) (line 118) (column 12)))
+														(close
+															(token (string ")") (offset 3300) (line 118) (column 56)))
+														(proc
+															(identifier (id 702)
+																(token
+																	(token (string "copy") (offset 3252) (line 118) (column 8)))))
+														(args (
+															(slice-expression (id 703)
+																(open
+																	(token (string "[") (offset 3260) (line 118) (column 16)))
+																(close
+																	(token (string "]") (offset 3263) (line 118) (column 19)))
+																(interval
+																	(token (string ":") (offset 3262) (line 118) (column 18)))
+																(expr
+																	(identifier (id 704)
+																		(token
+																			(token (string "buf") (offset 3257) (line 118) (column 13)))))
+																(low
+																	(identifier (id 705)
+																		(token
+																			(token (string "i") (offset 3261) (line 118) (column 17))))))
+															(index-expression (id 706)
+																(open
+																	(token (string "[") (offset 3285) (line 118) (column 41)))
+																(close
+																	(token (string "]") (offset 3299) (line 118) (column 55)))
+																(expr
+																	(identifier (id 707)
+																		(token
+																			(token (string "_power_of_two_table") (offset 3266) (line 118) (column 22)))))
+																(index
+																	(identifier (id 708)
+																		(token
+																			(token (string "Integer_Width") (offset 3286) (line 118) (column 42))))))))))))))))
+								(else_stmt
+									(block-statement (id 709)
+										(open
+											(token (string "{") (offset 3310) (line 119) (column 9)))
+										(close
+											(token (string "}") (offset 3860) (line 149) (column 2)))
+										(stmts (
+											(if-statement (id 710)
+												(token
+													(token (string "if") (offset 3314) (line 120) (column 3)))
+												(cond
+													(binary-expression (id 711)
+														(op
+															(token (string "<") (offset 3321) (line 120) (column 10)))
+														(left
+															(selector-expression (id 712)
+																(token
+																	(token (string ".") (offset 3318) (line 120) (column 7)))
+																(expr
+																	(identifier (id 713)
+																		(token
+																			(token (string "x") (offset 3317) (line 120) (column 6)))))
+																(selector
+																	(identifier (id 714)
+																		(token
+																			(token (string "i") (offset 3319) (line 120) (column 8)))))))
+														(right
+															(basic-literal (id 715)
+																(token
+																	(token (string "0") (offset 3323) (line 120) (column 12)))))))
+												(body
+													(block-statement (id 716)
+														(open
+															(token (string "{") (offset 3325) (line 120) (column 14)))
+														(close
+															(token (string "}") (offset 3369) (line 124) (column 3)))
+														(stmts (
+															(assign-statement (id 717)
+																(op
+																	(token (string "=") (offset 3337) (line 121) (column 11)))
+																(lhs_exprs (
+																	(index-expression (id 718)
+																		(open
+																			(token (string "[") (offset 3333) (line 121) (column 7)))
+																		(close
+																			(token (string "]") (offset 3335) (line 121) (column 9)))
+																		(expr
+																			(identifier (id 719)
+																				(token
+																					(token (string "buf") (offset 3330) (line 121) (column 4)))))
+																		(index
+																			(identifier (id 720)
+																				(token
+																					(token (string "i") (offset 3334) (line 121) (column 8))))))))
+																(rhs_exprs (
+																	(basic-literal (id 721)
+																		(token
+																			(token (string "'-'") (offset 3339) (line 121) (column 13)))))))
+															(assign-statement (id 722)
+																(op
+																	(token (string "+=") (offset 3348) (line 122) (column 6)))
+																(lhs_exprs (
+																	(identifier (id 723)
+																		(token
+																			(token (string "i") (offset 3346) (line 122) (column 4))))))
+																(rhs_exprs (
+																	(basic-literal (id 724)
+																		(token
+																			(token (string "1") (offset 3351) (line 122) (column 9)))))))
+															(assign-statement (id 725)
+																(op
+																	(token (string "=") (offset 3360) (line 123) (column 8)))
+																(lhs_exprs (
+																	(selector-expression (id 726)
+																		(token
+																			(token (string ".") (offset 3357) (line 123) (column 5)))
+																		(expr
+																			(identifier (id 727)
+																				(token
+																					(token (string "x") (offset 3356) (line 123) (column 4)))))
+																		(selector
+																			(identifier (id 728)
+																				(token
+																					(token (string "i") (offset 3358) (line 123) (column 6))))))))
+																(rhs_exprs (
+																	(unary-expression (id 729)
+																		(op
+																			(token (string "-") (offset 3362) (line 123) (column 10)))
+																		(expr
+																			(selector-expression (id 730)
+																				(token
+																					(token (string ".") (offset 3364) (line 123) (column 12)))
+																				(expr
+																					(identifier (id 731)
+																						(token
+																							(token (string "x") (offset 3363) (line 123) (column 11)))))
+																				(selector
+																					(identifier (id 732)
+																						(token
+																							(token (string "i") (offset 3365) (line 123) (column 13))))))))))))))))
+											(when-statement (id 733)
+												(token
+													(token (string "when") (offset 3374) (line 126) (column 3)))
+												(cond
+													(binary-expression (id 734)
+														(op
+															(token (string "<") (offset 3396) (line 126) (column 25)))
+														(left
+															(call-expression (id 735)
+																(open
+																	(token (string "(") (offset 3386) (line 126) (column 15)))
+																(close
+																	(token (string ")") (offset 3394) (line 126) (column 23)))
+																(proc
+																	(identifier (id 736)
+																		(token
+																			(token (string "size_of") (offset 3379) (line 126) (column 8)))))
+																(args (
+																	(identifier (id 737)
+																		(token
+																			(token (string "Backing") (offset 3387) (line 126) (column 16))))))))
+														(right
+															(basic-literal (id 738)
+																(token
+																	(token (string "16") (offset 3398) (line 126) (column 27)))))))
+												(body
+													(block-statement (id 739)
+														(open
+															(token (string "{") (offset 3401) (line 126) (column 30)))
+														(close
+															(token (string "}") (offset 3453) (line 129) (column 3)))
+														(stmts (
+															(value-declaration (id 740)
+																(names (
+																	(identifier (id 741)
+																		(token
+																			(token (string "T") (offset 3406) (line 127) (column 4))))))
+																(values (
+																	(identifier (id 742)
+																		(token
+																			(token (string "u64") (offset 3411) (line 127) (column 9)))))))
+															(value-declaration (id 743)
+																(names (
+																	(identifier (id 744)
+																		(token
+																			(token (string "write_uint") (offset 3418) (line 128) (column 4))))))
+																(values (
+																	(selector-expression (id 745)
+																		(token
+																			(token (string ".") (offset 3439) (line 128) (column 25)))
+																		(expr
+																			(identifier (id 746)
+																				(token
+																					(token (string "strconv") (offset 3432) (line 128) (column 18)))))
+																		(selector
+																			(identifier (id 747)
+																				(token
+																					(token (string "write_uint") (offset 3440) (line 128) (column 26)))))))))))))
+												(else_stmt
+													(block-statement (id 748)
+														(open
+															(token (string "{") (offset 3460) (line 129) (column 10)))
+														(close
+															(token (string "}") (offset 3513) (line 132) (column 3)))
+														(stmts (
+															(value-declaration (id 749)
+																(names (
+																	(identifier (id 750)
+																		(token
+																			(token (string "T") (offset 3465) (line 130) (column 4))))))
+																(values (
+																	(identifier (id 751)
+																		(token
+																			(token (string "u128") (offset 3470) (line 130) (column 9)))))))
+															(value-declaration (id 752)
+																(names (
+																	(identifier (id 753)
+																		(token
+																			(token (string "write_uint") (offset 3478) (line 131) (column 4))))))
+																(values (
+																	(selector-expression (id 754)
+																		(token
+																			(token (string ".") (offset 3499) (line 131) (column 25)))
+																		(expr
+																			(identifier (id 755)
+																				(token
+																					(token (string "strconv") (offset 3492) (line 131) (column 18)))))
+																		(selector
+																			(identifier (id 756)
+																				(token
+																					(token (string "write_u128") (offset 3500) (line 131) (column 26))))))))))))))
+											(value-declaration (id 757) (is_mutable "true")
+												(names (
+													(identifier (id 758)
+														(token
+															(token (string "integer") (offset 3518) (line 134) (column 3))))))
+												(values (
+													(binary-expression (id 759)
+														(op
+															(token (string ">>") (offset 3536) (line 134) (column 21)))
+														(left
+															(call-expression (id 760)
+																(open
+																	(token (string "(") (offset 3530) (line 134) (column 15)))
+																(close
+																	(token (string ")") (offset 3534) (line 134) (column 19)))
+																(proc
+																	(identifier (id 761)
+																		(token
+																			(token (string "T") (offset 3529) (line 134) (column 14)))))
+																(args (
+																	(selector-expression (id 762)
+																		(token
+																			(token (string ".") (offset 3532) (line 134) (column 17)))
+																		(expr
+																			(identifier (id 763)
+																				(token
+																					(token (string "x") (offset 3531) (line 134) (column 16)))))
+																		(selector
+																			(identifier (id 764)
+																				(token
+																					(token (string "i") (offset 3533) (line 134) (column 18))))))))))
+														(right
+															(identifier (id 765)
+																(token
+																	(token (string "Fraction_Width") (offset 3539) (line 134) (column 24)))))))))
+											(value-declaration (id 766) (is_mutable "true")
+												(names (
+													(identifier (id 767)
+														(token
+															(token (string "fraction") (offset 3556) (line 135) (column 3))))))
+												(values (
+													(binary-expression (id 768)
+														(op
+															(token (string "&") (offset 3575) (line 135) (column 22)))
+														(left
+															(call-expression (id 769)
+																(open
+																	(token (string "(") (offset 3569) (line 135) (column 16)))
+																(close
+																	(token (string ")") (offset 3573) (line 135) (column 20)))
+																(proc
+																	(identifier (id 770)
+																		(token
+																			(token (string "T") (offset 3568) (line 135) (column 15)))))
+																(args (
+																	(selector-expression (id 771)
+																		(token
+																			(token (string ".") (offset 3571) (line 135) (column 18)))
+																		(expr
+																			(identifier (id 772)
+																				(token
+																					(token (string "x") (offset 3570) (line 135) (column 17)))))
+																		(selector
+																			(identifier (id 773)
+																				(token
+																					(token (string "i") (offset 3572) (line 135) (column 19))))))))))
+														(right
+															(parentheses-expression (id 774)
+																(open
+																	(token (string "(") (offset 3577) (line 135) (column 24)))
+																(close
+																	(token (string ")") (offset 3599) (line 135) (column 46)))
+																(expr
+																	(binary-expression (id 775)
+																		(op
+																			(token (string "-") (offset 3596) (line 135) (column 43)))
+																		(left
+																			(binary-expression (id 776)
+																				(op
+																					(token (string "<<") (offset 3579) (line 135) (column 26)))
+																				(left
+																					(basic-literal (id 777)
+																						(token
+																							(token (string "1") (offset 3578) (line 135) (column 25)))))
+																				(right
+																					(identifier (id 778)
+																						(token
+																							(token (string "Fraction_Width") (offset 3581) (line 135) (column 28)))))))
+																		(right
+																			(basic-literal (id 779)
+																				(token
+																					(token (string "1") (offset 3598) (line 135) (column 45)))))))))))))
+											(value-declaration (id 780) (is_mutable "true")
+												(names (
+													(identifier (id 781)
+														(token
+															(token (string "s") (offset 3604) (line 137) (column 3))))))
+												(values (
+													(call-expression (id 782)
+														(open
+															(token (string "(") (offset 3619) (line 137) (column 18)))
+														(close
+															(token (string ")") (offset 3640) (line 137) (column 39)))
+														(proc
+															(identifier (id 783)
+																(token
+																	(token (string "write_uint") (offset 3609) (line 137) (column 8)))))
+														(args (
+															(slice-expression (id 784)
+																(open
+																	(token (string "[") (offset 3623) (line 137) (column 22)))
+																(close
+																	(token (string "]") (offset 3626) (line 137) (column 25)))
+																(interval
+																	(token (string ":") (offset 3625) (line 137) (column 24)))
+																(expr
+																	(identifier (id 785)
+																		(token
+																			(token (string "buf") (offset 3620) (line 137) (column 19)))))
+																(low
+																	(identifier (id 786)
+																		(token
+																			(token (string "i") (offset 3624) (line 137) (column 23))))))
+															(identifier (id 787)
+																(token
+																	(token (string "integer") (offset 3629) (line 137) (column 28))))
+															(basic-literal (id 788)
+																(token
+																	(token (string "10") (offset 3638) (line 137) (column 37))))))))))
+											(assign-statement (id 789)
+												(op
+													(token (string "+=") (offset 3646) (line 138) (column 5)))
+												(lhs_exprs (
+													(identifier (id 790)
+														(token
+															(token (string "i") (offset 3644) (line 138) (column 3))))))
+												(rhs_exprs (
+													(call-expression (id 791)
+														(open
+															(token (string "(") (offset 3652) (line 138) (column 11)))
+														(close
+															(token (string ")") (offset 3654) (line 138) (column 13)))
+														(proc
+															(identifier (id 792)
+																(token
+																	(token (string "len") (offset 3649) (line 138) (column 8)))))
+														(args (
+															(identifier (id 793)
+																(token
+																	(token (string "s") (offset 3653) (line 138) (column 12))))))))))
+											(if-statement (id 794)
+												(token
+													(token (string "if") (offset 3658) (line 139) (column 3)))
+												(cond
+													(binary-expression (id 795)
+														(op
+															(token (string "!=") (offset 3670) (line 139) (column 15)))
+														(left
+															(identifier (id 796)
+																(token
+																	(token (string "fraction") (offset 3661) (line 139) (column 6)))))
+														(right
+															(basic-literal (id 797)
+																(token
+																	(token (string "0") (offset 3673) (line 139) (column 18)))))))
+												(body
+													(block-statement (id 798)
+														(open
+															(token (string "{") (offset 3675) (line 139) (column 20)))
+														(close
+															(token (string "}") (offset 3857) (line 148) (column 3)))
+														(stmts (
+															(assign-statement (id 799)
+																(op
+																	(token (string "=") (offset 3687) (line 140) (column 11)))
+																(lhs_exprs (
+																	(index-expression (id 800)
+																		(open
+																			(token (string "[") (offset 3683) (line 140) (column 7)))
+																		(close
+																			(token (string "]") (offset 3685) (line 140) (column 9)))
+																		(expr
+																			(identifier (id 801)
+																				(token
+																					(token (string "buf") (offset 3680) (line 140) (column 4)))))
+																		(index
+																			(identifier (id 802)
+																				(token
+																					(token (string "i") (offset 3684) (line 140) (column 8))))))))
+																(rhs_exprs (
+																	(basic-literal (id 803)
+																		(token
+																			(token (string "'.'") (offset 3689) (line 140) (column 13)))))))
+															(assign-statement (id 804)
+																(op
+																	(token (string "+=") (offset 3698) (line 141) (column 6)))
+																(lhs_exprs (
+																	(identifier (id 805)
+																		(token
+																			(token (string "i") (offset 3696) (line 141) (column 4))))))
+																(rhs_exprs (
+																	(basic-literal (id 806)
+																		(token
+																			(token (string "1") (offset 3701) (line 141) (column 9)))))))
+															(for-statement (id 807)
+																(token
+																	(token (string "for") (offset 3706) (line 142) (column 4)))
+																(cond
+																	(binary-expression (id 808)
+																		(op
+																			(token (string ">") (offset 3719) (line 142) (column 17)))
+																		(left
+																			(identifier (id 809)
+																				(token
+																					(token (string "fraction") (offset 3710) (line 142) (column 8)))))
+																		(right
+																			(basic-literal (id 810)
+																				(token
+																					(token (string "0") (offset 3721) (line 142) (column 19)))))))
+																(body
+																	(block-statement (id 811)
+																		(open
+																			(token (string "{") (offset 3723) (line 142) (column 21)))
+																		(close
+																			(token (string "}") (offset 3853) (line 147) (column 4)))
+																		(stmts (
+																			(assign-statement (id 812)
+																				(op
+																					(token (string "*=") (offset 3738) (line 143) (column 14)))
+																				(lhs_exprs (
+																					(identifier (id 813)
+																						(token
+																							(token (string "fraction") (offset 3729) (line 143) (column 5))))))
+																				(rhs_exprs (
+																					(basic-literal (id 814)
+																						(token
+																							(token (string "10") (offset 3741) (line 143) (column 17)))))))
+																			(assign-statement (id 815)
+																				(op
+																					(token (string "=") (offset 3755) (line 144) (column 12)))
+																				(lhs_exprs (
+																					(index-expression (id 816)
+																						(open
+																							(token (string "[") (offset 3751) (line 144) (column 8)))
+																						(close
+																							(token (string "]") (offset 3753) (line 144) (column 10)))
+																						(expr
+																							(identifier (id 817)
+																								(token
+																									(token (string "buf") (offset 3748) (line 144) (column 5)))))
+																						(index
+																							(identifier (id 818)
+																								(token
+																									(token (string "i") (offset 3752) (line 144) (column 9))))))))
+																				(rhs_exprs (
+																					(call-expression (id 819)
+																						(open
+																							(token (string "(") (offset 3761) (line 144) (column 18)))
+																						(close
+																							(token (string ")") (offset 3799) (line 144) (column 56)))
+																						(proc
+																							(identifier (id 820)
+																								(token
+																									(token (string "byte") (offset 3757) (line 144) (column 14)))))
+																						(args (
+																							(binary-expression (id 821)
+																								(op
+																									(token (string "+") (offset 3766) (line 144) (column 23)))
+																								(left
+																									(basic-literal (id 822)
+																										(token
+																											(token (string "'0'") (offset 3762) (line 144) (column 19)))))
+																								(right
+																									(binary-expression (id 823)
+																										(op
+																											(token (string "%") (offset 3795) (line 144) (column 52)))
+																										(left
+																											(parentheses-expression (id 824)
+																												(open
+																													(token (string "(") (offset 3768) (line 144) (column 25)))
+																												(close
+																													(token (string ")") (offset 3793) (line 144) (column 50)))
+																												(expr
+																													(binary-expression (id 825)
+																														(op
+																															(token (string ">>") (offset 3777) (line 144) (column 34)))
+																														(left
+																															(identifier (id 826)
+																																(token
+																																	(token (string "fraction") (offset 3769) (line 144) (column 26)))))
+																														(right
+																															(identifier (id 827)
+																																(token
+																																	(token (string "Fraction_Width") (offset 3779) (line 144) (column 36)))))))))
+																										(right
+																											(basic-literal (id 828)
+																												(token
+																													(token (string "10") (offset 3797) (line 144) (column 54))))))))))))))
+																			(assign-statement (id 829)
+																				(op
+																					(token (string "+=") (offset 3807) (line 145) (column 7)))
+																				(lhs_exprs (
+																					(identifier (id 830)
+																						(token
+																							(token (string "i") (offset 3805) (line 145) (column 5))))))
+																				(rhs_exprs (
+																					(basic-literal (id 831)
+																						(token
+																							(token (string "1") (offset 3810) (line 145) (column 10)))))))
+																			(assign-statement (id 832)
+																				(op
+																					(token (string "&=") (offset 3825) (line 146) (column 14)))
+																				(lhs_exprs (
+																					(identifier (id 833)
+																						(token
+																							(token (string "fraction") (offset 3816) (line 146) (column 5))))))
+																				(rhs_exprs (
+																					(binary-expression (id 834)
+																						(op
+																							(token (string "-") (offset 3846) (line 146) (column 35)))
+																						(left
+																							(binary-expression (id 835)
+																								(op
+																									(token (string "<<") (offset 3829) (line 146) (column 18)))
+																								(left
+																									(basic-literal (id 836)
+																										(token
+																											(token (string "1") (offset 3828) (line 146) (column 17)))))
+																								(right
+																									(identifier (id 837)
+																										(token
+																											(token (string "Fraction_Width") (offset 3831) (line 146) (column 20)))))))
+																						(right
+																							(basic-literal (id 838)
+																								(token
+																									(token (string "1") (offset 3848) (line 146) (column 37))))))))))))))))))))))))
+							(value-declaration (id 839) (is_mutable "true")
+								(names (
+									(identifier (id 840)
+										(token
+											(token (string "n") (offset 3864) (line 151) (column 2))))))
+								(values (
+									(call-expression (id 841)
+										(open
+											(token (string "(") (offset 3873) (line 151) (column 11)))
+										(close
+											(token (string ")") (offset 3886) (line 151) (column 24)))
+										(proc
+											(identifier (id 842)
+												(token
+													(token (string "copy") (offset 3869) (line 151) (column 7)))))
+										(args (
+											(identifier (id 843)
+												(token
+													(token (string "dst") (offset 3874) (line 151) (column 12))))
+											(slice-expression (id 844)
+												(open
+													(token (string "[") (offset 3882) (line 151) (column 20)))
+												(close
+													(token (string "]") (offset 3885) (line 151) (column 23)))
+												(interval
+													(token (string ":") (offset 3883) (line 151) (column 21)))
+												(expr
+													(identifier (id 845)
+														(token
+															(token (string "buf") (offset 3879) (line 151) (column 17)))))
+												(high
+													(identifier (id 846)
+														(token
+															(token (string "i") (offset 3884) (line 151) (column 22))))))))))))
+							(return-statement (id 847)
+								(token
+									(token (string "return") (offset 3889) (line 152) (column 2)))
+								(results (
+									(call-expression (id 848)
+										(open
+											(token (string "(") (offset 3902) (line 152) (column 15)))
+										(close
+											(token (string ")") (offset 3910) (line 152) (column 23)))
+										(proc
+											(identifier (id 849)
+												(token
+													(token (string "string") (offset 3896) (line 152) (column 9)))))
+										(args (
+											(slice-expression (id 850)
+												(open
+													(token (string "[") (offset 3906) (line 152) (column 19)))
+												(close
+													(token (string "]") (offset 3909) (line 152) (column 22)))
+												(interval
+													(token (string ":") (offset 3907) (line 152) (column 20)))
+												(expr
+													(identifier (id 851)
+														(token
+															(token (string "dst") (offset 3903) (line 152) (column 16)))))
+												(high
+													(identifier (id 852)
+														(token
+															(token (string "i") (offset 3908) (line 152) (column 21)))))))))))))))))))
+		(attributes (
+			(attribute (id 853)
+				(token
+					(token (string "@") (offset 2926) (line 106) (column 1)))
+				(open
+					(token (string "(") (offset 2927) (line 106) (column 2)))
+				(close
+					(token (string ")") (offset 2943) (line 106) (column 18)))
+				(elems (
+					(identifier (id 854)
+						(token
+							(token (string "require_results") (offset 2928) (line 106) (column 3))))))))))
+	(value-declaration (id 855)
+		(names (
+			(identifier (id 856)
+				(token
+					(token (string "to_string") (offset 3935) (line 157) (column 1))))))
+		(values (
+			(procedure-literal (id 857)
+				(type
+					(procedure-type (id 858) (calling_convention "Odin") (generic "true")
+						(token
+							(token (string "proc") (offset 3948) (line 157) (column 14)))
+						(params
+							(field-list (id 859)
+								(token
+									(token (string "x") (offset 3953) (line 157) (column 19)))
+								(list (
+									(field (id 860)
+										(names (
+											(identifier (id 861)
+												(token
+													(token (string "x") (offset 3953) (line 157) (column 19))))))
+										(type
+											(polymorphic-type (id 862)
+												(token
+													(token (string "$") (offset 3956) (line 157) (column 22)))
+												(type
+													(identifier (id 863)
+														(token
+															(token (string "T") (offset 3957) (line 157) (column 23)))))
+												(specialization
+													(call-expression (id 864)
+														(open
+															(token (string "(") (offset 3964) (line 157) (column 30)))
+														(close
+															(token (string ")") (offset 3990) (line 157) (column 56)))
+														(proc
+															(identifier (id 865)
+																(token
+																	(token (string "Fixed") (offset 3959) (line 157) (column 25)))))
+														(args (
+															(polymorphic-type (id 866)
+																(token
+																	(token (string "$") (offset 3965) (line 157) (column 31)))
+																(type
+																	(identifier (id 867)
+																		(token
+																			(token (string "Backing") (offset 3966) (line 157) (column 32))))))
+															(polymorphic-type (id 868)
+																(token
+																	(token (string "$") (offset 3975) (line 157) (column 41)))
+																(type
+																	(identifier (id 869)
+																		(token
+																			(token (string "Fraction_Width") (offset 3976) (line 157) (column 42)))))))))))))
+									(field (id 870)
+										(names (
+											(identifier (id 871)
+												(token
+													(token (string "allocator") (offset 3993) (line 157) (column 59))))))
+										(default_value
+											(selector-expression (id 872)
+												(token
+													(token (string ".") (offset 4013) (line 157) (column 79)))
+												(expr
+													(implicit (id 873)
+														(token
+															(token (string "context") (offset 4006) (line 157) (column 72)))))
+												(selector
+													(identifier (id 874)
+														(token
+															(token (string "allocator") (offset 4014) (line 157) (column 80))))))))))))
+						(results
+							(field-list (id 875)
+								(token
+									(token (string "string") (offset 4028) (line 157) (column 94)))
+								(list (
+									(field (id 876)
+										(type
+											(identifier (id 877)
+												(token
+													(token (string "string") (offset 4028) (line 157) (column 94))))))))))))
+				(body
+					(block-statement (id 878)
+						(open
+							(token (string "{") (offset 4035) (line 157) (column 101)))
+						(close
+							(token (string "}") (offset 4149) (line 163) (column 1)))
+						(stmts (
+							(value-declaration (id 879) (is_mutable "true")
+								(names (
+									(identifier (id 880)
+										(token
+											(token (string "buf") (offset 4038) (line 158) (column 2))))))
+								(type
+									(array-type (id 881)
+										(token
+											(token (string "[") (offset 4043) (line 158) (column 7)))
+										(count
+											(basic-literal (id 882)
+												(token
+													(token (string "48") (offset 4044) (line 158) (column 8)))))
+										(elem
+											(identifier (id 883)
+												(token
+													(token (string "byte") (offset 4047) (line 158) (column 11))))))))
+							(value-declaration (id 884) (is_mutable "true")
+								(names (
+									(identifier (id 885)
+										(token
+											(token (string "s") (offset 4053) (line 159) (column 2))))))
+								(values (
+									(call-expression (id 886)
+										(open
+											(token (string "(") (offset 4063) (line 159) (column 12)))
+										(close
+											(token (string ")") (offset 4073) (line 159) (column 22)))
+										(proc
+											(identifier (id 887)
+												(token
+													(token (string "write") (offset 4058) (line 159) (column 7)))))
+										(args (
+											(slice-expression (id 888)
+												(open
+													(token (string "[") (offset 4067) (line 159) (column 16)))
+												(close
+													(token (string "]") (offset 4069) (line 159) (column 18)))
+												(interval
+													(token (string ":") (offset 4068) (line 159) (column 17)))
+												(expr
+													(identifier (id 889)
+														(token
+															(token (string "buf") (offset 4064) (line 159) (column 13))))))
+											(identifier (id 890)
+												(token
+													(token (string "x") (offset 4072) (line 159) (column 21))))))))))
+							(value-declaration (id 891) (is_mutable "true")
+								(names (
+									(identifier (id 892)
+										(token
+											(token (string "str") (offset 4076) (line 160) (column 2))))))
+								(values (
+									(call-expression (id 893)
+										(open
+											(token (string "(") (offset 4087) (line 160) (column 13)))
+										(close
+											(token (string ")") (offset 4113) (line 160) (column 39)))
+										(proc
+											(identifier (id 894)
+												(token
+													(token (string "make") (offset 4083) (line 160) (column 9)))))
+										(args (
+											(array-type (id 895)
+												(token
+													(token (string "[") (offset 4088) (line 160) (column 14)))
+												(elem
+													(identifier (id 896)
+														(token
+															(token (string "byte") (offset 4090) (line 160) (column 16))))))
+											(call-expression (id 897)
+												(open
+													(token (string "(") (offset 4099) (line 160) (column 25)))
+												(close
+													(token (string ")") (offset 4101) (line 160) (column 27)))
+												(proc
+													(identifier (id 898)
+														(token
+															(token (string "len") (offset 4096) (line 160) (column 22)))))
+												(args (
+													(identifier (id 899)
+														(token
+															(token (string "s") (offset 4100) (line 160) (column 26)))))))
+											(identifier (id 900)
+												(token
+													(token (string "allocator") (offset 4104) (line 160) (column 30))))))))))
+							(expression-statement (id 901)
+								(expr
+									(call-expression (id 902)
+										(open
+											(token (string "(") (offset 4120) (line 161) (column 6)))
+										(close
+											(token (string ")") (offset 4127) (line 161) (column 13)))
+										(proc
+											(identifier (id 903)
+												(token
+													(token (string "copy") (offset 4116) (line 161) (column 2)))))
+										(args (
+											(identifier (id 904)
+												(token
+													(token (string "str") (offset 4121) (line 161) (column 7))))
+											(identifier (id 905)
+												(token
+													(token (string "s") (offset 4126) (line 161) (column 12)))))))))
+							(return-statement (id 906)
+								(token
+									(token (string "return") (offset 4130) (line 162) (column 2)))
+								(results (
+									(call-expression (id 907)
+										(open
+											(token (string "(") (offset 4143) (line 162) (column 15)))
+										(close
+											(token (string ")") (offset 4147) (line 162) (column 19)))
+										(proc
+											(identifier (id 908)
+												(token
+													(token (string "string") (offset 4137) (line 162) (column 9)))))
+										(args (
+											(identifier (id 909)
+												(token
+													(token (string "str") (offset 4144) (line 162) (column 16)))))))))))))))))
+		(attributes (
+			(attribute (id 910)
+				(token
+					(token (string "@") (offset 3916) (line 156) (column 1)))
+				(open
+					(token (string "(") (offset 3917) (line 156) (column 2)))
+				(close
+					(token (string ")") (offset 3933) (line 156) (column 18)))
+				(elems (
+					(identifier (id 911)
+						(token
+							(token (string "require_results") (offset 3918) (line 156) (column 3))))))))))
+	(value-declaration (id 912) (is_mutable "true")
+		(names (
+			(identifier (id 913)
+				(token
+					(token (string "_power_of_two_table") (offset 4172) (line 167) (column 1))))))
+		(values (
+			(compound-literal (id 914)
+				(open
+					(token (string "{") (offset 4206) (line 167) (column 35)))
+				(close
+					(token (string "}") (offset 7368) (line 297) (column 1)))
+				(type
+					(array-type (id 915)
+						(token
+							(token (string "[") (offset 4195) (line 167) (column 24)))
+						(count
+							(basic-literal (id 916)
+								(token
+									(token (string "129") (offset 4196) (line 167) (column 25)))))
+						(elem
+							(identifier (id 917)
+								(token
+									(token (string "string") (offset 4200) (line 167) (column 29)))))))
+				(elems (
+					(basic-literal (id 918)
+						(token
+							(token (string "\"0.5\"") (offset 4209) (line 168) (column 2))))
+					(basic-literal (id 919)
+						(token
+							(token (string "\"1\"") (offset 4217) (line 169) (column 2))))
+					(basic-literal (id 920)
+						(token
+							(token (string "\"2\"") (offset 4223) (line 170) (column 2))))
+					(basic-literal (id 921)
+						(token
+							(token (string "\"4\"") (offset 4229) (line 171) (column 2))))
+					(basic-literal (id 922)
+						(token
+							(token (string "\"8\"") (offset 4235) (line 172) (column 2))))
+					(basic-literal (id 923)
+						(token
+							(token (string "\"16\"") (offset 4241) (line 173) (column 2))))
+					(basic-literal (id 924)
+						(token
+							(token (string "\"32\"") (offset 4248) (line 174) (column 2))))
+					(basic-literal (id 925)
+						(token
+							(token (string "\"64\"") (offset 4255) (line 175) (column 2))))
+					(basic-literal (id 926)
+						(token
+							(token (string "\"128\"") (offset 4262) (line 176) (column 2))))
+					(basic-literal (id 927)
+						(token
+							(token (string "\"256\"") (offset 4270) (line 177) (column 2))))
+					(basic-literal (id 928)
+						(token
+							(token (string "\"512\"") (offset 4278) (line 178) (column 2))))
+					(basic-literal (id 929)
+						(token
+							(token (string "\"1024\"") (offset 4286) (line 179) (column 2))))
+					(basic-literal (id 930)
+						(token
+							(token (string "\"2048\"") (offset 4295) (line 180) (column 2))))
+					(basic-literal (id 931)
+						(token
+							(token (string "\"4096\"") (offset 4304) (line 181) (column 2))))
+					(basic-literal (id 932)
+						(token
+							(token (string "\"8192\"") (offset 4313) (line 182) (column 2))))
+					(basic-literal (id 933)
+						(token
+							(token (string "\"16384\"") (offset 4322) (line 183) (column 2))))
+					(basic-literal (id 934)
+						(token
+							(token (string "\"32768\"") (offset 4332) (line 184) (column 2))))
+					(basic-literal (id 935)
+						(token
+							(token (string "\"65536\"") (offset 4342) (line 185) (column 2))))
+					(basic-literal (id 936)
+						(token
+							(token (string "\"131072\"") (offset 4352) (line 186) (column 2))))
+					(basic-literal (id 937)
+						(token
+							(token (string "\"262144\"") (offset 4363) (line 187) (column 2))))
+					(basic-literal (id 938)
+						(token
+							(token (string "\"524288\"") (offset 4374) (line 188) (column 2))))
+					(basic-literal (id 939)
+						(token
+							(token (string "\"1048576\"") (offset 4385) (line 189) (column 2))))
+					(basic-literal (id 940)
+						(token
+							(token (string "\"2097152\"") (offset 4397) (line 190) (column 2))))
+					(basic-literal (id 941)
+						(token
+							(token (string "\"4194304\"") (offset 4409) (line 191) (column 2))))
+					(basic-literal (id 942)
+						(token
+							(token (string "\"8388608\"") (offset 4421) (line 192) (column 2))))
+					(basic-literal (id 943)
+						(token
+							(token (string "\"16777216\"") (offset 4433) (line 193) (column 2))))
+					(basic-literal (id 944)
+						(token
+							(token (string "\"33554432\"") (offset 4446) (line 194) (column 2))))
+					(basic-literal (id 945)
+						(token
+							(token (string "\"67108864\"") (offset 4459) (line 195) (column 2))))
+					(basic-literal (id 946)
+						(token
+							(token (string "\"134217728\"") (offset 4472) (line 196) (column 2))))
+					(basic-literal (id 947)
+						(token
+							(token (string "\"268435456\"") (offset 4486) (line 197) (column 2))))
+					(basic-literal (id 948)
+						(token
+							(token (string "\"536870912\"") (offset 4500) (line 198) (column 2))))
+					(basic-literal (id 949)
+						(token
+							(token (string "\"1073741824\"") (offset 4514) (line 199) (column 2))))
+					(basic-literal (id 950)
+						(token
+							(token (string "\"2147483648\"") (offset 4529) (line 200) (column 2))))
+					(basic-literal (id 951)
+						(token
+							(token (string "\"4294967296\"") (offset 4544) (line 201) (column 2))))
+					(basic-literal (id 952)
+						(token
+							(token (string "\"8589934592\"") (offset 4559) (line 202) (column 2))))
+					(basic-literal (id 953)
+						(token
+							(token (string "\"17179869184\"") (offset 4574) (line 203) (column 2))))
+					(basic-literal (id 954)
+						(token
+							(token (string "\"34359738368\"") (offset 4590) (line 204) (column 2))))
+					(basic-literal (id 955)
+						(token
+							(token (string "\"68719476736\"") (offset 4606) (line 205) (column 2))))
+					(basic-literal (id 956)
+						(token
+							(token (string "\"137438953472\"") (offset 4622) (line 206) (column 2))))
+					(basic-literal (id 957)
+						(token
+							(token (string "\"274877906944\"") (offset 4639) (line 207) (column 2))))
+					(basic-literal (id 958)
+						(token
+							(token (string "\"549755813888\"") (offset 4656) (line 208) (column 2))))
+					(basic-literal (id 959)
+						(token
+							(token (string "\"1099511627776\"") (offset 4673) (line 209) (column 2))))
+					(basic-literal (id 960)
+						(token
+							(token (string "\"2199023255552\"") (offset 4691) (line 210) (column 2))))
+					(basic-literal (id 961)
+						(token
+							(token (string "\"4398046511104\"") (offset 4709) (line 211) (column 2))))
+					(basic-literal (id 962)
+						(token
+							(token (string "\"8796093022208\"") (offset 4727) (line 212) (column 2))))
+					(basic-literal (id 963)
+						(token
+							(token (string "\"17592186044416\"") (offset 4745) (line 213) (column 2))))
+					(basic-literal (id 964)
+						(token
+							(token (string "\"35184372088832\"") (offset 4764) (line 214) (column 2))))
+					(basic-literal (id 965)
+						(token
+							(token (string "\"70368744177664\"") (offset 4783) (line 215) (column 2))))
+					(basic-literal (id 966)
+						(token
+							(token (string "\"140737488355328\"") (offset 4802) (line 216) (column 2))))
+					(basic-literal (id 967)
+						(token
+							(token (string "\"281474976710656\"") (offset 4822) (line 217) (column 2))))
+					(basic-literal (id 968)
+						(token
+							(token (string "\"562949953421312\"") (offset 4842) (line 218) (column 2))))
+					(basic-literal (id 969)
+						(token
+							(token (string "\"1125899906842624\"") (offset 4862) (line 219) (column 2))))
+					(basic-literal (id 970)
+						(token
+							(token (string "\"2251799813685248\"") (offset 4883) (line 220) (column 2))))
+					(basic-literal (id 971)
+						(token
+							(token (string "\"4503599627370496\"") (offset 4904) (line 221) (column 2))))
+					(basic-literal (id 972)
+						(token
+							(token (string "\"9007199254740992\"") (offset 4925) (line 222) (column 2))))
+					(basic-literal (id 973)
+						(token
+							(token (string "\"18014398509481984\"") (offset 4946) (line 223) (column 2))))
+					(basic-literal (id 974)
+						(token
+							(token (string "\"36028797018963968\"") (offset 4968) (line 224) (column 2))))
+					(basic-literal (id 975)
+						(token
+							(token (string "\"72057594037927936\"") (offset 4990) (line 225) (column 2))))
+					(basic-literal (id 976)
+						(token
+							(token (string "\"144115188075855872\"") (offset 5012) (line 226) (column 2))))
+					(basic-literal (id 977)
+						(token
+							(token (string "\"288230376151711744\"") (offset 5035) (line 227) (column 2))))
+					(basic-literal (id 978)
+						(token
+							(token (string "\"576460752303423488\"") (offset 5058) (line 228) (column 2))))
+					(basic-literal (id 979)
+						(token
+							(token (string "\"1152921504606846976\"") (offset 5081) (line 229) (column 2))))
+					(basic-literal (id 980)
+						(token
+							(token (string "\"2305843009213693952\"") (offset 5105) (line 230) (column 2))))
+					(basic-literal (id 981)
+						(token
+							(token (string "\"4611686018427387904\"") (offset 5129) (line 231) (column 2))))
+					(basic-literal (id 982)
+						(token
+							(token (string "\"9223372036854775808\"") (offset 5153) (line 232) (column 2))))
+					(basic-literal (id 983)
+						(token
+							(token (string "\"18446744073709551616\"") (offset 5177) (line 233) (column 2))))
+					(basic-literal (id 984)
+						(token
+							(token (string "\"36893488147419103232\"") (offset 5202) (line 234) (column 2))))
+					(basic-literal (id 985)
+						(token
+							(token (string "\"73786976294838206464\"") (offset 5227) (line 235) (column 2))))
+					(basic-literal (id 986)
+						(token
+							(token (string "\"147573952589676412928\"") (offset 5252) (line 236) (column 2))))
+					(basic-literal (id 987)
+						(token
+							(token (string "\"295147905179352825856\"") (offset 5278) (line 237) (column 2))))
+					(basic-literal (id 988)
+						(token
+							(token (string "\"590295810358705651712\"") (offset 5304) (line 238) (column 2))))
+					(basic-literal (id 989)
+						(token
+							(token (string "\"1180591620717411303424\"") (offset 5330) (line 239) (column 2))))
+					(basic-literal (id 990)
+						(token
+							(token (string "\"2361183241434822606848\"") (offset 5357) (line 240) (column 2))))
+					(basic-literal (id 991)
+						(token
+							(token (string "\"4722366482869645213696\"") (offset 5384) (line 241) (column 2))))
+					(basic-literal (id 992)
+						(token
+							(token (string "\"9444732965739290427392\"") (offset 5411) (line 242) (column 2))))
+					(basic-literal (id 993)
+						(token
+							(token (string "\"18889465931478580854784\"") (offset 5438) (line 243) (column 2))))
+					(basic-literal (id 994)
+						(token
+							(token (string "\"37778931862957161709568\"") (offset 5466) (line 244) (column 2))))
+					(basic-literal (id 995)
+						(token
+							(token (string "\"75557863725914323419136\"") (offset 5494) (line 245) (column 2))))
+					(basic-literal (id 996)
+						(token
+							(token (string "\"151115727451828646838272\"") (offset 5522) (line 246) (column 2))))
+					(basic-literal (id 997)
+						(token
+							(token (string "\"302231454903657293676544\"") (offset 5551) (line 247) (column 2))))
+					(basic-literal (id 998)
+						(token
+							(token (string "\"604462909807314587353088\"") (offset 5580) (line 248) (column 2))))
+					(basic-literal (id 999)
+						(token
+							(token (string "\"1208925819614629174706176\"") (offset 5609) (line 249) (column 2))))
+					(basic-literal (id 1000)
+						(token
+							(token (string "\"2417851639229258349412352\"") (offset 5639) (line 250) (column 2))))
+					(basic-literal (id 1001)
+						(token
+							(token (string "\"4835703278458516698824704\"") (offset 5669) (line 251) (column 2))))
+					(basic-literal (id 1002)
+						(token
+							(token (string "\"9671406556917033397649408\"") (offset 5699) (line 252) (column 2))))
+					(basic-literal (id 1003)
+						(token
+							(token (string "\"19342813113834066795298816\"") (offset 5729) (line 253) (column 2))))
+					(basic-literal (id 1004)
+						(token
+							(token (string "\"38685626227668133590597632\"") (offset 5760) (line 254) (column 2))))
+					(basic-literal (id 1005)
+						(token
+							(token (string "\"77371252455336267181195264\"") (offset 5791) (line 255) (column 2))))
+					(basic-literal (id 1006)
+						(token
+							(token (string "\"154742504910672534362390528\"") (offset 5822) (line 256) (column 2))))
+					(basic-literal (id 1007)
+						(token
+							(token (string "\"309485009821345068724781056\"") (offset 5854) (line 257) (column 2))))
+					(basic-literal (id 1008)
+						(token
+							(token (string "\"618970019642690137449562112\"") (offset 5886) (line 258) (column 2))))
+					(basic-literal (id 1009)
+						(token
+							(token (string "\"1237940039285380274899124224\"") (offset 5918) (line 259) (column 2))))
+					(basic-literal (id 1010)
+						(token
+							(token (string "\"2475880078570760549798248448\"") (offset 5951) (line 260) (column 2))))
+					(basic-literal (id 1011)
+						(token
+							(token (string "\"4951760157141521099596496896\"") (offset 5984) (line 261) (column 2))))
+					(basic-literal (id 1012)
+						(token
+							(token (string "\"9903520314283042199192993792\"") (offset 6017) (line 262) (column 2))))
+					(basic-literal (id 1013)
+						(token
+							(token (string "\"19807040628566084398385987584\"") (offset 6050) (line 263) (column 2))))
+					(basic-literal (id 1014)
+						(token
+							(token (string "\"39614081257132168796771975168\"") (offset 6084) (line 264) (column 2))))
+					(basic-literal (id 1015)
+						(token
+							(token (string "\"79228162514264337593543950336\"") (offset 6118) (line 265) (column 2))))
+					(basic-literal (id 1016)
+						(token
+							(token (string "\"158456325028528675187087900672\"") (offset 6152) (line 266) (column 2))))
+					(basic-literal (id 1017)
+						(token
+							(token (string "\"316912650057057350374175801344\"") (offset 6187) (line 267) (column 2))))
+					(basic-literal (id 1018)
+						(token
+							(token (string "\"633825300114114700748351602688\"") (offset 6222) (line 268) (column 2))))
+					(basic-literal (id 1019)
+						(token
+							(token (string "\"1267650600228229401496703205376\"") (offset 6257) (line 269) (column 2))))
+					(basic-literal (id 1020)
+						(token
+							(token (string "\"2535301200456458802993406410752\"") (offset 6293) (line 270) (column 2))))
+					(basic-literal (id 1021)
+						(token
+							(token (string "\"5070602400912917605986812821504\"") (offset 6329) (line 271) (column 2))))
+					(basic-literal (id 1022)
+						(token
+							(token (string "\"10141204801825835211973625643008\"") (offset 6365) (line 272) (column 2))))
+					(basic-literal (id 1023)
+						(token
+							(token (string "\"20282409603651670423947251286016\"") (offset 6402) (line 273) (column 2))))
+					(basic-literal (id 1024)
+						(token
+							(token (string "\"40564819207303340847894502572032\"") (offset 6439) (line 274) (column 2))))
+					(basic-literal (id 1025)
+						(token
+							(token (string "\"81129638414606681695789005144064\"") (offset 6476) (line 275) (column 2))))
+					(basic-literal (id 1026)
+						(token
+							(token (string "\"162259276829213363391578010288128\"") (offset 6513) (line 276) (column 2))))
+					(basic-literal (id 1027)
+						(token
+							(token (string "\"324518553658426726783156020576256\"") (offset 6551) (line 277) (column 2))))
+					(basic-literal (id 1028)
+						(token
+							(token (string "\"649037107316853453566312041152512\"") (offset 6589) (line 278) (column 2))))
+					(basic-literal (id 1029)
+						(token
+							(token (string "\"1298074214633706907132624082305024\"") (offset 6627) (line 279) (column 2))))
+					(basic-literal (id 1030)
+						(token
+							(token (string "\"2596148429267413814265248164610048\"") (offset 6666) (line 280) (column 2))))
+					(basic-literal (id 1031)
+						(token
+							(token (string "\"5192296858534827628530496329220096\"") (offset 6705) (line 281) (column 2))))
+					(basic-literal (id 1032)
+						(token
+							(token (string "\"10384593717069655257060992658440192\"") (offset 6744) (line 282) (column 2))))
+					(basic-literal (id 1033)
+						(token
+							(token (string "\"20769187434139310514121985316880384\"") (offset 6784) (line 283) (column 2))))
+					(basic-literal (id 1034)
+						(token
+							(token (string "\"41538374868278621028243970633760768\"") (offset 6824) (line 284) (column 2))))
+					(basic-literal (id 1035)
+						(token
+							(token (string "\"83076749736557242056487941267521536\"") (offset 6864) (line 285) (column 2))))
+					(basic-literal (id 1036)
+						(token
+							(token (string "\"166153499473114484112975882535043072\"") (offset 6904) (line 286) (column 2))))
+					(basic-literal (id 1037)
+						(token
+							(token (string "\"332306998946228968225951765070086144\"") (offset 6945) (line 287) (column 2))))
+					(basic-literal (id 1038)
+						(token
+							(token (string "\"664613997892457936451903530140172288\"") (offset 6986) (line 288) (column 2))))
+					(basic-literal (id 1039)
+						(token
+							(token (string "\"1329227995784915872903807060280344576\"") (offset 7027) (line 289) (column 2))))
+					(basic-literal (id 1040)
+						(token
+							(token (string "\"2658455991569831745807614120560689152\"") (offset 7069) (line 290) (column 2))))
+					(basic-literal (id 1041)
+						(token
+							(token (string "\"5316911983139663491615228241121378304\"") (offset 7111) (line 291) (column 2))))
+					(basic-literal (id 1042)
+						(token
+							(token (string "\"10633823966279326983230456482242756608\"") (offset 7153) (line 292) (column 2))))
+					(basic-literal (id 1043)
+						(token
+							(token (string "\"21267647932558653966460912964485513216\"") (offset 7196) (line 293) (column 2))))
+					(basic-literal (id 1044)
+						(token
+							(token (string "\"42535295865117307932921825928971026432\"") (offset 7239) (line 294) (column 2))))
+					(basic-literal (id 1045)
+						(token
+							(token (string "\"85070591730234615865843651857942052864\"") (offset 7282) (line 295) (column 2))))
+					(basic-literal (id 1046)
+						(token
+							(token (string "\"170141183460469231731687303715884105728\"") (offset 7325) (line 296) (column 2)))))))))
+		(attributes (
+			(attribute (id 1047)
+				(token
+					(token (string "@") (offset 4153) (line 166) (column 1)))
+				(open
+					(token (string "(") (offset 4154) (line 166) (column 2)))
+				(close
+					(token (string ")") (offset 4170) (line 166) (column 18)))
+				(elems (
+					(identifier (id 1048)
+						(token
+							(token (string "rodata") (offset 4155) (line 166) (column 3))))
+					(identifier (id 1049)
+						(token
+							(token (string "private") (offset 4163) (line 166) (column 11))))))))))))

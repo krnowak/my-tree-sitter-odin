@@ -1,0 +1,38 @@
+====================
+Import with an attribute
+====================
+
+package foo
+
+@require import "core/fmt"
+@(require) import sl "core/slice"
+@(require, tag="tag") import "core/math"
+
+---
+
+(source_file
+  (package
+    (package_name))
+  (attribute_statement
+    (attributes
+      (attribute
+        (identifier)))
+    (import_declaration
+      (string)))
+  (attribute_statement
+    (attributes
+      (attribute
+        (identifier)))
+    (import_declaration
+      (package_name)
+      (string)))
+  (attribute_statement
+    (attributes
+      (attribute
+        (identifier))
+      (attribute
+        (identifier)
+        (value
+          (string))))
+  (import_declaration
+    (string))))

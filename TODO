@@ -1,0 +1,10 @@
+- Check how diverging result handles is handled being followed by the
+  "where" keyword.
+
+- Tokenize calling conventions.
+
+- Make most of the rules hidden. Make some of them as supertypes.
+
+- See if I can somehow use the "-ast-dump" in odin and the output of
+  "tree-sitter parse" to see if tree-sitter-generated ast matches
+  odin's.
