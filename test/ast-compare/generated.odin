@@ -3,6 +3,7 @@
 package ac
 
 TS_Element :: enum {
+    Nil_Element,
     Assign_Statement,
     Attribute,
     Attribute_Statement,
@@ -207,7 +208,8 @@ TS_Element :: enum {
 }
 
 make_ts_elements_map :: proc() -> map[string]TS_Element {
-    m := make(map[string]TS_Element, 2 * 201)
+    m := make(map[string]TS_Element, 2 * (201 + 1))
+    m[""] = .Nil_Element
     m["assign_statement"] = .Assign_Statement
     m["attribute"] = .Attribute
     m["attribute_statement"] = .Attribute_Statement
@@ -413,6 +415,7 @@ make_ts_elements_map :: proc() -> map[string]TS_Element {
 }
 
 OD_Element :: enum {
+    Nil_Element,
     Array_Type,
     Assign_Statement,
     Attribute,
@@ -496,7 +499,8 @@ OD_Element :: enum {
 }
 
 make_od_elements_map :: proc() -> map[string]OD_Element {
-    m := make(map[string]OD_Element, 2 * 80)
+    m := make(map[string]OD_Element, 2 * (80 + 1))
+    m[""] = .Nil_Element
     m["array-type"] = .Array_Type
     m["assign-statement"] = .Assign_Statement
     m["attribute"] = .Attribute

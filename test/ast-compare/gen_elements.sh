@@ -93,6 +93,7 @@ lines=(
     'package ac'
     ''
     'TS_Element :: enum {'
+    '    Nil_Element,'
 )
 
 printf '%s\n' "${lines[@]}" >"${generated_odin}"
@@ -104,7 +105,8 @@ lines=(
     '}'
     ''
     'make_ts_elements_map :: proc() -> map[string]TS_Element {'
-    '    m := make(map[string]TS_Element, 2 * '"${#symbols[@]}"')'
+    '    m := make(map[string]TS_Element, 2 * ('"${#symbols[@]}"' + 1))'
+    '    m[""] = .Nil_Element'
 )
 declare -i i
 for ((i = 0; i < ${#enum_symbols[@]}; i++)); do
@@ -150,6 +152,7 @@ mapfile -t odin_enum_symbols < <(printf '%s\n' "${odin_symbols[@]}" | sed -e 's/
 lines=(
     ''
     'OD_Element :: enum {'
+    '    Nil_Element,'
 )
 printf '%s\n' "${lines[@]}" >>"${generated_odin}"
 printf '    %s,\n' "${odin_enum_symbols[@]}" >>"${generated_odin}"
@@ -157,7 +160,8 @@ lines=(
     '}'
     ''
     'make_od_elements_map :: proc() -> map[string]OD_Element {'
-    '    m := make(map[string]OD_Element, 2 * '"${#odin_symbols[@]}"')'
+    '    m := make(map[string]OD_Element, 2 * ('"${#odin_symbols[@]}"' + 1))'
+    '    m[""] = .Nil_Element'
 )
 for ((i = 0; i < ${#odin_enum_symbols[@]}; i++)); do
     s=${odin_symbols[i]}

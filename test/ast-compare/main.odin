@@ -611,6 +611,48 @@ od_expect_close :: proc(state : ^State, element : OD_Element) {
 
 state_loop :: proc(state : ^State) {
     for {
+        switch state.ts_inner_scope.element {
+        case .Nil_Element:
+            switch state.ts_inner_scope.element_state {
+            case 0:
+                state.ts_inner_scope.element_state = 1
+                ts_expect(state, .Source_File)
+            case 1:
+                ts_scope_item := ts_next_scope_item(state)
+                if ts_scope_item.type != .Done {
+                    fail(state, "there should not be more items after source-file, got %v", ts_scope_item.type)
+                }
+                od_tok, _ := sexpat_next_token(&state.od)
+                if od_tok.type != .EOF {
+                    fail(state, "there is more data in Odin dumper's output")
+                }
+                return
+            }
+        case .Source_File:
+            od_expect_open(state, .Source_File, 1)
+            od_expect_open_sub(state, "version")
+            version := od_expect_int(state)
+            if version != 1 {
+                fail(state, "unsupported odin dumper's syntax tree version: %d", version)
+            }
+            od_expect_close_sub(state, "version")
+            od_expect_array_begin(state)
+            ts_scope_item := ts_next_scope_item(state)
+            switch ts_scope_item.type {
+            case .Done:
+                od_tok, _ := sexpat_next_token(&state.od)
+                if od_tok.type != .EOF {
+                    fail(state, "there is more data in Odin dumper's output")
+                }
+                return
+            case .Open_Scope:
+                push_ts_scope(state, ts_scope_item.nesting)
+            case .Close_Scope:
+                pop_ts_scope(state)
+
+        }
+    }
+    for {
         ts_scope_item := ts_next_scope_item(state)
         switch ts_scope_item.type {
         case .Done:
@@ -642,7 +684,6 @@ state_loop :: proc(state : ^State) {
                 od_expect_open(state, .Package_Declaration)
                 skip_od_id(state)
                 od_expect_token(state, "token")
-                // expect an open scope followed by given AST
                 ts_expect(state, .Package_Name)
                 od_expect_token(state, "name")
                 od_skip_docs(state, "docs")
