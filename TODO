@@ -7,9 +7,7 @@
   "tree-sitter parse" to see if tree-sitter-generated ast matches
   odin's.
 
-- Multiline strings.
-
-- Currently strings are multiple tokens, we probably should split it
+- Currently strings are single tokens, we probably should split it
   into a bunch of tokens (open, contents intermixed with escape
   sequences, close).
 
