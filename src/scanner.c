@@ -17,7 +17,7 @@
 #endif
 
 //
-// krnowak: stuff stolen from gb.h in odin project
+// NOTE(krnowak): stuff stolen from gb.h in odin project
 //
 
 #ifndef GB_STATIC_ASSERT
@@ -29,7 +29,7 @@
 #endif
 
 //
-// krnowak: tokens
+// NOTE(krnowak): tokens
 //
 
 typedef enum {
@@ -326,7 +326,7 @@ GB_STATIC_ASSERT(ODIN_FIRST_SEMICOLON_KEYWORD < ODIN_LAST_SEMICOLON_KEYWORD);
 GB_STATIC_ASSERT(ODIN_FIRST_SEMICOLON_OTHER_TERMINAL < ODIN_LAST_SEMICOLON_OTHER_TERMINAL);
 
 //
-// krnowak: character sets used with set_contains
+// NOTE(krnowak): character sets used with set_contains
 //
 
 // stolen from generated parser.c, matches [a-zA-Z_\p{Letter}]
@@ -546,7 +546,7 @@ static const TSCharacterRange odin_cc_set_letters[] = {
 };
 
 //
-// krnowak: hash map for keywords, attributes, directives
+// NOTE(krnowak): hash map for keywords, attributes, directives
 //
 // Generated APIs: struct OdinKwad, odin_kwad_lookup,
 // ODIN_KWAD_MAX_WORD_LENGTH.
@@ -563,7 +563,7 @@ GB_STATIC_ASSERT(ODIN_KWAD_LENGTH_POW_2 > ODIN_KWAD_MAX_WORD_LENGTH);
 // Check if power of 2 is not excessive.
 GB_STATIC_ASSERT((ODIN_KWAD_LENGTH_POW_2 >> 1) <= ODIN_KWAD_MAX_WORD_LENGTH);
 
-// krnowak: lexer helpers
+// NOTE(krnowak): lexer helpers
 
 static inline bool
 odin_eof(TSLexer *lexer) {
@@ -601,7 +601,7 @@ odin_skip(TSLexer *lexer) {
 #define LOG_LEXER(lexer, ...) lexer->log((lexer), __VA_ARGS__)
 
 //
-// krnowak: whitespace skipping
+// NOTE(krnowak): whitespace skipping
 //
 
 typedef enum {
@@ -652,7 +652,7 @@ odin_skip_whitespace(TSLexer *lexer, OdinSkipNewlines skip_newlines) {
   } while (0)
 
 //
-// krnowak: scanner
+// NOTE(krnowak): scanner
 //
 
 typedef struct {
@@ -925,8 +925,8 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
 
       char kwad[ODIN_KWAD_LENGTH_POW_2];
       uint32_t kwad_idx = 0;
-      // krnowak: Assigning i32 lookahead to char here is fine, we
-      // know that current lookahead is a kwad char, which means
+      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
+      // we know that current lookahead is a kwad char, which means
       // ascii.
       kwad[kwad_idx] = lexer->lookahead;
       kwad_idx++;
@@ -934,7 +934,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
       while (!odin_eof(lexer) && set_contains(odin_identifier_set_letters_digits, ODIN_IDENTIFIER_SET_LETTERS_DIGITS_LEN, lexer->lookahead)) {
         if (kwad_idx < ODIN_KWAD_MAX_WORD_LENGTH) {
           if (odin_is_kwad_char(lexer)) {
-            // krnowak: Assigning i32 lookahead to char here is fine,
+            // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
             // we know that current lookahead is a kwad char, which
             // means ascii.
             kwad[kwad_idx] = lexer->lookahead;
@@ -988,8 +988,8 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
     if (odin_is_kwad_char(lexer)) {
       char kwad[ODIN_KWAD_LENGTH_POW_2];
       uint32_t kwad_idx = 0;
-      // krnowak: Assigning i32 lookahead to char here is fine, we
-      // know that current lookahead is a kwad char, which means
+      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
+      // we know that current lookahead is a kwad char, which means
       // ascii.
       kwad[kwad_idx] = lexer->lookahead;
       kwad_idx++;
@@ -998,9 +998,9 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
         if (kwad_idx >= ODIN_KWAD_MAX_WORD_LENGTH) {
           return false;
         }
-        // krnowak: Assigning i32 lookahead to char here is fine, we
-        // know that current lookahead is a kwad char, which means
-        // ascii.
+        // NOTE(krnowak): Assigning i32 lookahead to char here is
+        // fine, we know that current lookahead is a kwad char, which
+        // means ascii.
         kwad[kwad_idx] = lexer->lookahead;
         kwad_idx++;
         odin_consume(lexer);
@@ -1030,9 +1030,9 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
     TSSymbol symbol = ODIN_INVALID;
     if ((lexer->lookahead >= '0') && (lexer->lookahead <= '9')) {
       symbol = ODIN_INTEGER;
-      // krnowak: Assigning i32 lookahead to char here is fine, we
-      // know that current lookahead is a char between 0 and 9, which
-      // means ascii.
+      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
+      // we know that current lookahead is a char between 0 and 9,
+      // which means ascii.
       char digit = lexer->lookahead;
       odin_consume(lexer);
       if (odin_eof(lexer)) {
@@ -1290,13 +1290,13 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
 
   case ODIN_CASE_STRING:
     if (!valid_symbols[ODIN_STRING]) {
-      // krnowak: When calling conventions are valid symbols, strings
-      // are then too. If string is not a valid symbol, then neither
-      // are the calling conventions.
+      // NOTE(krnowak): When calling conventions are valid symbols,
+      // strings are then too. If string is not a valid symbol, then
+      // neither are the calling conventions.
       return false;
     } else {
-      // krnowak: Assigning i32 lookahead to char here is fine, we
-      // know that current lookahead is either " or `, which means
+      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
+      // we know that current lookahead is either " or `, which means
       // ascii.
       char quote = lexer->lookahead;
       bool is_raw_string = (quote == '`');
@@ -1308,36 +1308,43 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
       if (!valid_symbols[ODIN_KWAD_CC_ANY_CC]) {
         kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
       }
+
+      typedef enum {
+        // met an opening quote it's a single
+        ODIN_STRING_FIRST_QUOTE_CONSUMED,
+        // "foo" or `bar`
+        ODIN_STRING_SINGLE_QUOTE,
+        // """foo""" or ```bar```
+        ODIN_STRING_TRIPLE_QUOTE,
+        ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING,
+        ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING,
+      } OdinStringCase;
+
+      OdinStringCase string_case = ODIN_STRING_FIRST_QUOTE_CONSUMED;
+
       odin_consume(lexer);
       for (;;) {
         ODIN_RETF_ON_EOF(lexer);
         c = lexer->lookahead;
-        switch (c) {
-        case '\n':
-          if (!allow_newline) {
-            return false;
-          }
-          kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
+        if (c == quote) {
           odin_consume(lexer);
-          break;
-        case '\\':
-          kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
-          odin_consume(lexer);
-          if (backslash_escapes) {
-            // krnowak: Make sure that there is one more char
-            // available to consume, and eat it, so we go past the
-            // possible escaped quote.
-            //
-            // TODO(krnowak): What if the escaped character is a
-            // newline?
-            ODIN_RETF_ON_EOF(lexer);
-            odin_consume(lexer);
-          }
-          break;
-        case '"':
-        case '`':
-          odin_consume(lexer);
-          if (c == quote) {
+          switch (string_case) {
+          case ODIN_STRING_FIRST_QUOTE_CONSUMED:
+            // NOTE(krnowak): at this point it's either an empty
+            // string ("" or ``) or multiline string opener (""" or
+            // ```).
+            if (odin_eof(lexer) || lexer->lookahead != quote) {
+              // an empty string it is
+              lexer->result_symbol = ODIN_STRING;
+              odin_mark_end(lexer);
+              return true;
+            }
+            // multiline string
+            string_case = ODIN_STRING_TRIPLE_QUOTE;
+            allow_newline = true;
+            break;
+          case ODIN_STRING_SINGLE_QUOTE:
+            // we closed the single quote string
             if (kwad_idx <= ODIN_KWAD_MAX_WORD_LENGTH) {
               kwad[kwad_idx] = '\0';
               LOG_LEXER(lexer, "checking if %s is a calling convention", kwad);
@@ -1354,22 +1361,69 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
             lexer->result_symbol = ODIN_STRING;
             odin_mark_end(lexer);
             return true;
+          case ODIN_STRING_TRIPLE_QUOTE:
+            string_case = ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING;
+            break;
+          case ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING:
+            string_case = ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING;
+            break;
+          case ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING:
+            // TODO(krnowak): can you use triple quoted string as a
+            // calling convention?
+            lexer->result_symbol = ODIN_STRING;
+            odin_mark_end(lexer);
+            return true;
           }
-          break;
-        default:
-          if (odin_is_cc_char(lexer)) {
-            if (kwad_idx < ODIN_KWAD_MAX_WORD_LENGTH) {
-              // krnowak: Assigning i32 lookahead to char here is
-              // fine, we know that current lookahead is a cc char,
-              // which means ascii.
-              kwad[kwad_idx] = lexer->lookahead;
-              kwad_idx++;
+        } else {
+          switch (string_case) {
+          case ODIN_STRING_FIRST_QUOTE_CONSUMED:
+            string_case = ODIN_STRING_SINGLE_QUOTE;
+            break;
+          case ODIN_STRING_SINGLE_QUOTE:
+          case ODIN_STRING_TRIPLE_QUOTE:
+            break;
+          case ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING:
+          case ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING:
+            string_case = ODIN_STRING_TRIPLE_QUOTE;
+            break;
+          }
+          switch (c) {
+          case '\n':
+            if (!allow_newline) {
+              return false;
             }
-          } else {
             kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
+            odin_consume(lexer);
+            break;
+          case '\\':
+            kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
+            odin_consume(lexer);
+            if (backslash_escapes) {
+              // NOTE(krnowak): Make sure that there is one more char
+              // available to consume, and eat it, so we go past the
+              // possible escaped quote.
+              //
+              // TODO(krnowak): What if the escaped character is a
+              // newline?
+              ODIN_RETF_ON_EOF(lexer);
+              odin_consume(lexer);
+            }
+            break;
+          default:
+            if (odin_is_cc_char(lexer)) {
+              if (kwad_idx < ODIN_KWAD_MAX_WORD_LENGTH) {
+                // NOTE(krnowak): Assigning i32 lookahead to char here
+                // is fine, we know that current lookahead is a cc
+                // char, which means ascii.
+                kwad[kwad_idx] = lexer->lookahead;
+                kwad_idx++;
+              }
+            } else {
+              kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
+            }
+            odin_consume(lexer);
+            break;
           }
-          odin_consume(lexer);
-          break;
         }
       }
     }
@@ -1619,7 +1673,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
 }
 
 //
-// krnowak: tree-sitter entry points
+// NOTE(krnowak): tree-sitter entry points
 //
 
 void *
