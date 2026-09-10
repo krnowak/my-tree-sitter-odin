@@ -57,3 +57,6 @@ zig-out/
 /src/parser.c
 /src/grammar.json
 /src/node-types.json
+/src/tree_sitter/alloc.h
+/src/tree_sitter/array.h
+/src/tree_sitter/parser.h
