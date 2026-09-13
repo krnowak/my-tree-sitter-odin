@@ -12,7 +12,5 @@
 - parse_value does not call parse_literal_value on open brace token,
   see if we should change anything in the grammar.
 
-- See if we support where tokens in procedure groups.
-
 - Check if we allow for `-> (#simd[N]T)` style return types (commit
   ade003e12819849e6b167eeccfe44bca147ed0a5 in Odin).

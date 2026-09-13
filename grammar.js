@@ -2154,8 +2154,21 @@ module.exports = grammar({
     procedure_group : $ => seq(
       $._kw_proc,
       $._t_openbrace,
-      $._rhs_expression_list_trailing,
+      $._group_expression_list_trailing,
       $._t_closebrace,
+    ),
+
+    _group_expression_list_trailing : $ => repeatComma1Trailing($, $._group_expression),
+
+    _group_expression : $ => choice(
+      $.rhs_expression,
+      $.conditional_expression,
+    ),
+
+    conditional_expression : $ => seq(
+      $.rhs_expression,
+      $._kw_where,
+      $.rhs_expression,
     ),
 
     poly_type : $ => prec.right(seq(
