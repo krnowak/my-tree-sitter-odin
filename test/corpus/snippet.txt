@@ -3,7 +3,13 @@ Test snippet
 ====================
 package p
 
-foo := """
+foo := ```
+\a\b\012\xff\uabcd\U01234567
 ajwaj
-"""
+```
+
+bar := "\aa\ba\012a\xffa\uabcda\U01234567ajwaj"
+
+baz := 'a'
+
 ---

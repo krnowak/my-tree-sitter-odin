@@ -46,7 +46,14 @@ typedef enum {
   ODIN_SYMBOL(SL_COMMENT), \
   ODIN_SYMBOL(IMPLICIT_SEMICOLON), \
   ODIN_SYMBOL(WIDE_IMPLICIT_SEMICOLON), \
-  ODIN_SYMBOL(IDENTIFIER)
+  ODIN_SYMBOL(IDENTIFIER), \
+  ODIN_SYMBOL(SINGLE_DOUBLE_QUOTE), \
+  ODIN_SYMBOL(TRIPLE_DOUBLE_QUOTE), \
+  ODIN_SYMBOL(SINGLE_BACKTICK), \
+  ODIN_SYMBOL(TRIPLE_BACKTICK), \
+  ODIN_SYMBOL(RUNE_QUOTE), \
+  ODIN_SYMBOL(STRING_CONTENT), \
+  ODIN_SYMBOL(ESCAPE_SEQUENCE)
 
 // keywords that may add a semicolon
 #define ODIN_SEMICOLON_KW_SYMBOLS \
@@ -210,8 +217,6 @@ typedef enum {
   ODIN_SYMBOL(INTEGER), \
   ODIN_SYMBOL(FLOAT), \
   ODIN_SYMBOL(IMAG), \
-  ODIN_SYMBOL(RUNE), \
-  ODIN_SYMBOL(STRING), \
   ODIN_SYMBOL(QUESTION), \
   ODIN_SYMBOL(POINTER), \
   ODIN_SYMBOL(CLOSEPAREN), \
@@ -314,6 +319,8 @@ enum {
   ODIN_LAST_SEMICOLON_KEYWORD = ODIN_KWAD_TYPEID,
   ODIN_FIRST_SEMICOLON_OTHER_TERMINAL = ODIN_INTEGER,
   ODIN_LAST_SEMICOLON_OTHER_TERMINAL = ODIN_UNINIT,
+  ODIN_FIRST_QUOTE_TERMINAL = ODIN_SINGLE_DOUBLE_QUOTE,
+  ODIN_LAST_QUOTE_TERMINAL = ODIN_RUNE_QUOTE,
 };
 
 static const char *odin_symbol_strings[] = {
@@ -545,6 +552,18 @@ static const TSCharacterRange odin_cc_set_letters[] = {
   {'/', '/'}, {'0', '9'}, {'a', 'z'},
 };
 
+// matches [0-7] (for escape sequences)
+#define ODIN_OCTAL_ES_LEN 1
+static const TSCharacterRange odin_octal_es[] = {
+  {'0', '7'},
+};
+
+// matches [0-9A-Fa-f] (for escape sequences)
+#define ODIN_HEX_ES_LEN 3
+static const TSCharacterRange odin_hex_es[] = {
+  {'0', '9'}, {'A', 'F'}, {'a', 'f'},
+};
+
 //
 // NOTE(krnowak): hash map for keywords, attributes, directives
 //
@@ -655,9 +674,30 @@ odin_skip_whitespace(TSLexer *lexer, OdinSkipNewlines skip_newlines) {
 // NOTE(krnowak): scanner
 //
 
+#define ODIN_STRING_MODES \
+  ODIN_MODE(None), \
+  ODIN_MODE(SingleQuote), \
+  ODIN_MODE(TripleQuote), \
+  ODIN_MODE(SingleBacktick), \
+  ODIN_MODE(TripleBacktick), \
+  ODIN_MODE(Rune)
+
+typedef enum {
+#define ODIN_MODE(s) OdinString_ ## s
+  ODIN_STRING_MODES,
+#undef ODIN_MODE
+} OdinStringMode;
+
+static const char *odin_string_mode_strings[] = {
+#define ODIN_MODE(e) #e
+  ODIN_STRING_MODES
+#undef ODIN_MODE
+};
+
 typedef struct {
   bool prev_token_may_add_semicolon;
   bool added_semicolon_at_eof;
+  OdinStringMode string_mode;
 } OdinScanner;
 
 static inline OdinScanner *
@@ -680,7 +720,8 @@ GB_STATIC_ASSERT(ODIN_SERIALIZATION_BUFFER_SIZE <= TREE_SITTER_SERIALIZATION_BUF
 static inline unsigned
 odin_scanner_serialize(OdinScanner *scanner, char *buffer) {
   buffer[0] = BOOL_TO_BIT(scanner->prev_token_may_add_semicolon, 0) |
-              BOOL_TO_BIT(scanner->added_semicolon_at_eof, 1);
+              BOOL_TO_BIT(scanner->added_semicolon_at_eof, 1) |
+              VALUE_TO_BIT_FIELD_8(scanner->string_mode, 3, 2);
   return ODIN_SERIALIZATION_BUFFER_SIZE;
 }
 
@@ -695,9 +736,11 @@ odin_scanner_deserialize(OdinScanner *scanner, const char *buffer, unsigned leng
   if (length >= ODIN_SERIALIZATION_BUFFER_SIZE) {
     scanner->prev_token_may_add_semicolon = BIT_TO_BOOL(buffer[0], 0);
     scanner->added_semicolon_at_eof = BIT_TO_BOOL(buffer[0], 1);
+    scanner->string_mode = BIT_FIELD_8_TO_VALUE(OdinStringMode, buffer[0], 3, 2);
   } else {
     scanner->prev_token_may_add_semicolon = false;
     scanner->added_semicolon_at_eof = false;
+    scanner->string_mode = OdinString_None;
   }
 }
 
@@ -747,6 +790,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
   LOG_LEXER(lexer, "scanner state:");
   LOG_LEXER(lexer, "  prev_token_may_add_semicolon: %d", scanner->prev_token_may_add_semicolon ? 1 : 0);
   LOG_LEXER(lexer, "  added_semicolon_at_eof: %d", scanner->added_semicolon_at_eof);
+  LOG_LEXER(lexer, "  string mode: %s", odin_string_mode_strings[scanner->string_mode]);
   LOG_LEXER(lexer, "valid symbols:");
   if (valid_symbols[ODIN_INVALID]) {
     LOG_LEXER(lexer, "  all of them (error recovery)");
@@ -759,6 +803,180 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
     }
   }
 
+  {
+    bool in_string = true;
+    bool backslash_is_ordinary;
+    bool newlines_allowed;
+    bool triple;
+    char quote;
+    TSSymbol quote_symbol;
+    switch (scanner->string_mode) {
+    default:
+      LOG_LEXER(lexer, "invalid string mode %d", (int)scanner->string_mode);
+      return false;
+    case OdinString_None:
+      in_string = false;
+      break;
+    case OdinString_SingleQuote:
+      backslash_is_ordinary = false;
+      newlines_allowed = false;
+      triple = false;
+      quote = '"';
+      quote_symbol = ODIN_SINGLE_DOUBLE_QUOTE;
+      break;
+    case OdinString_TripleQuote:
+      backslash_is_ordinary = false;
+      newlines_allowed = true;
+      triple = true;
+      quote = '"';
+      quote_symbol = ODIN_TRIPLE_DOUBLE_QUOTE;
+      break;
+    case OdinString_SingleBacktick:
+      backslash_is_ordinary = true;
+      newlines_allowed = true;
+      triple = false;
+      quote = '`';
+      quote_symbol = ODIN_SINGLE_BACKTICK;
+      break;
+    case OdinString_TripleBacktick:
+      backslash_is_ordinary = true;
+      newlines_allowed = true;
+      triple = true;
+      quote = '`';
+      quote_symbol = ODIN_TRIPLE_BACKTICK;
+      break;
+    case OdinString_Rune:
+      backslash_is_ordinary = false;
+      newlines_allowed = false;
+      triple = false;
+      quote = '\'';
+      quote_symbol = ODIN_RUNE_QUOTE;
+      break;
+    }
+    if (in_string) {
+      if (!valid_symbols[ODIN_ESCAPE_SEQUENCE] || !valid_symbols[ODIN_STRING_CONTENT] || !valid_symbols[quote_symbol]) {
+        LOG_LEXER(lexer, "string handling is messed up");
+        return false;
+      }
+      ODIN_RETF_ON_EOF(lexer);
+      if (!backslash_is_ordinary && (lexer->lookahead == '\\')) {
+        odin_consume(lexer);
+        ODIN_RETF_ON_EOF(lexer);
+        const TSCharacterRange *ranges = NULL;
+        uint32_t ranges_len = 0;
+        int digit_count = 0;
+        switch (lexer->lookahead) {
+        case 'a': case 'b': case 'e': case 'f': case 'n': case 'r':
+        case 't': case 'v': case '\\': case '\'': case '\"':
+          odin_consume(lexer);
+          lexer->result_symbol = ODIN_ESCAPE_SEQUENCE;
+          return true;
+        case '0': case '1': case '2': case '3':
+        case '4': case '5': case '6': case '7':
+          ranges = odin_octal_es;
+          ranges_len = ODIN_OCTAL_ES_LEN;
+          digit_count = 3;
+          break;
+        case 'x':
+          odin_consume(lexer);
+          ranges = odin_hex_es;
+          ranges_len = ODIN_HEX_ES_LEN;
+          digit_count = 2;
+          break;
+        case 'u':
+          odin_consume(lexer);
+          ranges = odin_hex_es;
+          ranges_len = ODIN_HEX_ES_LEN;
+          digit_count = 4;
+          break;
+        case 'U':
+          odin_consume(lexer);
+          ranges = odin_hex_es;
+          ranges_len = ODIN_HEX_ES_LEN;
+          digit_count = 8;
+          break;
+        }
+        for (; digit_count > 0; digit_count--) {
+          ODIN_RETF_ON_EOF(lexer);
+          if (!set_contains(ranges, ranges_len, lexer->lookahead)) {
+            return false;
+          }
+          odin_consume(lexer);
+        }
+        lexer->result_symbol = ODIN_ESCAPE_SEQUENCE;
+        return true;
+      } else {
+        bool has_content = false;
+        for (;;) {
+          if (odin_eof(lexer)) {
+            if (has_content) {
+              lexer->result_symbol = ODIN_STRING_CONTENT;
+              odin_mark_end(lexer);
+              return true;
+            }
+            return false;
+          }
+          if (lexer->lookahead == quote) {
+            if (!triple) {
+              if (has_content) {
+                lexer->result_symbol = ODIN_STRING_CONTENT;
+              } else {
+                odin_consume(lexer);
+                lexer->result_symbol = quote_symbol;
+              }
+              odin_mark_end(lexer);
+              return true;
+            }
+            odin_mark_end(lexer); // save position for string content
+            odin_consume(lexer);
+            if (odin_eof(lexer)) {
+              odin_mark_end(lexer);
+              lexer->result_symbol = ODIN_STRING_CONTENT;
+              return true;
+            }
+            if (lexer->lookahead == quote) {
+              odin_consume(lexer);
+              if (odin_eof(lexer)) {
+                odin_mark_end(lexer);
+                lexer->result_symbol = ODIN_STRING_CONTENT;
+                return true;
+              }
+              if (lexer->lookahead == quote) {
+                if (has_content) {
+                  lexer->result_symbol = ODIN_STRING_CONTENT;
+                  return true;
+                }
+                odin_consume(lexer);
+                odin_mark_end(lexer);
+                lexer->result_symbol = quote_symbol;
+                return true;
+              }
+            }
+          }
+          has_content = true;
+          switch (lexer->lookahead) {
+          case '\n':
+            if (!newlines_allowed) {
+              return false;
+            }
+            odin_consume(lexer);
+            break;
+          case '\\':
+            if (!backslash_is_ordinary) {
+              odin_mark_end(lexer);
+              lexer->result_symbol = ODIN_STRING_CONTENT;
+              return true;
+            }
+            odin_consume(lexer);
+            break;
+          default:
+            odin_consume(lexer);
+            break;
+          }
+        }
+      }
+    }
+  }
   {
     ODIN_SKIP_WHITESPACE_OR_RETF(lexer, ODIN_NO_SKIP_NEWLINES);
     if (odin_eof(lexer)) {
@@ -1169,8 +1387,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
 
   typedef enum {
     ODIN_CASE_INVALID,
-    ODIN_CASE_STRING,
-    ODIN_CASE_RUNE,
+    ODIN_CASE_STRING_QUOTE, // uses initial_lookahead, symbol, symbol2
     ODIN_CASE_PERIODS,
     ODIN_CASE_DASH,
     ODIN_CASE_SLASH,
@@ -1190,15 +1407,6 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
   TSSymbol eq_symbol2 = ODIN_INVALID;
 
   switch (lexer->lookahead) {
-  case '`':
-  case '"':
-    odin_case = ODIN_CASE_STRING;
-    break;
-
-  case '\'':
-    odin_case = ODIN_CASE_RUNE;
-    break;
-
   case '.':
     odin_case = ODIN_CASE_PERIODS;
     break;
@@ -1245,6 +1453,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
   ODIN_CASE_STANDALONE_TOKEN_CASE(':', ODIN_COLON);
   ODIN_CASE_STANDALONE_TOKEN_CASE(';', ODIN_SEMICOLON);
   ODIN_CASE_STANDALONE_TOKEN_CASE(',', ODIN_COMMA);
+  ODIN_CASE_STANDALONE_TOKEN_CASE('\'', ODIN_RUNE_QUOTE);
 #undef ODIN_CASE_STANDALONE_TOKEN_CASE
 
   // ODIN_EQ(=): ODIN_CMPEQ(==)
@@ -1281,6 +1490,16 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
   ODIN_CASE_OP_WITH_DUP_AND_EQ_CASE('<', ODIN_LT, ODIN_SHL, ODIN_LTEQ, ODIN_SHLEQ);
   ODIN_CASE_OP_WITH_DUP_AND_EQ_CASE('>', ODIN_GT, ODIN_SHR, ODIN_GTEQ, ODIN_SHREQ);
 #undef ODIN_CASE_OP_WITH_DUP_AND_EQ_CASE
+
+#define ODIN_CASE_STRING_QUOTE_CASE(c, sym, sym2) \
+  case c: \
+    odin_case = ODIN_CASE_STRING_QUOTE; \
+    initial_lookahead = c; \
+    symbol = sym; \
+    symbol2 = sym2; \
+    break
+  ODIN_CASE_STRING_QUOTE_CASE('"', ODIN_SINGLE_DOUBLE_QUOTE, ODIN_TRIPLE_DOUBLE_QUOTE);
+  ODIN_CASE_STRING_QUOTE_CASE('`', ODIN_SINGLE_BACKTICK, ODIN_TRIPLE_BACKTICK);
   }
 
   switch (odin_case) {
@@ -1288,179 +1507,21 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
     LOG_LEXER(lexer, "%c is not a valid character", lexer->lookahead);
     break;
 
-  case ODIN_CASE_STRING:
-    if (!valid_symbols[ODIN_STRING]) {
-      // NOTE(krnowak): When calling conventions are valid symbols,
-      // strings are then too. If string is not a valid symbol, then
-      // neither are the calling conventions.
-      return false;
-    } else {
-      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
-      // we know that current lookahead is either " or `, which means
-      // ascii.
-      char quote = lexer->lookahead;
-      bool is_raw_string = (quote == '`');
-      bool allow_newline = is_raw_string;
-      bool backslash_escapes = !is_raw_string;
-      int32_t c;
-      char kwad[ODIN_KWAD_LENGTH_POW_2];
-      uint32_t kwad_idx = 0;
-      if (!valid_symbols[ODIN_KWAD_CC_ANY_CC]) {
-        kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
-      }
-
-      typedef enum {
-        // met an opening quote it's a single
-        ODIN_STRING_FIRST_QUOTE_CONSUMED,
-        // "foo" or `bar`
-        ODIN_STRING_SINGLE_QUOTE,
-        // """foo""" or ```bar```
-        ODIN_STRING_TRIPLE_QUOTE,
-        ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING,
-        ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING,
-      } OdinStringCase;
-
-      OdinStringCase string_case = ODIN_STRING_FIRST_QUOTE_CONSUMED;
-
-      odin_consume(lexer);
-      for (;;) {
-        ODIN_RETF_ON_EOF(lexer);
-        c = lexer->lookahead;
-        if (c == quote) {
-          odin_consume(lexer);
-          switch (string_case) {
-          case ODIN_STRING_FIRST_QUOTE_CONSUMED:
-            // NOTE(krnowak): at this point it's either an empty
-            // string ("" or ``) or multiline string opener (""" or
-            // ```).
-            if (odin_eof(lexer) || lexer->lookahead != quote) {
-              // an empty string it is
-              lexer->result_symbol = ODIN_STRING;
-              odin_mark_end(lexer);
-              return true;
-            }
-            // multiline string
-            string_case = ODIN_STRING_TRIPLE_QUOTE;
-            allow_newline = true;
-            break;
-          case ODIN_STRING_SINGLE_QUOTE:
-            // we closed the single quote string
-            if (kwad_idx <= ODIN_KWAD_MAX_WORD_LENGTH) {
-              kwad[kwad_idx] = '\0';
-              LOG_LEXER(lexer, "checking if %s is a calling convention", kwad);
-              const OdinKwad *kwad_entry = odin_kwad_lookup(kwad, kwad_idx);
-              if ((kwad_entry != NULL) &&
-                  (kwad_entry->type == OdinTokenCallingConvention) &&
-                  valid_symbols[kwad_entry->valid_symbols_idx]) {
-                LOG_LEXER(lexer, "%s is a calling convention", kwad);
-                lexer->result_symbol = kwad_entry->valid_symbols_idx;
-                odin_mark_end(lexer);
-                return true;
-              }
-            }
-            lexer->result_symbol = ODIN_STRING;
-            odin_mark_end(lexer);
-            return true;
-          case ODIN_STRING_TRIPLE_QUOTE:
-            string_case = ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING;
-            break;
-          case ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING:
-            string_case = ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING;
-            break;
-          case ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING:
-            // TODO(krnowak): can you use triple quoted string as a
-            // calling convention?
-            lexer->result_symbol = ODIN_STRING;
-            odin_mark_end(lexer);
-            return true;
-          }
-        } else {
-          switch (string_case) {
-          case ODIN_STRING_FIRST_QUOTE_CONSUMED:
-            string_case = ODIN_STRING_SINGLE_QUOTE;
-            break;
-          case ODIN_STRING_SINGLE_QUOTE:
-          case ODIN_STRING_TRIPLE_QUOTE:
-            break;
-          case ODIN_STRING_TRIPLE_QUOTE_FIRST_CLOSING:
-          case ODIN_STRING_TRIPLE_QUOTE_SECOND_CLOSING:
-            string_case = ODIN_STRING_TRIPLE_QUOTE;
-            break;
-          }
-          switch (c) {
-          case '\n':
-            if (!allow_newline) {
-              return false;
-            }
-            kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
-            odin_consume(lexer);
-            break;
-          case '\\':
-            kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
-            odin_consume(lexer);
-            if (backslash_escapes) {
-              // NOTE(krnowak): Make sure that there is one more char
-              // available to consume, and eat it, so we go past the
-              // possible escaped quote.
-              //
-              // TODO(krnowak): What if the escaped character is a
-              // newline?
-              ODIN_RETF_ON_EOF(lexer);
-              odin_consume(lexer);
-            }
-            break;
-          default:
-            if (odin_is_cc_char(lexer)) {
-              if (kwad_idx < ODIN_KWAD_MAX_WORD_LENGTH) {
-                // NOTE(krnowak): Assigning i32 lookahead to char here
-                // is fine, we know that current lookahead is a cc
-                // char, which means ascii.
-                kwad[kwad_idx] = lexer->lookahead;
-                kwad_idx++;
-              }
-            } else {
-              kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
-            }
-            odin_consume(lexer);
-            break;
-          }
-        }
-      }
+  case ODIN_CASE_STRING_QUOTE:
+    odin_consume(lexer);
+    odin_mark_end(lexer);
+    if (odin_eof(lexer) || (lexer->lookahead != initial_lookahead)) {
+      ODIN_RET_SYMBOL(lexer, symbol);
     }
-    break;
-
-  case ODIN_CASE_RUNE:
-    if (!valid_symbols[ODIN_RUNE]) {
-      return false;
-    } else {
-      odin_consume(lexer);
-      for (;;) {
-        ODIN_RETF_ON_EOF(lexer);
-        switch (lexer->lookahead) {
-        case '\n':
-          return false;
-
-        case '\\':
-          odin_consume(lexer);
-          // Make sure that there is one more char available to
-          // consume and eat it, so we go past the possible escaped
-          // quote.
-          ODIN_RETF_ON_EOF(lexer);
-          odin_consume(lexer);
-          break;
-
-        case '\'':
-          odin_consume(lexer);
-          lexer->result_symbol = ODIN_RUNE;
-          odin_mark_end(lexer);
-          return true;
-
-        default:
-          odin_consume(lexer);
-          break;
-        }
-      }
+    odin_consume(lexer);
+    if (odin_eof(lexer) || (lexer->lookahead != initial_lookahead)) {
+      // the consumed rune will be eventually parsed as a closing of
+      // an empty string
+      ODIN_RET_SYMBOL(lexer, symbol);
     }
+    odin_consume(lexer);
+    odin_mark_end(lexer);
+    ODIN_RET_SYMBOL(lexer, symbol2);
     break;
 
   // ODIN_PERIOD(.): ODIN_ELLIPSIS(..), ODIN_RANGEHALF(..<), ODIN_RANGEFULL(..=)
@@ -1709,6 +1770,22 @@ tree_sitter_odin_external_scanner_scan(void *payload, TSLexer *lexer, const bool
     } else if ((lexer->result_symbol == ODIN_SL_COMMENT) || (lexer->result_symbol == ODIN_ML_COMMENT)) {
       // preserve semicolon status
       LOG_LEXER(lexer, "preserve 'may add semicolon' flag at %d", scanner->prev_token_may_add_semicolon ? 1 : 0);
+    } else if ((lexer->result_symbol >= ODIN_FIRST_QUOTE_TERMINAL) && (lexer->result_symbol <= ODIN_LAST_QUOTE_TERMINAL)) {
+      if (scanner->string_mode == OdinString_None) {
+        scanner->prev_token_may_add_semicolon = false;
+        switch (lexer->result_symbol) {
+        case ODIN_SINGLE_DOUBLE_QUOTE: scanner->string_mode = OdinString_SingleQuote; break;
+        case ODIN_TRIPLE_DOUBLE_QUOTE: scanner->string_mode = OdinString_TripleQuote; break;
+        case ODIN_SINGLE_BACKTICK: scanner->string_mode = OdinString_SingleBacktick; break;
+        case ODIN_TRIPLE_BACKTICK: scanner->string_mode = OdinString_TripleBacktick; break;
+        case ODIN_RUNE_QUOTE: scanner->string_mode = OdinString_Rune; break;
+        default: LOG_LEXER(lexer, "ODIN_FIRST_QUOTE_TERMINAL and ODIN_LAST_QUOTE_TERMINAL are messed up"); break;
+        }
+      } else {
+        scanner->prev_token_may_add_semicolon = true;
+        scanner->string_mode = OdinString_None;
+      }
+      LOG_LEXER(lexer, "parsed a quote, so set 'may add semicolon' flag to %s", (scanner->prev_token_may_add_semicolon ? "true" : "false"));
     } else {
       scanner->prev_token_may_add_semicolon = false;
       LOG_LEXER(lexer, "clear 'may add semicolon' flag");

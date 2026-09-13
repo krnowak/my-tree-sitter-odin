@@ -151,7 +151,13 @@ module.exports = grammar({
     // Similar to implicit semicolon, but followed by an empty line.
     $._wide_implicit_semicolon,
     $.identifier,
-
+    $._single_double_quote,
+    $._triple_double_quote,
+    $._single_backtick,
+    $._triple_backtick,
+    $._rune_quote,
+    $.string_content,
+    $.escape_sequence,
     // keywords that may add a semicolon
     $._kw_break,
     $._kw_context,
@@ -305,8 +311,6 @@ module.exports = grammar({
     $.integer,
     $.float,
     $.imag,
-    $.rune,
-    $.string,
     $._t_question,
     $._t_pointer,
     $._t_closeparen,
@@ -2991,6 +2995,48 @@ module.exports = grammar({
       $._ml_comment,
       $._sl_comment,
     ),
+
+    string : $ => choice(
+      $._d_string,
+      $._bt_string,
+      $._t_d_string,
+      $._t_bt_string,
+    ),
+
+    rune : $ => seq(
+      alias($._rune_quote, $.open),
+      optional($._inside_string),
+      alias($._rune_quote, $.close),
+    ),
+
+    _d_string : $ => seq(
+      alias($._single_double_quote, $.open),
+      optional($._inside_string),
+      alias($._single_double_quote, $.close),
+    ),
+
+    _bt_string : $ => seq(
+      alias($._single_backtick, $.open),
+      optional($._inside_string),
+      alias($._single_backtick, $.close),
+    ),
+
+    _t_d_string : $ => seq(
+      alias($._triple_double_quote, $.open),
+      optional($._inside_string),
+      alias($._triple_double_quote, $.close),
+    ),
+
+    _t_bt_string : $ => seq(
+      alias($._triple_backtick, $.open),
+      optional($._inside_string),
+      alias($._triple_backtick, $.close),
+    ),
+
+    _inside_string : $ => repeat1(choice(
+      $.string_content,
+      $.escape_sequence,
+    )),
   }
 });
 
