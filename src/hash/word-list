@@ -109,13 +109,13 @@ align, ODIN_KWAD_ALIGN, OdinTokenDirective
 align_stack, ODIN_KWAD_ALIGN_STACK, OdinTokenDirective
 all_or_none, ODIN_KWAD_ALL_OR_NONE, OdinTokenDirective
 any_int, ODIN_KWAD_ANY_INT, OdinTokenDirective
-att, ODIN_KWAD_ATT, OdinTokenDirective
 assert, ODIN_KWAD_ASSERT, OdinTokenDirective
 bounds_check, ODIN_KWAD_BOUNDS_CHECK, OdinTokenDirective
 branch_location, ODIN_KWAD_BRANCH_LOCATION, OdinTokenDirective
 by_ptr, ODIN_KWAD_BY_PTR, OdinTokenDirective
 caller_expression, ODIN_KWAD_CALLER_EXPRESSION, OdinTokenDirective
 caller_location, ODIN_KWAD_CALLER_LOCATION, OdinTokenDirective
+clobber, ODIN_KWAD_CLOBBER, OdinTokenDirective
 column_major, ODIN_KWAD_COLUMN_MAJOR, OdinTokenDirective
 config, ODIN_KWAD_CONFIG, OdinTokenDirective
 const, ODIN_KWAD_CONST, OdinTokenDirective
@@ -127,7 +127,6 @@ file, ODIN_KWAD_FILE, OdinTokenDirective
 force_inline, ODIN_KWAD_FORCE_INLINE, OdinTokenDirective
 force_no_inline, ODIN_KWAD_FORCE_NO_INLINE, OdinTokenDirective
 hash, ODIN_KWAD_HASH, OdinTokenDirective
-intel, ODIN_KWAD_INTEL, OdinTokenDirective
 line, ODIN_KWAD_LINE, OdinTokenDirective
 load, ODIN_KWAD_LOAD, OdinTokenDirective
 load_directory, ODIN_KWAD_LOAD_DIRECTORY, OdinTokenDirective
@@ -139,6 +138,7 @@ must_tail, ODIN_KWAD_MUST_TAIL, OdinTokenDirective
 no_alias, ODIN_KWAD_NO_ALIAS, OdinTokenDirective
 no_bounds_check, ODIN_KWAD_NO_BOUNDS_CHECK, OdinTokenDirective
 no_broadcast, ODIN_KWAD_NO_BROADCAST, OdinTokenDirective
+no_init, ODIN_KWAD_NO_INIT, OdinTokenDirective
 no_nil, ODIN_KWAD_NO_NIL, OdinTokenDirective
 no_type_assert, ODIN_KWAD_NO_TYPE_ASSERT, OdinTokenDirective
 optional_allocator_error, ODIN_KWAD_OPTIONAL_ALLOCATOR_ERROR, OdinTokenDirective
@@ -146,12 +146,13 @@ optional_ok, ODIN_KWAD_OPTIONAL_OK, OdinTokenDirective
 packed, ODIN_KWAD_PACKED, OdinTokenDirective
 panic, ODIN_KWAD_PANIC, OdinTokenDirective
 partial, ODIN_KWAD_PARTIAL, OdinTokenDirective
+preserve, ODIN_KWAD_PRESERVE, OdinTokenDirective
 procedure, ODIN_KWAD_PROCEDURE, OdinTokenDirective
+pure, ODIN_KWAD_PURE, OdinTokenDirective
 raw_union, ODIN_KWAD_RAW_UNION, OdinTokenDirective
 reverse, ODIN_KWAD_REVERSE, OdinTokenDirective
 row_major, ODIN_KWAD_ROW_MAJOR, OdinTokenDirective
 shared_nil, ODIN_KWAD_SHARED_NIL, OdinTokenDirective
-side_effects, ODIN_KWAD_SIDE_EFFECTS, OdinTokenDirective
 simd, ODIN_KWAD_SIMD, OdinTokenDirective
 simple, ODIN_KWAD_SIMPLE, OdinTokenDirective
 soa, ODIN_KWAD_SOA, OdinTokenDirective
@@ -160,6 +161,7 @@ subtype, ODIN_KWAD_SUBTYPE, OdinTokenDirective
 type, ODIN_KWAD_TYPE, OdinTokenDirective
 type_assert, ODIN_KWAD_TYPE_ASSERT, OdinTokenDirective
 unroll, ODIN_KWAD_UNROLL, OdinTokenDirective
+volatile, ODIN_KWAD_VOLATILE, OdinTokenDirective
 odin, ODIN_KWAD_CC_ODIN, OdinTokenCallingConvention
 contextless, ODIN_KWAD_CC_CONTEXTLESS, OdinTokenCallingConvention
 cdecl, ODIN_KWAD_CC_CDECL, OdinTokenCallingConvention

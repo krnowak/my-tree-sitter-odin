@@ -256,13 +256,13 @@ module.exports = grammar({
     $._d_align_stack, // simple
     $._d_all_or_none, // simple
     $._d_any_int, // simple
-    $._d_att, // simple
     $._d_assert, // call
     $._d_bounds_check, // simple
     $._d_branch_location, // simple
     $._d_by_ptr, // simple
     $._d_caller_expression, // simple or call
     $._d_caller_location, // simple
+    $._d_clobber, // asm operand
     $._d_column_major, // simple
     $._d_config, // call
     $._d_const, // simple
@@ -274,7 +274,6 @@ module.exports = grammar({
     $._d_force_inline, // simple
     $._d_force_no_inline, // simple
     $._d_hash, // call
-    $._d_intel, // simple
     $._d_line, // simple
     $._d_load, // call
     $._d_load_directory, // call
@@ -286,6 +285,7 @@ module.exports = grammar({
     $._d_no_alias, // simple
     $._d_no_bounds_check, // simple
     $._d_no_broadcast, // simple
+    $._d_no_init, // simple
     $._d_no_nil, // simple
     $._d_no_type_assert, // simple
     $._d_optional_allocator_error, // simple
@@ -293,12 +293,13 @@ module.exports = grammar({
     $._d_packed, // simple
     $._d_panic, // call
     $._d_partial, // simple
+    $._d_preserve, // asm operand
     $._d_procedure, // simple
+    $._d_pure, // simple
     $._d_raw_union, // simple
     $._d_reverse, // simple
     $._d_row_major, // simple
     $._d_shared_nil, // simple
-    $._d_side_effects, // simple
     $._d_simd, // simple? #simd[N]T
     $._d_simple, // simple
     $._d_soa, // simple? #soa[N]T
@@ -307,6 +308,7 @@ module.exports = grammar({
     $._d_type, // simple
     $._d_type_assert, // simple
     $._d_unroll, // simple or call
+    $._d_volatile, // simple
     // other terminals that may add a semicolon
     $.integer,
     $.float,
@@ -1894,7 +1896,8 @@ module.exports = grammar({
       $.bit_set_type,
       $.struct_type,
       $.union_type,
-      $.inline_asm,
+      $.asm_group,
+      $.asm_template,
     )),
 
     parentheses_expression : $ => seq(
@@ -2460,6 +2463,188 @@ module.exports = grammar({
       $._type_maybe_in_parentheses,
     ),
 
+    asm_group : $ => seq(
+      $._kw_asm,
+      $._t_openbrace,
+      $._group_expression_list_trailing,
+      $._t_closebrace,
+    ),
+
+    asm_template : $ => seq(
+      $._kw_asm,
+      $.asm_signature,
+      optional($.specs_and_clobbers),
+      $.asm_instructions,
+    ),
+
+    asm_signature : $ => seq(
+      alias($._procedure_parameters, $.parameters),
+      optional($.procedure_results),
+    ),
+
+    specs_and_clobbers : $ => seq(
+      $._t_openbracket,
+      repeatCommaTrailing($._spec_or_clobber),
+      $._t_closebracket,
+    ),
+
+    _spec_or_clobber : $ => choice(
+      $.asm_spec,
+      $._asm_clobber,
+    ),
+
+    asm_spec : $ => seq(
+      $.identifier,
+      optional(seq(
+        $._t_arrowright,
+        alias($.identifier, $.tied_name),
+      )),
+      optional(seq(
+        $._t_colon,
+        $._type_maybe_in_parentheses,
+      )),
+      optional(seq(
+        $._t_eq,
+        choice(
+          $.identifier,
+          seq(
+            $._t_mod, $.identifier
+            optional(seq(
+              $._t_period,
+              $.identifier,
+            )),
+          ),
+        ),
+      )),
+      repeat(alias($._asm_spec_directive, $.directive)),
+    ),
+
+    _asm_spec_directive : $ => seq(
+      $._t_hash,
+      alias($._asm_spec_directive_name, $.directive_name),
+    ),
+
+    _asm_spec_directive_name : $ => choice(
+      $._d_no_init,
+    ),
+
+    _asm_clobber : $ => choice(
+      alias($._simple_clobber, $.clobber),
+      alias($._clobber_with_operand, $.clobber_with_operand),
+    ),
+
+    _simple_clobber : $ => seq(
+      $._t_hash,
+      alias($._simple_clobber_name, $.clobber_name),
+    ),
+
+    _simple_clobber_name : $ => choice(
+      $._d_align_stack,
+      $._d_pure,
+      $._d_volatile,
+    ),
+
+    _clobber_with_operand : $ => seq(
+      $._t_hash,
+      alias($._clobber_with_operand_name, $.clobber_name),
+      $.asm_operand,
+    ),
+
+    _clobber_with_operand_name : $ => choice(
+      $._d_clobber,
+      $._d_preserve,
+    ),
+
+    asm_operand : $ => seq(
+      choice(
+        $.asm_label, // TODO: standalone, no indexing
+        $.identifier, // TODO: may be indexed
+        $.asm_register, // TODO: may be indexed
+        $.integer, // TODO: standalone, no indexing
+        $.float, // TODO: standalone, no indexing
+        $.rune, // TODO: standalone, no indexing
+        // TODO: $.asm_unary_expression, + - ~, standalone, no indexing
+        $.parentheses_expression, // TODO: standalone, no indexing
+      ),
+      // indexing
+      optional(seq(
+        $._t_openbracket,
+        $.asm_operand,
+        $._t_closebracket,
+      )),
+    ),
+
+    asm_operand_mo : $ => seq(
+      choice(
+        $.asm_label, // TODO: standalone, no indexing, no shifting
+        $.identifier, // TODO: may be indexed and/or shifted
+        $.asm_register, // TODO: may be indexed and/or shifted
+        $.integer, // TODO: standalone, no indexing, no shifting
+        $.float, // TODO: standalone, no indexing, no shifting
+        $.rune, // TODO: standalone, no indexing, no shifting
+        // TODO: $.asm_unary_expression, + - ~, standalone, no indexing, no shifting
+        $.parentheses_expression, // TODO: standalone, no indexing, no shifting
+        // TODO: $._t_hash, …
+        $.asm_memory_operand, // TODO: standalone, no indexing, no shifting
+        $.asm_register_group, // TODO: no indexing, no shifting
+        $.asm_register_group,
+      ),
+      // indexing
+      optional(seq(
+        $._t_openbracket,
+        $.asm_operand,
+        $._t_closebracket,
+      )),
+    ),
+
+    asm_unary_expression : $ => seq(
+      // TODO
+    ),
+
+    asm_label : $ => seq(
+      // TODO
+    ),
+
+    asm_register : $ => seq(
+      // TODO
+    ),
+
+    asm_instructions : $ => seq(
+      $._t_openbrace,
+      // TODO
+      $._t_closebrace,
+    ),
+
+    asm_memory_operand : $ => seq(
+      $._t_openbracket,
+      // TODO: terms and factors stuff instead of the crap below
+      // segment override
+      optional(seq($.asm_register, $_t_colon)),
+      // base
+      $.asm_operand,
+      // optional scale
+      optional(seq(
+        choice("*", "<<", ">>"),
+        $.asm_operand,
+      )),
+      repeat(seq(
+        choice("+", "-"),
+        $.asm_operand,
+      )),
+      $._t_closebracket,
+      optional(seq(
+        $._t_colon,
+        $._type_maybe_in_parentheses,
+      )),
+    ),
+
+    asm_register_group : $ => seq(
+      $._t_openbrace,
+      // TODO: choice(register_range, register_list)
+      $._t_closebrace,
+    ),
+
+    /*
     inline_asm : $ => seq(
       $._kw_asm,
       optional($.inline_asm_parameters_and_results),
@@ -2498,6 +2683,7 @@ module.exports = grammar({
       $._d_intel,
       $._d_side_effects,
     ),
+     */
 
     // atom sub expressions
 
@@ -2537,7 +2723,7 @@ module.exports = grammar({
         $._common_atom_subexpressions,
         // operands
         $.procedure_literal,
-        $.inline_asm,
+        $.asm_template,
         // atom expressions
         $.call_selector_atom_expression,
       ),
@@ -2549,7 +2735,7 @@ module.exports = grammar({
         $._common_atom_subexpressions_nlve,
         // operands
         $.procedure_literal,
-        $.inline_asm,
+        $.asm_template,
         // atom expressions
         alias($.call_selector_atom_expression_nlve, $.call_selector_atom_expression),
       ),
