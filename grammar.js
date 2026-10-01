@@ -2555,58 +2555,100 @@ module.exports = grammar({
       $._d_preserve,
     ),
 
-    asm_operand : $ => seq(
-      choice(
-        $.asm_label, // TODO: standalone, no indexing
-        $.identifier, // TODO: may be indexed
-        $.asm_register, // TODO: may be indexed
-        $.integer, // TODO: standalone, no indexing
-        $.float, // TODO: standalone, no indexing
-        $.rune, // TODO: standalone, no indexing
-        // TODO: $.asm_unary_expression, + - ~, standalone, no indexing
-        $.parentheses_expression, // TODO: standalone, no indexing
-      ),
-      // indexing
-      optional(seq(
-        $._t_openbracket,
-        $.asm_operand,
-        $._t_closebracket,
-      )),
+    asm_operand : $ => choice(
+      $.asm_label,
+      $.identifier,
+      $.asm_register,
+      $.integer,
+      $.float,
+      $.rune,
+      $.asm_unary_expression,
+      $.parentheses_expression,
+      $.asm_indexed,
     ),
 
-    asm_operand_mo : $ => seq(
+    asm_operand_mo : $ => choice(
+      $.asm_label,
+      $.identifier,
+      $.asm_register,
+      $.integer,
+      $.float,
+      $.rune,
+      $.asm_unary_expression,
+      $.parentheses_expression,
+      $.asm_operand_directive,
+      $.asm_memory_operand,
+      $.asm_register_group,
+      $.asm_indexed_mo,
+      $.asm_shifted,
+    ),
+
+    asm_operand_directive : $ => seq(
+      $._t_hash,
+      choice("pre", "post"),
+      $.asm_operand_mo,
+    ),
+
+    asm_indexed : $ => seq(
       choice(
-        $.asm_label, // TODO: standalone, no indexing, no shifting
-        $.identifier, // TODO: may be indexed and/or shifted
-        $.asm_register, // TODO: may be indexed and/or shifted
-        $.integer, // TODO: standalone, no indexing, no shifting
-        $.float, // TODO: standalone, no indexing, no shifting
-        $.rune, // TODO: standalone, no indexing, no shifting
-        // TODO: $.asm_unary_expression, + - ~, standalone, no indexing, no shifting
-        $.parentheses_expression, // TODO: standalone, no indexing, no shifting
-        // TODO: $._t_hash, …
-        $.asm_memory_operand, // TODO: standalone, no indexing, no shifting
-        $.asm_register_group, // TODO: no indexing, no shifting
-        $.asm_register_group,
+        $.asm_register,
+        $.identifier,
+      )
+      $._t_openbracket,
+      $.asm_operand,
+      $._t_closebracket,
+    ),
+
+    asm_indexed_mo : $ => seq(
+      choice(
+        $.asm_register,
+        $.identifier,
+        $.asm_operand_directive,
+      )
+      $._t_openbracket,
+      $.asm_operand,
+      $._t_closebracket,
+    ),
+
+    asm_shifted : $ => seq(
+      choice(
+        $.asm_register,
+        $.identifier,
+        $.asm_indexed_operand,
       ),
-      // indexing
-      optional(seq(
-        $._t_openbracket,
-        $.asm_operand,
-        $._t_closebracket,
-      )),
+      alias($._asm_shifted_operand_operator, $.op),
+      $.asm_operand,
+    ),
+
+    _asm_shifted_operand_operator : $ => choice(
+      $._t_mul,
+      $._t_shl,
+      $._t_shr,
     ),
 
     asm_unary_expression : $ => seq(
-      // TODO
+      alias($._asm_unary_expression_operator, $.op),
+      $.asm_operand,
+    ),
+
+    _asm_unary_expression_operator : $ => choice(
+      $._t_add,
+      $._t_sub,
+      $._t_xor,
     ),
 
     asm_label : $ => seq(
-      // TODO
+      $._t_period,
+      $.identifier,
     ),
 
     asm_register : $ => seq(
-      // TODO
+      $._t_mod,
+      $.identifier,
+      optional(seq(
+        $._t_period,
+        alias($.identifier, $.flag),
+      )),
     ),
 
     asm_instructions : $ => seq(
