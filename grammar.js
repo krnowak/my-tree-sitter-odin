@@ -915,6 +915,7 @@ module.exports = grammar({
         $.defer_statement,
         $.assign_statement,
         $.var_declaration,
+        $.label_statement,
       ),
     ),
 
