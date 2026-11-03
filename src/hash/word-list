@@ -72,6 +72,8 @@ export, ODIN_KWAD_EXPORT, OdinTokenAttribute
 extra_linker_flags, ODIN_KWAD_EXTRA_LINKER_FLAGS, OdinTokenAttribute
 fast_math, ODIN_KWAD_FAST_MATH, OdinTokenAttribute
 fini, ODIN_KWAD_FINI, OdinTokenAttribute
+futex, ODIN_KWAD_FUTEX, OdinTokenAttribute
+futex_parameter, ODIN_KWAD_FUTEX_PARAMETER, OdinTokenAttribute
 ignore_duplicates, ODIN_KWAD_IGNORE_DUPLICATES, OdinTokenAttribute
 init, ODIN_KWAD_INIT, OdinTokenAttribute
 instrumentation_enter, ODIN_KWAD_INSTRUMENTATION_ENTER, OdinTokenAttribute
@@ -84,6 +86,7 @@ link_suffix, ODIN_KWAD_LINK_SUFFIX, OdinTokenAttribute
 no_instrumentation, ODIN_KWAD_NO_INSTRUMENTATION, OdinTokenAttribute
 no_sanitize_address, ODIN_KWAD_NO_SANITIZE_ADDRESS, OdinTokenAttribute
 no_sanitize_memory, ODIN_KWAD_NO_SANITIZE_MEMORY, OdinTokenAttribute
+no_sanitize_thread, ODIN_KWAD_NO_SANITIZE_THREAD, OdinTokenAttribute
 objc_class, ODIN_KWAD_OBJC_CLASS, OdinTokenAttribute
 objc_context_provider, ODIN_KWAD_OBJC_CONTEXT_PROVIDER, OdinTokenAttribute
 objc_implement, ODIN_KWAD_OBJC_IMPLEMENT, OdinTokenAttribute
@@ -102,6 +105,8 @@ require_results, ODIN_KWAD_REQUIRE_RESULTS, OdinTokenAttribute
 require_target_feature, ODIN_KWAD_REQUIRE_TARGET_FEATURE, OdinTokenAttribute
 rodata, ODIN_KWAD_RODATA, OdinTokenAttribute
 static, ODIN_KWAD_STATIC, OdinTokenAttribute
+synchronizes, ODIN_KWAD_SYNCHRONIZES, OdinTokenAttribute
+synchronizes_shared, ODIN_KWAD_SYNCHRONIZES_SHARED, OdinTokenAttribute
 tag, ODIN_KWAD_TAG, OdinTokenAttribute
 test, ODIN_KWAD_TEST, OdinTokenAttribute
 thread_local, ODIN_KWAD_THREAD_LOCAL, OdinTokenAttribute

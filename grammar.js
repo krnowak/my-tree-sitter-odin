@@ -218,6 +218,8 @@ module.exports = grammar({
     $._a_extra_linker_flags, // string
     $._a_fast_math, // bitset of Fast_Math_Flags
     $._a_fini, // nothing
+    $._a_futex, // Futex_Operation
+    $._a_futex_parameter, // string
     $._a_ignore_duplicates, // nothing
     $._a_init, // nothing
     $._a_instrumentation_enter, // nothing
@@ -230,6 +232,7 @@ module.exports = grammar({
     $._a_no_instrumentation, // nothing or bool
     $._a_no_sanitize_address, // nothing
     $._a_no_sanitize_memory, // nothing
+    $._a_no_sanitize_thread, // nothing
     $._a_objc_class, // string
     $._a_objc_context_provider, // identifier
     $._a_objc_implement, // nothing or bool
@@ -248,6 +251,8 @@ module.exports = grammar({
     $._a_require_target_feature, // string
     $._a_rodata, // nothing
     $._a_static, // nothing
+    $._a_synchronizes, // Atomic_Memory_Order
+    $._a_synchronizes_shared, // Atomic_Memory_Order
     $._a_tag, // string
     $._a_test, // nothing
     $._a_thread_local, // nothing or string
@@ -765,6 +770,7 @@ module.exports = grammar({
       $._a_no_instrumentation, // nothing or bool
       $._a_no_sanitize_address, // nothing
       $._a_no_sanitize_memory, // nothing
+      $._a_no_sanitize_thread, // nothing
       $._a_objc_implement, // nothing or bool
       $._a_private, // nothing or string
       $._a_raddbg_type_view, // nothing or string
@@ -781,6 +787,7 @@ module.exports = grammar({
       $._a_deprecated, // string
       $._a_enable_target_feature, // string
       $._a_extra_linker_flags, // string
+      $._a_futex_parameter, // string
       $._a_linkage, // string
       $._a_link_name, // string
       $._a_link_prefix, // string
@@ -819,6 +826,11 @@ module.exports = grammar({
       $._a_priority_index, // integer
 
       $._a_fast_math, // bitset of Fast_Math_Flags
+
+      $._a_synchronizes, // Atomic_Memory_Order
+      $._a_synchronizes_shared, // Atomic_Memory_Order
+
+      $._a_futex, // Futex_Operation
     ),
 
     // krnowak: block statement
