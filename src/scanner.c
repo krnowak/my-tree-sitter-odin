@@ -324,6 +324,9 @@ enum {
 
   ODIN_FIRST_SEMICOLON_KEYWORD = ODIN_KWAD_BREAK,
   ODIN_LAST_SEMICOLON_KEYWORD = ODIN_KWAD_TYPEID,
+  // from first attribute to last mixed, directives are inbetween
+  ODIN_FIRST_IDENTIFIER_LIKE = ODIN_KWAD_BUILTIN,
+  ODIN_LAST_IDENTIFIER_LIKE = ODIN_KWAD_ALIGN,
   ODIN_FIRST_SEMICOLON_OTHER_TERMINAL = ODIN_INTEGER,
   ODIN_LAST_SEMICOLON_OTHER_TERMINAL = ODIN_UNINIT,
   ODIN_FIRST_QUOTE_TERMINAL = ODIN_SINGLE_DOUBLE_QUOTE,
@@ -1763,7 +1766,8 @@ tree_sitter_odin_external_scanner_scan(void *payload, TSLexer *lexer, const bool
   if (result) {
     if ((lexer->result_symbol == ODIN_IDENTIFIER) ||
         ((lexer->result_symbol >= ODIN_FIRST_SEMICOLON_KEYWORD) && (lexer->result_symbol <= ODIN_LAST_SEMICOLON_KEYWORD)) ||
-        ((lexer->result_symbol >= ODIN_FIRST_SEMICOLON_OTHER_TERMINAL) && (lexer->result_symbol <= ODIN_LAST_SEMICOLON_OTHER_TERMINAL))) {
+        ((lexer->result_symbol >= ODIN_FIRST_SEMICOLON_OTHER_TERMINAL) && (lexer->result_symbol <= ODIN_LAST_SEMICOLON_OTHER_TERMINAL)) ||
+        ((lexer->result_symbol >= ODIN_FIRST_IDENTIFIER_LIKE) && (lexer->result_symbol <= ODIN_LAST_IDENTIFIER_LIKE))) {
       scanner->prev_token_may_add_semicolon = true;
       LOG_LEXER(lexer, "set 'may add semicolon' flag");
     } else if ((lexer->result_symbol == ODIN_SL_COMMENT) || (lexer->result_symbol == ODIN_ML_COMMENT)) {
