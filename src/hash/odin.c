@@ -30,7 +30,7 @@
 #endif
 
 #line 16 "src/hash/word-list"
-struct OdinKwad { int kwad_offset; uint16_t valid_symbols_idx; uint8_t type; };
+struct OdinKwad { int kwad_offset; uint16_t valid_symbols_idx; uint8_t is_a_keyword; };
 
 #define ODIN_KWAD_TOTAL_KEYWORDS 171
 #define ODIN_KWAD_MIN_WORD_LENGTH 2
@@ -475,509 +475,450 @@ static const unsigned char odin_kwad_lengths[] =
 
 static const struct OdinKwad odin_kwads[] =
   {
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 111 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str16, ODIN_KWAD_TEST, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 156 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str21, ODIN_KWAD_POST, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 37 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str24, ODIN_KWAD_ELSE, OdinTokenKeyword},
-#line 171 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str25, ODIN_KWAD_TYPE, OdinTokenDirective},
-#line 50 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str26, ODIN_KWAD_STRUCT, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 157 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str28, ODIN_KWAD_PRE, OdinTokenDirective},
-#line 160 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str29, ODIN_KWAD_PURE, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 71 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str31, ODIN_KWAD_EXPORT, OdinTokenAttribute},
-#line 150 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str32, ODIN_KWAD_NOP, OdinTokenDirective,},
-#line 56 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str33, ODIN_KWAD_WHERE, OdinTokenKeyword},
-#line 180 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str34, ODIN_KWAD_CC_NONE, OdinTokenCallingConvention},
-#line 55 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str35, ODIN_KWAD_WHEN, OdinTokenKeyword},
-#line 183 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str36, ODIN_KWAD_CC_WIN64, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 108 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str39, ODIN_KWAD_SYNCHRONIZES, OdinTokenAttribute},
-#line 25 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str40, ODIN_KWAD_RETURN, OdinTokenKeyword},
-#line 158 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str41, ODIN_KWAD_PRESERVE, OdinTokenDirective},
-#line 186 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str42, ODIN_KWAD_CC_PRESERVE_MOST, OdinTokenCallingConvention},
-#line 46 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str43, ODIN_KWAD_NOT_IN, OdinTokenKeyword},
-#line 32 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str44, ODIN_KWAD_CAST, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 185 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str46, ODIN_KWAD_CC_PRESERVE_NONE, OdinTokenCallingConvention},
-#line 136 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str47, ODIN_KWAD_LINE, OdinTokenDirective},
-#line 31 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str48, ODIN_KWAD_CASE, OdinTokenKeyword},
-#line 184 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str49, ODIN_KWAD_CC_SYSV, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 161 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str51, ODIN_KWAD_RAW_UNION, OdinTokenDirective},
-#line 127 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str52, ODIN_KWAD_CONST, OdinTokenDirective},
-#line 34 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str53, ODIN_KWAD_DISTINCT, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 154 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str57, ODIN_KWAD_PANIC, OdinTokenDirective},
-#line 181 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str58, ODIN_KWAD_CC_NAKED, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 187 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str61, ODIN_KWAD_CC_PRESERVE_ALL, OdinTokenCallingConvention},
-#line 84 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str62, ODIN_KWAD_LINK_SECTION, OdinTokenAttribute},
-#line 82 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str63, ODIN_KWAD_LINK_NAME, OdinTokenAttribute},
-#line 162 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str64, ODIN_KWAD_REVERSE, OdinTokenDirective},
-#line 121 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str65, ODIN_KWAD_BYTE, OdinTokenDirective,},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 109 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str68, ODIN_KWAD_SYNCHRONIZES_SHARED, OdinTokenAttribute},
-#line 177 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str69, ODIN_KWAD_CC_CDECL, OdinTokenCallingConvention},
-#line 20 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str70, ODIN_KWAD_CONTINUE, OdinTokenKeyword},
-#line 26 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str71, ODIN_KWAD_TYPEID, OdinTokenKeyword},
-#line 30 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str72, ODIN_KWAD_BIT_SET, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 112 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str74, ODIN_KWAD_THREAD_LOCAL, OdinTokenAttribute},
-#line 85 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str75, ODIN_KWAD_LINK_SUFFIX, OdinTokenAttribute},
-#line 39 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str76, ODIN_KWAD_FOR, OdinTokenKeyword},
-#line 170 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str77, ODIN_KWAD_SUBTYPE, OdinTokenDirective},
-#line 18 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str78, ODIN_KWAD_BREAK, OdinTokenKeyword},
-#line 19 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str79, ODIN_KWAD_CONTEXT, OdinTokenKeyword},
-#line 83 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str80, ODIN_KWAD_LINK_PREFIX, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 176 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str83, ODIN_KWAD_CC_CONTEXTLESS, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 178 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str85, ODIN_KWAD_CC_STDCALL, OdinTokenCallingConvention},
-#line 58 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str86, ODIN_KWAD_COLD, OdinTokenAttribute},
-#line 125 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str87, ODIN_KWAD_COLUMN_MAJOR, OdinTokenDirective},
-#line 68 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str88, ODIN_KWAD_DISABLED, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 123 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str90, ODIN_KWAD_CALLER_LOCATION, OdinTokenDirective},
-#line 75 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str91, ODIN_KWAD_FUTEX, OdinTokenAttribute},
-#line 122 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str92, ODIN_KWAD_CALLER_EXPRESSION, OdinTokenDirective},
-#line 132 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str93, ODIN_KWAD_FILE, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 33 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str96, ODIN_KWAD_DEFER, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 153 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str99, ODIN_KWAD_PACKED, OdinTokenDirective},
-#line 135 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str100, ODIN_KWAD_HASH, OdinTokenDirective},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
 #line 117 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str101, ODIN_KWAD_ASSERT, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 67 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str103, ODIN_KWAD_DEPRECATED, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 65 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str107, ODIN_KWAD_DEFERRED_OUT, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 169 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str109, ODIN_KWAD_SPARSE, OdinTokenDirective},
-#line 62 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str110, ODIN_KWAD_DEFERRED_IN_OUT, OdinTokenAttribute},
-#line 172 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str111, ODIN_KWAD_TYPE_ASSERT, OdinTokenDirective},
-#line 64 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str112, ODIN_KWAD_DEFERRED_NONE, OdinTokenAttribute},
-#line 60 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str113, ODIN_KWAD_DEFERRED_IN, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 61 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str117, ODIN_KWAD_DEFERRED_IN_BY_PTR, OdinTokenAttribute},
-#line 66 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str118, ODIN_KWAD_DEFERRED_OUT_BY_PTR, OdinTokenAttribute},
-#line 173 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str119, ODIN_KWAD_UNROLL, OdinTokenDirective},
-#line 163 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str120, ODIN_KWAD_ROW_MAJOR, OdinTokenDirective},
-#line 63 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str121, ODIN_KWAD_DEFERRED_IN_OUT_BY_PTR, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 130 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str123, ODIN_KWAD_DIRECTORY, OdinTokenDirective},
-#line 129 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str124, ODIN_KWAD_DEFINED, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 43 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str126, ODIN_KWAD_IN, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 69 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str128, ODIN_KWAD_ENABLE_TARGET_FEATURE, OdinTokenAttribute},
-#line 72 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str129, ODIN_KWAD_EXTRA_LINKER_FLAGS, OdinTokenAttribute},
-#line 167 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str130, ODIN_KWAD_SKIP, OdinTokenDirective,},
-#line 155 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str131, ODIN_KWAD_PARTIAL, OdinTokenDirective},
-#line 28 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str132, ODIN_KWAD_AUTO_CAST, OdinTokenKeyword},
-#line 149 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str133, ODIN_KWAD_NO_TYPE_ASSERT, OdinTokenDirective},
-#line 115 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str134, ODIN_KWAD_ALL_OR_NONE, OdinTokenDirective},
-#line 131 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str135, ODIN_KWAD_EXISTS, OdinTokenDirective},
-#line 42 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str136, ODIN_KWAD_IMPORT, OdinTokenKeyword},
-#line 137 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str137, ODIN_KWAD_LOAD, OdinTokenDirective},
-#line 118 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str138, ODIN_KWAD_BOUNDS_CHECK, OdinTokenDirective},
-#line 86 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str139, ODIN_KWAD_NO_INSTRUMENTATION, OdinTokenAttribute},
-#line 87 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str140, ODIN_KWAD_NO_SANITIZE_ADDRESS, OdinTokenAttribute},
-#line 101 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str141, ODIN_KWAD_PRIVATE, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 44 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str143, ODIN_KWAD_MAP, OdinTokenKeyword},
-#line 59 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str144, ODIN_KWAD_DEFAULT_CALLING_CONVENTION, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str16, ODIN_KWAD_TEST, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
 #line 164 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str147, ODIN_KWAD_SHARED_NIL, OdinTokenDirective},
-#line 166 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str148, ODIN_KWAD_SIMPLE, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 35 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str150, ODIN_KWAD_DO, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 77 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str153, ODIN_KWAD_IGNORE_DUPLICATES, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 165 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str156, ODIN_KWAD_SIMD, OdinTokenDirective},
-#line 107 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str157, ODIN_KWAD_STATIC, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 81 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str159, ODIN_KWAD_LINKAGE, OdinTokenAttribute},
-#line 148 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str160, ODIN_KWAD_NO_NIL, OdinTokenDirective},
-#line 89 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str161, ODIN_KWAD_NO_SANITIZE_THREAD, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 143 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str163, ODIN_KWAD_MUST_TAIL, OdinTokenDirective},
-#line 152 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str164, ODIN_KWAD_OPTIONAL_OK, OdinTokenDirective},
-#line 48 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str165, ODIN_KWAD_PACKAGE, OdinTokenKeyword},
-#line 120 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str166, ODIN_KWAD_BY_PTR, OdinTokenDirective},
-#line 49 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str167, ODIN_KWAD_PROC, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 151 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str169, ODIN_KWAD_OPTIONAL_ALLOCATOR_ERROR, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 102 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str171, ODIN_KWAD_RADDBG_TYPE_VIEW, OdinTokenAttribute},
-#line 41 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str172, ODIN_KWAD_IF, OdinTokenKeyword},
-#line 168 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str173, ODIN_KWAD_SOA, OdinTokenDirective},
-#line 159 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str174, ODIN_KWAD_PROCEDURE, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 179 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str176, ODIN_KWAD_CC_FASTCALL, OdinTokenCallingConvention},
-#line 124 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str177, ODIN_KWAD_CLOBBER, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 76 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str179, ODIN_KWAD_FUTEX_PARAMETER, OdinTokenAttribute},
-#line 133 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str180, ODIN_KWAD_FORCE_INLINE, OdinTokenDirective},
-#line 116 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str181, ODIN_KWAD_ANY_INT, OdinTokenDirective},
-#line 45 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str182, ODIN_KWAD_MATRIX, OdinTokenKeyword},
-#line 134 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str183, ODIN_KWAD_FORCE_NO_INLINE, OdinTokenDirective},
-#line 21 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str184, ODIN_KWAD_FALLTHROUGH, OdinTokenKeyword},
-#line 74 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str185, ODIN_KWAD_FINI, OdinTokenAttribute},
-#line 53 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str186, ODIN_KWAD_UNION, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 140 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str188, ODIN_KWAD_LOCATION, OdinTokenDirective},
-#line 36 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str189, ODIN_KWAD_DYNAMIC, OdinTokenKeyword},
-#line 174 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str190, ODIN_KWAD_VOLATILE, OdinTokenDirective},
-#line 38 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str191, ODIN_KWAD_ENUM, OdinTokenKeyword},
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str21, ODIN_KWAD_POST, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
 #line 40 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str192, ODIN_KWAD_FOREIGN, OdinTokenKeyword},
-#line 98 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str193, ODIN_KWAD_OBJC_TYPE, OdinTokenAttribute},
-#line 145 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str194, ODIN_KWAD_NO_BOUNDS_CHECK, OdinTokenDirective},
-#line 97 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str195, ODIN_KWAD_OBJC_SUPERCLASS, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 96 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str197, ODIN_KWAD_OBJC_SELECTOR, OdinTokenAttribute},
-#line 80 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str198, ODIN_KWAD_INSTRUMENTATION_EXIT, OdinTokenAttribute},
-#line 70 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str199, ODIN_KWAD_ENTRY_POINT_ONLY, OdinTokenAttribute},
-#line 95 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str200, ODIN_KWAD_OBJC_NAME, OdinTokenAttribute},
-#line 29 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str201, ODIN_KWAD_BIT_FIELD, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 79 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str203, ODIN_KWAD_INSTRUMENTATION_ENTER, OdinTokenAttribute},
-#line 119 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str204, ODIN_KWAD_BRANCH_LOCATION, OdinTokenDirective},
-#line 103 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str205, ODIN_KWAD_REQUIRE, OdinTokenAttribute},
-#line 106 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str206, ODIN_KWAD_RODATA, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 139 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str208, ODIN_KWAD_LOAD_HASH, OdinTokenDirective},
-#line 104 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str209, ODIN_KWAD_REQUIRE_RESULTS, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 88 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str211, ODIN_KWAD_NO_SANITIZE_MEMORY, OdinTokenAttribute},
-#line 113 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str212, ODIN_KWAD_ALIGN, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 51 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str215, ODIN_KWAD_SWITCH, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 90 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str218, ODIN_KWAD_OBJC_CLASS, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 105 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str220, ODIN_KWAD_REQUIRE_TARGET_FEATURE, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 138 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str223, ODIN_KWAD_LOAD_DIRECTORY, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 110 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str225, ODIN_KWAD_TAG, OdinTokenAttribute},
-#line 52 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str226, ODIN_KWAD_TRANSMUTE, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 147 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str230, ODIN_KWAD_NO_INIT, OdinTokenDirective},
-#line 144 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str231, ODIN_KWAD_NO_ALIAS, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 91 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str233, ODIN_KWAD_OBJC_CONTEXT_PROVIDER, OdinTokenAttribute},
-#line 78 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str234, ODIN_KWAD_INIT, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 47 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str236, ODIN_KWAD_OR_ELSE, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 73 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str238, ODIN_KWAD_FAST_MATH, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 24 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str241, ODIN_KWAD_OR_RETURN, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 146 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str244, ODIN_KWAD_NO_BROADCAST, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 23 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str247, ODIN_KWAD_OR_CONTINUE, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 22 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str249, ODIN_KWAD_OR_BREAK, OdinTokenKeyword},
-#line 175 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str250, ODIN_KWAD_CC_ODIN, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 188 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str258, ODIN_KWAD_CC_SYSTEM, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 99 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str264, ODIN_KWAD_OPTIMIZATION_MODE, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 126 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str267, ODIN_KWAD_CONFIG, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 128 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str269, ODIN_KWAD_C_VARARG, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 142 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str272, ODIN_KWAD_MIN_FIELD_ALIGN, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 100 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str274, ODIN_KWAD_PRIORITY_INDEX, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 182 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str276, ODIN_KWAD_CC_INLINEASM, OdinTokenCallingConvention},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 54 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str284, ODIN_KWAD_USING, OdinTokenKeyword},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 141 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str286, ODIN_KWAD_MAX_FIELD_ALIGN, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 57 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str293, ODIN_KWAD_BUILTIN, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 94 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str302, ODIN_KWAD_OBJC_IVAR, OdinTokenAttribute},
-#line 92 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str303, ODIN_KWAD_OBJC_IMPLEMENT, OdinTokenAttribute},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str24, ODIN_KWAD_ELSE, 1},
+#line 179 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str25, ODIN_KWAD_TYPE, 0},
+#line 53 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str26, ODIN_KWAD_STRUCT, 1},
+    {-1,ODIN_INVALID,0},
+#line 165 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str28, ODIN_KWAD_PRE, 0},
+#line 168 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str29, ODIN_KWAD_PURE, 0},
+    {-1,ODIN_INVALID,0},
+#line 77 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str31, ODIN_KWAD_EXPORT, 0},
+#line 158 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str32, ODIN_KWAD_NOP, 0,},
+#line 59 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str33, ODIN_KWAD_WHERE, 1},
+#line 195 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str34, ODIN_KWAD_CC_NONE, 0},
+#line 58 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str35, ODIN_KWAD_WHEN, 1},
+#line 198 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str36, ODIN_KWAD_CC_WIN64, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
 #line 114 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str318, ODIN_KWAD_ALIGN_STACK, OdinTokenDirective},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-    {-1,ODIN_INVALID,OdinTokenInvalid},
-#line 27 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str330, ODIN_KWAD_ASM, OdinTokenKeyword},
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str39, ODIN_KWAD_SYNCHRONIZES, 0},
+#line 28 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str40, ODIN_KWAD_RETURN, 1},
+#line 166 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str41, ODIN_KWAD_PRESERVE, 0},
+#line 201 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str42, ODIN_KWAD_CC_PRESERVE_MOST, 0},
+#line 49 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str43, ODIN_KWAD_NOT_IN, 1},
+#line 35 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str44, ODIN_KWAD_CAST, 1},
+    {-1,ODIN_INVALID,0},
+#line 200 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str46, ODIN_KWAD_CC_PRESERVE_NONE, 0},
+#line 144 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str47, ODIN_KWAD_LINE, 0},
+#line 34 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str48, ODIN_KWAD_CASE, 1},
+#line 199 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str49, ODIN_KWAD_CC_SYSV, 0},
+    {-1,ODIN_INVALID,0},
+#line 169 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str51, ODIN_KWAD_RAW_UNION, 0},
+#line 135 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str52, ODIN_KWAD_CONST, 0},
+#line 37 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str53, ODIN_KWAD_DISTINCT, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 162 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str57, ODIN_KWAD_PANIC, 0},
+#line 196 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str58, ODIN_KWAD_CC_NAKED, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 202 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str61, ODIN_KWAD_CC_PRESERVE_ALL, 0},
+#line 90 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str62, ODIN_KWAD_LINK_SECTION, 0},
+#line 88 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str63, ODIN_KWAD_LINK_NAME, 0},
+#line 170 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str64, ODIN_KWAD_REVERSE, 0},
+#line 129 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str65, ODIN_KWAD_BYTE, 0,},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 115 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str68, ODIN_KWAD_SYNCHRONIZES_SHARED, 0},
+#line 192 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str69, ODIN_KWAD_CC_CDECL, 0},
+#line 23 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str70, ODIN_KWAD_CONTINUE, 1},
+#line 29 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str71, ODIN_KWAD_TYPEID, 1},
+#line 33 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str72, ODIN_KWAD_BIT_SET, 1},
+    {-1,ODIN_INVALID,0},
+#line 118 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str74, ODIN_KWAD_THREAD_LOCAL, 0},
+#line 91 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str75, ODIN_KWAD_LINK_SUFFIX, 0},
+#line 42 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str76, ODIN_KWAD_FOR, 1},
+#line 178 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str77, ODIN_KWAD_SUBTYPE, 0},
+#line 21 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str78, ODIN_KWAD_BREAK, 1},
+#line 22 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str79, ODIN_KWAD_CONTEXT, 1},
+#line 89 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str80, ODIN_KWAD_LINK_PREFIX, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 191 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str83, ODIN_KWAD_CC_CONTEXTLESS, 0},
+    {-1,ODIN_INVALID,0},
+#line 193 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str85, ODIN_KWAD_CC_STDCALL, 0},
+#line 64 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str86, ODIN_KWAD_COLD, 0},
+#line 133 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str87, ODIN_KWAD_COLUMN_MAJOR, 0},
+#line 74 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str88, ODIN_KWAD_DISABLED, 0},
+    {-1,ODIN_INVALID,0},
+#line 131 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str90, ODIN_KWAD_CALLER_LOCATION, 0},
+#line 81 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str91, ODIN_KWAD_FUTEX, 0},
+#line 130 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str92, ODIN_KWAD_CALLER_EXPRESSION, 0},
+#line 140 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str93, ODIN_KWAD_FILE, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 36 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str96, ODIN_KWAD_DEFER, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 161 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str99, ODIN_KWAD_PACKED, 0},
+#line 143 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str100, ODIN_KWAD_HASH, 0},
+#line 125 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str101, ODIN_KWAD_ASSERT, 0},
+    {-1,ODIN_INVALID,0},
+#line 73 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str103, ODIN_KWAD_DEPRECATED, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 71 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str107, ODIN_KWAD_DEFERRED_OUT, 0},
+    {-1,ODIN_INVALID,0},
+#line 177 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str109, ODIN_KWAD_SPARSE, 0},
+#line 68 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str110, ODIN_KWAD_DEFERRED_IN_OUT, 0},
+#line 180 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str111, ODIN_KWAD_TYPE_ASSERT, 0},
+#line 70 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str112, ODIN_KWAD_DEFERRED_NONE, 0},
+#line 66 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str113, ODIN_KWAD_DEFERRED_IN, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 67 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str117, ODIN_KWAD_DEFERRED_IN_BY_PTR, 0},
+#line 72 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str118, ODIN_KWAD_DEFERRED_OUT_BY_PTR, 0},
+#line 181 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str119, ODIN_KWAD_UNROLL, 0},
+#line 171 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str120, ODIN_KWAD_ROW_MAJOR, 0},
+#line 69 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str121, ODIN_KWAD_DEFERRED_IN_OUT_BY_PTR, 0},
+    {-1,ODIN_INVALID,0},
+#line 138 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str123, ODIN_KWAD_DIRECTORY, 0},
+#line 137 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str124, ODIN_KWAD_DEFINED, 0},
+    {-1,ODIN_INVALID,0},
+#line 46 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str126, ODIN_KWAD_IN, 1},
+    {-1,ODIN_INVALID,0},
+#line 75 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str128, ODIN_KWAD_ENABLE_TARGET_FEATURE, 0},
+#line 78 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str129, ODIN_KWAD_EXTRA_LINKER_FLAGS, 0},
+#line 175 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str130, ODIN_KWAD_SKIP, 0,},
+#line 163 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str131, ODIN_KWAD_PARTIAL, 0},
+#line 31 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str132, ODIN_KWAD_AUTO_CAST, 1},
+#line 157 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str133, ODIN_KWAD_NO_TYPE_ASSERT, 0},
+#line 123 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str134, ODIN_KWAD_ALL_OR_NONE, 0},
+#line 139 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str135, ODIN_KWAD_EXISTS, 0},
+#line 45 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str136, ODIN_KWAD_IMPORT, 1},
+#line 145 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str137, ODIN_KWAD_LOAD, 0},
+#line 126 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str138, ODIN_KWAD_BOUNDS_CHECK, 0},
+#line 92 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str139, ODIN_KWAD_NO_INSTRUMENTATION, 0},
 #line 93 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str331, ODIN_KWAD_OBJC_IS_CLASS_METHOD, OdinTokenAttribute}
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str140, ODIN_KWAD_NO_SANITIZE_ADDRESS, 0},
+#line 107 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str141, ODIN_KWAD_PRIVATE, 0},
+    {-1,ODIN_INVALID,0},
+#line 47 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str143, ODIN_KWAD_MAP, 1},
+#line 65 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str144, ODIN_KWAD_DEFAULT_CALLING_CONVENTION, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 172 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str147, ODIN_KWAD_SHARED_NIL, 0},
+#line 174 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str148, ODIN_KWAD_SIMPLE, 0},
+    {-1,ODIN_INVALID,0},
+#line 38 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str150, ODIN_KWAD_DO, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 83 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str153, ODIN_KWAD_IGNORE_DUPLICATES, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 173 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str156, ODIN_KWAD_SIMD, 0},
+#line 113 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str157, ODIN_KWAD_STATIC, 0},
+    {-1,ODIN_INVALID,0},
+#line 87 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str159, ODIN_KWAD_LINKAGE, 0},
+#line 156 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str160, ODIN_KWAD_NO_NIL, 0},
+#line 95 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str161, ODIN_KWAD_NO_SANITIZE_THREAD, 0},
+    {-1,ODIN_INVALID,0},
+#line 151 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str163, ODIN_KWAD_MUST_TAIL, 0},
+#line 160 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str164, ODIN_KWAD_OPTIONAL_OK, 0},
+#line 51 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str165, ODIN_KWAD_PACKAGE, 1},
+#line 128 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str166, ODIN_KWAD_BY_PTR, 0},
+#line 52 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str167, ODIN_KWAD_PROC, 1},
+    {-1,ODIN_INVALID,0},
+#line 159 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str169, ODIN_KWAD_OPTIONAL_ALLOCATOR_ERROR, 0},
+    {-1,ODIN_INVALID,0},
+#line 108 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str171, ODIN_KWAD_RADDBG_TYPE_VIEW, 0},
+#line 44 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str172, ODIN_KWAD_IF, 1},
+#line 176 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str173, ODIN_KWAD_SOA, 0},
+#line 167 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str174, ODIN_KWAD_PROCEDURE, 0},
+    {-1,ODIN_INVALID,0},
+#line 194 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str176, ODIN_KWAD_CC_FASTCALL, 0},
+#line 132 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str177, ODIN_KWAD_CLOBBER, 0},
+    {-1,ODIN_INVALID,0},
+#line 82 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str179, ODIN_KWAD_FUTEX_PARAMETER, 0},
+#line 141 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str180, ODIN_KWAD_FORCE_INLINE, 0},
+#line 124 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str181, ODIN_KWAD_ANY_INT, 0},
+#line 48 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str182, ODIN_KWAD_MATRIX, 1},
+#line 142 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str183, ODIN_KWAD_FORCE_NO_INLINE, 0},
+#line 24 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str184, ODIN_KWAD_FALLTHROUGH, 1},
+#line 80 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str185, ODIN_KWAD_FINI, 0},
+#line 56 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str186, ODIN_KWAD_UNION, 1},
+    {-1,ODIN_INVALID,0},
+#line 148 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str188, ODIN_KWAD_LOCATION, 0},
+#line 39 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str189, ODIN_KWAD_DYNAMIC, 1},
+#line 182 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str190, ODIN_KWAD_VOLATILE, 0},
+#line 41 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str191, ODIN_KWAD_ENUM, 1},
+#line 43 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str192, ODIN_KWAD_FOREIGN, 1},
+#line 104 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str193, ODIN_KWAD_OBJC_TYPE, 0},
+#line 153 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str194, ODIN_KWAD_NO_BOUNDS_CHECK, 0},
+#line 103 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str195, ODIN_KWAD_OBJC_SUPERCLASS, 0},
+    {-1,ODIN_INVALID,0},
+#line 102 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str197, ODIN_KWAD_OBJC_SELECTOR, 0},
+#line 86 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str198, ODIN_KWAD_INSTRUMENTATION_EXIT, 0},
+#line 76 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str199, ODIN_KWAD_ENTRY_POINT_ONLY, 0},
+#line 101 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str200, ODIN_KWAD_OBJC_NAME, 0},
+#line 32 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str201, ODIN_KWAD_BIT_FIELD, 1},
+    {-1,ODIN_INVALID,0},
+#line 85 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str203, ODIN_KWAD_INSTRUMENTATION_ENTER, 0},
+#line 127 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str204, ODIN_KWAD_BRANCH_LOCATION, 0},
+#line 109 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str205, ODIN_KWAD_REQUIRE, 0},
+#line 112 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str206, ODIN_KWAD_RODATA, 0},
+    {-1,ODIN_INVALID,0},
+#line 147 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str208, ODIN_KWAD_LOAD_HASH, 0},
+#line 110 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str209, ODIN_KWAD_REQUIRE_RESULTS, 0},
+    {-1,ODIN_INVALID,0},
+#line 94 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str211, ODIN_KWAD_NO_SANITIZE_MEMORY, 0},
+#line 187 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str212, ODIN_KWAD_ALIGN, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 54 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str215, ODIN_KWAD_SWITCH, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 96 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str218, ODIN_KWAD_OBJC_CLASS, 0},
+    {-1,ODIN_INVALID,0},
+#line 111 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str220, ODIN_KWAD_REQUIRE_TARGET_FEATURE, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 146 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str223, ODIN_KWAD_LOAD_DIRECTORY, 0},
+    {-1,ODIN_INVALID,0},
+#line 116 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str225, ODIN_KWAD_TAG, 0},
+#line 55 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str226, ODIN_KWAD_TRANSMUTE, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 155 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str230, ODIN_KWAD_NO_INIT, 0},
+#line 152 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str231, ODIN_KWAD_NO_ALIAS, 0},
+    {-1,ODIN_INVALID,0},
+#line 97 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str233, ODIN_KWAD_OBJC_CONTEXT_PROVIDER, 0},
+#line 84 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str234, ODIN_KWAD_INIT, 0},
+    {-1,ODIN_INVALID,0},
+#line 50 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str236, ODIN_KWAD_OR_ELSE, 1},
+    {-1,ODIN_INVALID,0},
+#line 79 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str238, ODIN_KWAD_FAST_MATH, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 27 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str241, ODIN_KWAD_OR_RETURN, 1},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 154 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str244, ODIN_KWAD_NO_BROADCAST, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 26 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str247, ODIN_KWAD_OR_CONTINUE, 1},
+    {-1,ODIN_INVALID,0},
+#line 25 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str249, ODIN_KWAD_OR_BREAK, 1},
+#line 183 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str250, ODIN_KWAD_CC_ODIN, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 203 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str258, ODIN_KWAD_CC_SYSTEM, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 105 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str264, ODIN_KWAD_OPTIMIZATION_MODE, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 134 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str267, ODIN_KWAD_CONFIG, 0},
+    {-1,ODIN_INVALID,0},
+#line 136 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str269, ODIN_KWAD_C_VARARG, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 150 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str272, ODIN_KWAD_MIN_FIELD_ALIGN, 0},
+    {-1,ODIN_INVALID,0},
+#line 106 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str274, ODIN_KWAD_PRIORITY_INDEX, 0},
+    {-1,ODIN_INVALID,0},
+#line 197 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str276, ODIN_KWAD_CC_INLINEASM, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 57 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str284, ODIN_KWAD_USING, 1},
+    {-1,ODIN_INVALID,0},
+#line 149 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str286, ODIN_KWAD_MAX_FIELD_ALIGN, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 63 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str293, ODIN_KWAD_BUILTIN, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 100 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str302, ODIN_KWAD_OBJC_IVAR, 0},
+#line 98 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str303, ODIN_KWAD_OBJC_IMPLEMENT, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+#line 122 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str318, ODIN_KWAD_ALIGN_STACK, 0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0}, {-1,ODIN_INVALID,0},
+    {-1,ODIN_INVALID,0},
+#line 30 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str330, ODIN_KWAD_ASM, 1},
+#line 99 "src/hash/word-list"
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str331, ODIN_KWAD_OBJC_IS_CLASS_METHOD, 0}
   };
 
 static const struct OdinKwad *

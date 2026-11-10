@@ -32,14 +32,6 @@
 // NOTE(krnowak): tokens
 //
 
-typedef enum {
-  OdinTokenInvalid,
-  OdinTokenKeyword,
-  OdinTokenAttribute,
-  OdinTokenDirective,
-  OdinTokenCallingConvention,
-} OdinTokenType;
-
 #define ODIN_SPECIAL_SYMBOLS \
   ODIN_SYMBOL(INVALID), \
   ODIN_SYMBOL(ML_COMMENT), \
@@ -161,7 +153,6 @@ typedef enum {
 
 // directives
 #define ODIN_DIRECTIVE_SYMBOLS \
-  ODIN_SYMBOL(KWAD_ALIGN), \
   ODIN_SYMBOL(KWAD_ALIGN_STACK), \
   ODIN_SYMBOL(KWAD_ALL_OR_NONE), \
   ODIN_SYMBOL(KWAD_ANY_INT), \
@@ -223,6 +214,9 @@ typedef enum {
   ODIN_SYMBOL(KWAD_TYPE_ASSERT), \
   ODIN_SYMBOL(KWAD_UNROLL), \
   ODIN_SYMBOL(KWAD_VOLATILE)
+
+#define ODIN_MIXED_SYMBOLS \
+  ODIN_SYMBOL(KWAD_ALIGN)
 
 // other terminals that may add a semicolon
 #define ODIN_SEMICOLON_TERMINAL_SYMBOLS \
@@ -316,6 +310,7 @@ typedef enum {
   ODIN_NO_SEMICOLON_KW_SYMBOLS, \
   ODIN_ATTRIBUTE_SYMBOLS, \
   ODIN_DIRECTIVE_SYMBOLS, \
+  ODIN_MIXED_SYMBOLS, \
   ODIN_SEMICOLON_TERMINAL_SYMBOLS, \
   ODIN_NO_SEMICOLON_TERMINAL_SYMBOLS, \
   ODIN_CALLING_CONVENTIONS
@@ -1180,15 +1175,10 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
       if (kwad_idx <= ODIN_KWAD_MAX_WORD_LENGTH) {
         kwad[kwad_idx] = '\0';
         LOG_LEXER(lexer, "checking if %s is a keyword/attribute/directive", kwad);
-        //uint16_t valid_symbols_idx;
-        //OdinTokenType kwad_type;
         const OdinKwad *kwad_entry = odin_kwad_lookup(kwad, kwad_idx);
-        //if (odin_kwad_hash_map_get(scanner->kwads, kwad, kwad_idx, &valid_symbols_idx, &kwad_type)) {
         if (kwad_entry != NULL) {
-          //if (!valid_symbols[valid_symbols_idx]) {
           if (!valid_symbols[kwad_entry->valid_symbols_idx]) {
-            //if (kwad_type == OdinTokenKeyword) {
-            if (kwad_entry->type == OdinTokenKeyword) {
+            if (kwad_entry->is_a_keyword) {
               LOG_LEXER(lexer, "%s is a keyword, but not valid in this context", kwad);
               return false;
             }
@@ -1236,11 +1226,8 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
         odin_consume(lexer);
       }
       kwad[kwad_idx] = '\0';
-      //uint16_t valid_symbols_idx;
-      //OdinTokenType type;
       const OdinKwad *kwad_entry = odin_kwad_lookup(kwad, kwad_idx);
       if (kwad_entry == NULL) {
-      //if (!odin_kwad_hash_map_get(scanner->kwads, kwad, kwad_idx, &valid_symbols_idx, &type)) {
         LOG_LEXER(lexer, "%s is not a keyword/attribute/directive", kwad);
         return false;
       }

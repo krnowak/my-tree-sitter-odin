@@ -257,7 +257,6 @@ module.exports = grammar({
     $._a_test, // nothing
     $._a_thread_local, // nothing or string
     // directives
-    $._d_align, // call or integer (only in asm)
     $._d_align_stack, // simple
     $._d_all_or_none, // simple
     $._d_any_int, // simple
@@ -319,6 +318,8 @@ module.exports = grammar({
     $._d_type_assert, // simple
     $._d_unroll, // simple or call
     $._d_volatile, // simple
+    // mixed (directive or attribute or anything else)
+    $._m_align, // call or integer (only in asm)
     // other terminals that may add a semicolon
     $.integer,
     $.float,
@@ -823,6 +824,7 @@ module.exports = grammar({
       $._a_objc_is_class_method, // bool
       $._a_require, // nothing or bool
 
+      $._m_align, // integer
       $._a_priority_index, // integer
 
       $._a_fast_math, // bitset of Fast_Math_Flags
@@ -2379,7 +2381,7 @@ module.exports = grammar({
     ),
 
     _struct_directive_name : $ => choice(
-      $._d_align,
+      $._m_align,
       $._d_min_field_align,
       $._d_max_field_align,
     ),
@@ -2466,7 +2468,7 @@ module.exports = grammar({
     // TODO: move to operator helpers
     _union_directive_call : $ => seq(
       $._t_hash,
-      alias($._d_align, $.directive_name),
+      alias($._m_align, $.directive_name),
       $.parentheses_expression,
     ),
 
@@ -2691,7 +2693,7 @@ module.exports = grammar({
     ),
 
     _asm_directive_name : $ => choice(
-      $._d_align,
+      $._m_align,
       $._d_byte,
       $._d_nop,
       $._d_skip,
