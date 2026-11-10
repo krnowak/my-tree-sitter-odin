@@ -681,6 +681,7 @@ module.exports = grammar({
       $.var_declaration,
       $.when_statement,
       $.expression_statement,
+      $._t_semicolon, // empty statement, basically
     ),
 
     // krnowak: assign statement
