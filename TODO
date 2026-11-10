@@ -14,3 +14,5 @@
 
 - Check if we allow for `-> (#simd[N]T)` style return types (commit
   ade003e12819849e6b167eeccfe44bca147ed0a5 in Odin).
+
+- fix calling conventions, I probably didn't hook them up properly
