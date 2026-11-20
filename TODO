@@ -1,16 +1,10 @@
-- Check how diverging result handles is handled being followed by the
-  "where" keyword.
-
-- Make most of the rules hidden. Make some of them as supertypes.
+- Make most of the rules hidden.
 
 - See if I can somehow use the "-ast-dump" in odin and the output of
   "tree-sitter parse" to see if tree-sitter-generated ast matches
   odin's.
 
-- parse_value does not call parse_literal_value on open brace token,
-  see if we should change anything in the grammar.
-
-- Check if we allow for `-> (#simd[N]T)` style return types (commit
-  ade003e12819849e6b167eeccfe44bca147ed0a5 in Odin).
-
-- fix calling conventions, I probably didn't hook them up properly
+- inline asm improvements, see Odin commits
+  c0ea602a66b40b52884b4fbc1dabd40c8a0b7b3a (handle asm instructions
+  that are odin keywords), da34fbc59a85e9cf5d81a66b85d73ef50d902a40
+  (add selector expressions)
