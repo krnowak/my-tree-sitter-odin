@@ -384,21 +384,6 @@ module.exports = grammar({
     $._t_subeq,
     $._t_xor,
     $._t_xoreq,
-    $._cc_any_cc, // mostly for checking if CC is an expected symbol
-    $._cc_odin,
-    $._cc_contextless,
-    $._cc_cdecl,
-    $._cc_stdcall,
-    $._cc_fastcall,
-    $._cc_none,
-    $._cc_naked,
-    $._cc_inlineasm,
-    $._cc_win64,
-    $._cc_sysv,
-    $._cc_preserve_none,
-    $._cc_preserve_most,
-    $._cc_preserve_all,
-    $._cc_system,
   ],
 
   extras : $ => [
@@ -2029,7 +2014,7 @@ module.exports = grammar({
 
     procedure_type : $ => seq(
       $._kw_proc,
-      optional($.calling_convention),
+      optional(alias($.string, $.calling_convention)),
       alias($._procedure_parameters, $.parameters),
       optional($.procedure_results),
       //optional($._implicit_semicolon),
@@ -2039,24 +2024,6 @@ module.exports = grammar({
       $._t_openparen,
       optional(alias($._procedure_field_list, $.field_list)),
       $._t_closeparen,
-    ),
-
-    calling_convention : $ => choice(
-      $._cc_any_cc,
-      $._cc_odin,
-      $._cc_contextless,
-      $._cc_cdecl,
-      $._cc_stdcall,
-      $._cc_fastcall,
-      $._cc_none,
-      $._cc_naked,
-      $._cc_inlineasm,
-      $._cc_win64,
-      $._cc_sysv,
-      $._cc_preserve_none,
-      $._cc_preserve_most,
-      $._cc_preserve_all,
-      alias($.string, $.bad_calling_convention),
     ),
 
     // TODO: move to operator helpers

@@ -180,24 +180,7 @@ type, ODIN_KWAD_TYPE, 0
 type_assert, ODIN_KWAD_TYPE_ASSERT, 0
 unroll, ODIN_KWAD_UNROLL, 0
 volatile, ODIN_KWAD_VOLATILE, 0
-odin, ODIN_KWAD_CC_ODIN, 0
 #
 # mixed
 #
 align, ODIN_KWAD_ALIGN, 0
-#
-# calling conventions
-#
-contextless, ODIN_KWAD_CC_CONTEXTLESS, 0
-cdecl, ODIN_KWAD_CC_CDECL, 0
-stdcall, ODIN_KWAD_CC_STDCALL, 0
-fastcall, ODIN_KWAD_CC_FASTCALL, 0
-none, ODIN_KWAD_CC_NONE, 0
-naked, ODIN_KWAD_CC_NAKED, 0
-inlineasm, ODIN_KWAD_CC_INLINEASM, 0
-win64, ODIN_KWAD_CC_WIN64, 0
-sysv, ODIN_KWAD_CC_SYSV, 0
-preserve/none, ODIN_KWAD_CC_PRESERVE_NONE, 0
-preserve/most, ODIN_KWAD_CC_PRESERVE_MOST, 0
-preserve/all, ODIN_KWAD_CC_PRESERVE_ALL, 0
-system, ODIN_KWAD_CC_SYSTEM, 0

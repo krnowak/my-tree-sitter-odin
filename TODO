@@ -7,8 +7,6 @@
   "tree-sitter parse" to see if tree-sitter-generated ast matches
   odin's.
 
-- New inline asm.
-
 - parse_value does not call parse_literal_value on open brace token,
   see if we should change anything in the grammar.
 
