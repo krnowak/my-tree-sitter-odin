@@ -58,65 +58,6 @@ using, ODIN_KWAD_USING, 1
 when, ODIN_KWAD_WHEN, 1
 where, ODIN_KWAD_WHERE, 1
 #
-# attributes
-#
-builtin, ODIN_KWAD_BUILTIN, 0
-cold, ODIN_KWAD_COLD, 0
-default_calling_convention, ODIN_KWAD_DEFAULT_CALLING_CONVENTION, 0
-deferred_in, ODIN_KWAD_DEFERRED_IN, 0
-deferred_in_by_ptr, ODIN_KWAD_DEFERRED_IN_BY_PTR, 0
-deferred_in_out, ODIN_KWAD_DEFERRED_IN_OUT, 0
-deferred_in_out_by_ptr, ODIN_KWAD_DEFERRED_IN_OUT_BY_PTR, 0
-deferred_none, ODIN_KWAD_DEFERRED_NONE, 0
-deferred_out, ODIN_KWAD_DEFERRED_OUT, 0
-deferred_out_by_ptr, ODIN_KWAD_DEFERRED_OUT_BY_PTR, 0
-deprecated, ODIN_KWAD_DEPRECATED, 0
-disabled, ODIN_KWAD_DISABLED, 0
-enable_target_feature, ODIN_KWAD_ENABLE_TARGET_FEATURE, 0
-entry_point_only, ODIN_KWAD_ENTRY_POINT_ONLY, 0
-export, ODIN_KWAD_EXPORT, 0
-extra_linker_flags, ODIN_KWAD_EXTRA_LINKER_FLAGS, 0
-fast_math, ODIN_KWAD_FAST_MATH, 0
-fini, ODIN_KWAD_FINI, 0
-futex, ODIN_KWAD_FUTEX, 0
-futex_parameter, ODIN_KWAD_FUTEX_PARAMETER, 0
-ignore_duplicates, ODIN_KWAD_IGNORE_DUPLICATES, 0
-init, ODIN_KWAD_INIT, 0
-instrumentation_enter, ODIN_KWAD_INSTRUMENTATION_ENTER, 0
-instrumentation_exit, ODIN_KWAD_INSTRUMENTATION_EXIT, 0
-linkage, ODIN_KWAD_LINKAGE, 0
-link_name, ODIN_KWAD_LINK_NAME, 0
-link_prefix, ODIN_KWAD_LINK_PREFIX, 0
-link_section, ODIN_KWAD_LINK_SECTION, 0
-link_suffix, ODIN_KWAD_LINK_SUFFIX, 0
-no_instrumentation, ODIN_KWAD_NO_INSTRUMENTATION, 0
-no_sanitize_address, ODIN_KWAD_NO_SANITIZE_ADDRESS, 0
-no_sanitize_memory, ODIN_KWAD_NO_SANITIZE_MEMORY, 0
-no_sanitize_thread, ODIN_KWAD_NO_SANITIZE_THREAD, 0
-objc_class, ODIN_KWAD_OBJC_CLASS, 0
-objc_context_provider, ODIN_KWAD_OBJC_CONTEXT_PROVIDER, 0
-objc_implement, ODIN_KWAD_OBJC_IMPLEMENT, 0
-objc_is_class_method, ODIN_KWAD_OBJC_IS_CLASS_METHOD, 0
-objc_ivar, ODIN_KWAD_OBJC_IVAR, 0
-objc_name, ODIN_KWAD_OBJC_NAME, 0
-objc_selector, ODIN_KWAD_OBJC_SELECTOR, 0
-objc_superclass, ODIN_KWAD_OBJC_SUPERCLASS, 0
-objc_type, ODIN_KWAD_OBJC_TYPE, 0
-optimization_mode, ODIN_KWAD_OPTIMIZATION_MODE, 0
-priority_index, ODIN_KWAD_PRIORITY_INDEX, 0
-private, ODIN_KWAD_PRIVATE, 0
-raddbg_type_view, ODIN_KWAD_RADDBG_TYPE_VIEW, 0
-require, ODIN_KWAD_REQUIRE, 0
-require_results, ODIN_KWAD_REQUIRE_RESULTS, 0
-require_target_feature, ODIN_KWAD_REQUIRE_TARGET_FEATURE, 0
-rodata, ODIN_KWAD_RODATA, 0
-static, ODIN_KWAD_STATIC, 0
-synchronizes, ODIN_KWAD_SYNCHRONIZES, 0
-synchronizes_shared, ODIN_KWAD_SYNCHRONIZES_SHARED, 0
-tag, ODIN_KWAD_TAG, 0
-test, ODIN_KWAD_TEST, 0
-thread_local, ODIN_KWAD_THREAD_LOCAL, 0
-#
 # directives
 #
 align_stack, ODIN_KWAD_ALIGN_STACK, 0

@@ -199,63 +199,6 @@ module.exports = grammar({
     $._kw_using,
     $._kw_when,
     $._kw_where,
-    // attributes
-    $._a_builtin, // nothing
-    $._a_cold, // nothing or bool
-    $._a_default_calling_convention, // string
-    $._a_deferred_in, // identifier
-    $._a_deferred_in_by_ptr, // identifier
-    $._a_deferred_in_out, // identifier
-    $._a_deferred_in_out_by_ptr, // identifier
-    $._a_deferred_none, // identifier
-    $._a_deferred_out, // identifier
-    $._a_deferred_out_by_ptr, // identifier
-    $._a_deprecated, // string
-    $._a_disabled, // bool
-    $._a_enable_target_feature, // string
-    $._a_entry_point_only, // nothing
-    $._a_export, // nothing or bool
-    $._a_extra_linker_flags, // string
-    $._a_fast_math, // bitset of Fast_Math_Flags
-    $._a_fini, // nothing
-    $._a_futex, // Futex_Operation
-    $._a_futex_parameter, // string
-    $._a_ignore_duplicates, // nothing
-    $._a_init, // nothing
-    $._a_instrumentation_enter, // nothing
-    $._a_instrumentation_exit, // nothing
-    $._a_linkage, // string
-    $._a_link_name, // string
-    $._a_link_prefix, // string
-    $._a_link_section, // string
-    $._a_link_suffix, // string
-    $._a_no_instrumentation, // nothing or bool
-    $._a_no_sanitize_address, // nothing
-    $._a_no_sanitize_memory, // nothing
-    $._a_no_sanitize_thread, // nothing
-    $._a_objc_class, // string
-    $._a_objc_context_provider, // identifier
-    $._a_objc_implement, // nothing or bool
-    $._a_objc_is_class_method, // bool
-    $._a_objc_ivar, // identifier
-    $._a_objc_name, // string
-    $._a_objc_selector, // string
-    $._a_objc_superclass, // identifier
-    $._a_objc_type, // identifier
-    $._a_optimization_mode, // string
-    $._a_priority_index, // integer
-    $._a_private, // nothing or string
-    $._a_raddbg_type_view, // nothing or string
-    $._a_require, // nothing or bool
-    $._a_require_results, // nothing
-    $._a_require_target_feature, // string
-    $._a_rodata, // nothing
-    $._a_static, // nothing
-    $._a_synchronizes, // Atomic_Memory_Order
-    $._a_synchronizes_shared, // Atomic_Memory_Order
-    $._a_tag, // string
-    $._a_test, // nothing
-    $._a_thread_local, // nothing or string
     // directives
     $._d_align_stack, // simple
     $._d_all_or_none, // simple
@@ -734,91 +677,12 @@ module.exports = grammar({
       ),
     ),
 
-    _simple_attribute_wrapper : $ => seq(
-      alias($.simple_attribute, $.identifier),
-    ),
+    _simple_attribute_wrapper : $ => $.identifier,
 
     _attribute_with_value : $ => seq(
-      alias($.value_attribute, $.identifier),
+      $.identifier,
       $._t_eq,
       $._value,
-    ),
-
-    simple_attribute : $ => choice(
-      $._a_builtin, // nothing
-      $._a_cold, // nothing or bool
-      $._a_entry_point_only, // nothing
-      $._a_export, // nothing or bool
-      $._a_fini, // nothing
-      $._a_ignore_duplicates, // nothing
-      $._a_init, // nothing
-      $._a_instrumentation_enter, // nothing
-      $._a_instrumentation_exit, // nothing
-      $._a_no_instrumentation, // nothing or bool
-      $._a_no_sanitize_address, // nothing
-      $._a_no_sanitize_memory, // nothing
-      $._a_no_sanitize_thread, // nothing
-      $._a_objc_implement, // nothing or bool
-      $._a_private, // nothing or string
-      $._a_raddbg_type_view, // nothing or string
-      $._a_require, // nothing or bool
-      $._a_require_results, // nothing
-      $._a_rodata, // nothing
-      $._a_static, // nothing
-      $._a_test, // nothing
-      $._a_thread_local, // nothing or string
-    ),
-
-    value_attribute : $ => choice(
-      $._a_default_calling_convention, // string
-      $._a_deprecated, // string
-      $._a_enable_target_feature, // string
-      $._a_extra_linker_flags, // string
-      $._a_futex_parameter, // string
-      $._a_linkage, // string
-      $._a_link_name, // string
-      $._a_link_prefix, // string
-      $._a_link_section, // string
-      $._a_link_suffix, // string
-      $._a_objc_class, // string
-      $._a_objc_name, // string
-      $._a_objc_selector, // string
-      $._a_optimization_mode, // string
-      $._a_private, // nothing or string
-      $._a_raddbg_type_view, // nothing or string
-      $._a_require_target_feature, // string
-      $._a_tag, // string
-      $._a_thread_local, // nothing or string
-
-      $._a_deferred_in, // identifier
-      $._a_deferred_in_by_ptr, // identifier
-      $._a_deferred_in_out, // identifier
-      $._a_deferred_in_out_by_ptr, // identifier
-      $._a_deferred_none, // identifier
-      $._a_deferred_out, // identifier
-      $._a_deferred_out_by_ptr, // identifier
-      $._a_objc_context_provider, // identifier
-      $._a_objc_ivar, // identifier
-      $._a_objc_superclass, // identifier
-      $._a_objc_type, // identifier
-
-      $._a_cold, // nothing or bool
-      $._a_disabled, // bool
-      $._a_export, // nothing or bool
-      $._a_no_instrumentation, // nothing or bool
-      $._a_objc_implement, // nothing or bool
-      $._a_objc_is_class_method, // bool
-      $._a_require, // nothing or bool
-
-      $._m_align, // integer
-      $._a_priority_index, // integer
-
-      $._a_fast_math, // bitset of Fast_Math_Flags
-
-      $._a_synchronizes, // Atomic_Memory_Order
-      $._a_synchronizes_shared, // Atomic_Memory_Order
-
-      $._a_futex, // Futex_Operation
     ),
 
     // krnowak: block statement
