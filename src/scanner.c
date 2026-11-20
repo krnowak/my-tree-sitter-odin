@@ -8,6 +8,8 @@
 #include <string.h>
 #include <wctype.h>
 
+#define ODIN_DEBUG_MODE 0
+
 // TODO: keep it and document it or drop it
 #ifdef _MSC_VER
 #pragma warning(disable : 4100)
@@ -548,7 +550,16 @@ odin_skip(TSLexer *lexer) {
 #define ODIN_RETF_ON_EOF(lexer) ODIN_RET_ON_EOF(lexer, false)
 #define ODIN_RETT_ON_EOF(lexer) ODIN_RET_ON_EOF(lexer, true)
 
+
+#if ODIN_DEBUG_MODE == 1
+
 #define LOG_LEXER(lexer, ...) lexer->log((lexer), __VA_ARGS__)
+
+#else
+
+#define LOG_LEXER(...)
+
+#endif
 
 //
 // NOTE(krnowak): whitespace skipping
@@ -619,11 +630,15 @@ typedef enum {
 #undef ODIN_MODE
 } OdinStringMode;
 
+#if ODIN_DEBUG_MODE == 1
+
 static const char *odin_string_mode_strings[] = {
 #define ODIN_MODE(e) #e
   ODIN_STRING_MODES
 #undef ODIN_MODE
 };
+
+#endif
 
 typedef struct {
   bool prev_token_may_add_semicolon;
@@ -683,11 +698,6 @@ odin_is_kwad_char(TSLexer *lexer) {
   return set_contains(odin_keyword_set_letters, ODIN_KEYWORD_SET_LETTERS_LEN, lexer->lookahead);
 }
 
-static inline bool
-odin_is_cc_char(TSLexer *lexer) {
-  return set_contains(odin_cc_set_letters, ODIN_CC_SET_LETTERS_LEN, lexer->lookahead);
-}
-
 static bool
 odin_handle_ml_comment_star(TSLexer *lexer, bool skip, int *level) {
   do {
@@ -718,6 +728,7 @@ odin_handle_ml_comment_slash(TSLexer *lexer, bool skip, int *level) {
 
 static bool
 odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbols) {
+#if ODIN_DEBUG_MODE == 1
   LOG_LEXER(lexer, "scanner state:");
   LOG_LEXER(lexer, "  prev_token_may_add_semicolon: %d", scanner->prev_token_may_add_semicolon ? 1 : 0);
   LOG_LEXER(lexer, "  added_semicolon_at_eof: %d", scanner->added_semicolon_at_eof);
@@ -733,6 +744,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
       }
     }
   }
+#endif
 
   {
     bool in_string = true;
