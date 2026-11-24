@@ -257,11 +257,15 @@ enum {
   ODIN_LAST_QUOTE_TERMINAL = ODIN_RUNE_QUOTE,
 };
 
+#if ODIN_DEBUG_MODE == 1
+
 static const char *odin_symbol_strings[] = {
 #define ODIN_SYMBOL(e) #e
   ODIN_ALL_SYMBOLS
 #undef ODIN_SYMBOL
 };
+
+#endif
 
 GB_STATIC_ASSERT(ODIN_FIRST_SEMICOLON_KEYWORD < ODIN_LAST_SEMICOLON_KEYWORD);
 GB_STATIC_ASSERT(ODIN_FIRST_SEMICOLON_OTHER_TERMINAL < ODIN_LAST_SEMICOLON_OTHER_TERMINAL);
@@ -478,12 +482,6 @@ static const TSCharacterRange odin_number_set_all_digits[] = {
 #define ODIN_KEYWORD_SET_LETTERS_LEN (2)
 static const TSCharacterRange odin_keyword_set_letters[] = {
   {'_', '_'}, {'a', 'z'},
-};
-
-// matches [a-z0-9/]
-#define ODIN_CC_SET_LETTERS_LEN (3)
-static const TSCharacterRange odin_cc_set_letters[] = {
-  {'/', '/'}, {'0', '9'}, {'a', 'z'},
 };
 
 // matches [0-7] (for escape sequences)
@@ -1089,7 +1087,7 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
       uint32_t kwad_idx = 0;
       if (valid_symbols[ODIN_KEYWORD_AS_IDENTIFIER]) {
         LOG_LEXER(lexer, "Forcing keywords to be identifiers");
-        kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1
+        kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1;
       } else {
         // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
         // we know that current lookahead is a kwad char, which means
