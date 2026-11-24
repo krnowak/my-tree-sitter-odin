@@ -3,8 +3,3 @@
 - See if I can somehow use the "-ast-dump" in odin and the output of
   "tree-sitter parse" to see if tree-sitter-generated ast matches
   odin's.
-
-- inline asm improvements, see Odin commits
-  c0ea602a66b40b52884b4fbc1dabd40c8a0b7b3a (handle asm instructions
-  that are odin keywords), da34fbc59a85e9cf5d81a66b85d73ef50d902a40
-  (add selector expressions)
