@@ -150,6 +150,7 @@ module.exports = grammar({
     $._implicit_semicolon,
     // Similar to implicit semicolon, but followed by an empty line.
     $._wide_implicit_semicolon,
+    $._keyword_as_identifier,
     $.identifier,
     $._single_double_quote,
     $._triple_double_quote,
@@ -2503,7 +2504,10 @@ module.exports = grammar({
     ),
 
     asm_instruction : $ => seq(
-      $.identifier,
+      choice(
+        $.identifier,
+        alias($._keyword_as_identifier, $.identifier),
+      ),
       repeatCommaTrailing($, $.asm_operand_mo),
       $._statement_separator,
     ),

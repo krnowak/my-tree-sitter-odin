@@ -40,6 +40,7 @@
   ODIN_SYMBOL(SL_COMMENT), \
   ODIN_SYMBOL(IMPLICIT_SEMICOLON), \
   ODIN_SYMBOL(WIDE_IMPLICIT_SEMICOLON), \
+  ODIN_SYMBOL(KEYWORD_AS_IDENTIFIER), \
   ODIN_SYMBOL(IDENTIFIER), \
   ODIN_SYMBOL(SINGLE_DOUBLE_QUOTE), \
   ODIN_SYMBOL(TRIPLE_DOUBLE_QUOTE), \
@@ -1086,11 +1087,16 @@ odin_scanner_scan(OdinScanner *scanner, TSLexer *lexer, const bool *valid_symbol
 
       char kwad[ODIN_KWAD_LENGTH_POW_2];
       uint32_t kwad_idx = 0;
-      // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
-      // we know that current lookahead is a kwad char, which means
-      // ascii.
-      kwad[kwad_idx] = lexer->lookahead;
-      kwad_idx++;
+      if (valid_symbols[ODIN_KEYWORD_AS_IDENTIFIER]) {
+        LOG_LEXER(lexer, "Forcing keywords to be identifiers");
+        kwad_idx = ODIN_KWAD_MAX_WORD_LENGTH + 1
+      } else {
+        // NOTE(krnowak): Assigning i32 lookahead to char here is fine,
+        // we know that current lookahead is a kwad char, which means
+        // ascii.
+        kwad[kwad_idx] = lexer->lookahead;
+        kwad_idx++;
+      }
       odin_consume(lexer);
       while (!odin_eof(lexer) && set_contains(odin_identifier_set_letters_digits, ODIN_IDENTIFIER_SET_LETTERS_DIGITS_LEN, lexer->lookahead)) {
         if (kwad_idx < ODIN_KWAD_MAX_WORD_LENGTH) {
