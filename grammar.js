@@ -2402,6 +2402,7 @@ module.exports = grammar({
     asm_operand : $ => choice(
       $.asm_label,
       $.identifier,
+      $.asm_selector,
       $.asm_register,
       $.asm_index,
       $.integer,
@@ -2409,6 +2410,12 @@ module.exports = grammar({
       $.rune,
       $.asm_unary_expression,
       $.parentheses_expression,
+    ),
+
+    asm_selector : $ => seq(
+      $.identifier,
+      $._t_period,
+      $.identifier,
     ),
 
     asm_index : $ => seq(
@@ -2426,6 +2433,7 @@ module.exports = grammar({
     asm_operand_mo : $ => choice(
       $.asm_label,
       $.identifier,
+      $.asm_selector,
       $.asm_register,
       $.asm_shift,
       $.asm_index,
