@@ -440,7 +440,7 @@ module.exports = grammar({
     //      1:  package  _kw_proc  _t_openparen  (_identifier_or_poly_type_field  identifier)  •  _t_comma  …
     //      2:  package  _kw_proc  _t_openparen  (type  identifier)  •  _t_comma  …
     //
-    [$.type, $._identifier_or_poly_type_field],
+    [$._obvious_type, $._identifier_or_poly_type_field],
     //    Unresolved conflict for symbol sequence:
     //
     //      package  _kw_struct  _t_openbrace  identifier  •  _t_comma  …
@@ -450,7 +450,7 @@ module.exports = grammar({
     //      1:  package  _kw_struct  _t_openbrace  (_identifier_list  identifier  •  _identifier_list_repeat1)
     //      2:  package  _kw_struct  _t_openbrace  (type  identifier)  •  _t_comma  …
     //
-    [$.type, $._identifier_list],
+    [$._obvious_type, $._identifier_list],
     //    Unresolved conflict for symbol sequence:
     //
     //      package  _kw_return  _t_hash  _d_partial  _t_openparen  literal_value_atom_expression  •  _t_closeparen  …
@@ -568,6 +568,11 @@ module.exports = grammar({
     [
       'call_statement',
       'operand',
+    ],
+    // For types:
+    [
+      'ternary_type',
+      'obvious_type',
     ],
   ],
 
@@ -2952,6 +2957,11 @@ module.exports = grammar({
 
     // parse_type_or_ident, a subset of atom expression
     type : $ => choice(
+      prec('obvious_type', $._obvious_type),
+      prec('ternary_type', $.ternary_type),
+    ),
+
+    _obvious_type : $ => prec('obvious_type', choice(
       $.identifier,
       $.package_type,
       $.instantiated_type,
@@ -2968,8 +2978,7 @@ module.exports = grammar({
       $.bit_set_type,
       $.struct_type,
       $.union_type,
-      $.ternary_type,
-    ),
+    )),
 
     package_type : $ => seq(
       $.identifier,
@@ -2993,16 +3002,14 @@ module.exports = grammar({
       $._t_closeparen,
     ),
 
-    ternary_type : $ => seq(
-      $._t_openparen,
-      $.type,
+    ternary_type : $ => prec('ternary_type', seq(
+      $._obvious_type,
       $._kw_when,
       // expr_level > 0
       $.rhs_expression,
       $._kw_else,
       $.type,
-      $._t_closeparen
-    ),
+    )),
 
     // parse_type
     _type_maybe_in_parentheses : $ => choice(
