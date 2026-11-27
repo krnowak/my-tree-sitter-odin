@@ -256,6 +256,7 @@ module.exports = grammar({
     $._d_skip, // integer
     $._d_simple, // simple
     $._d_soa, // simple? #soa[N]T
+    $._d_soa_split, // simple
     $._d_sparse, // simple? #sparse[Key]T
     $._d_subtype, // simple
     $._d_type, // simple
@@ -2941,6 +2942,7 @@ module.exports = grammar({
       $._d_const,
       $._d_no_alias,
       $._d_no_broadcast,
+      $._d_soa_split,
       $._d_subtype,
     ),
 

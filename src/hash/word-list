@@ -115,6 +115,7 @@ simd, ODIN_KWAD_SIMD, 0
 simple, ODIN_KWAD_SIMPLE, 0
 skip, ODIN_KWAD_SKIP, 0,
 soa, ODIN_KWAD_SOA, 0
+soa_split, ODIN_KWAD_SOA, 0
 sparse, ODIN_KWAD_SPARSE, 0
 subtype, ODIN_KWAD_SUBTYPE, 0
 type, ODIN_KWAD_TYPE, 0
