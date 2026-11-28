@@ -433,7 +433,7 @@ static const struct OdinKwad odin_kwads[] =
     {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str80, ODIN_KWAD_BIT_SET, 1},
     {-1,ODIN_INVALID,0},
 #line 118 "src/hash/word-list"
-    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str82, ODIN_KWAD_SOA, 0},
+    {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str82, ODIN_KWAD_SOA_SPLIT, 0},
 #line 81 "src/hash/word-list"
     {(int)(size_t)&((struct odin_kwad_string_pool_t *)0)->odin_kwad_string_pool_str83, ODIN_KWAD_FILE, 0},
 #line 86 "src/hash/word-list"
